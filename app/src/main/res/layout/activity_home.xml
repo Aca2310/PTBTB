@@ -15,7 +15,7 @@
         android:background="@drawable/search_background"
         android:drawablePadding="16sp"
         android:ems="10"
-        android:hint="search"
+        android:hint="@string/search"
         android:inputType="text"
         android:padding="16sp"
         android:textColor="@color/black"
