@@ -5,4 +5,12 @@
     <string name="get_started">Get Started</string>
     <string name="email">Email</string>
     <string name="search">search</string>
+    <string name="khairin">\@khairin</string>
+    <string name="nama">Nama</string>
+    <string name="address">address</string>
+    <string name="password">password</string>
+    <string name="confirmpassword">confirmpassword</string>
+    <string name="save">Save</string>
+    <string name="khairinn">Khairin</string>
+    <string name="namaa">Name</string>
 </resources>
