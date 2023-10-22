@@ -8,35 +8,33 @@ import android.os.Bundle;
 
 import java.util.ArrayList;
 
-public class Home_2 extends AppCompatActivity {
+public class beranda extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    adapter adapter;
+    AdapterRecyclerView adapter;
     RecyclerView.LayoutManager layoutManager;
-    ArrayList<model>data;
+    ArrayList<ItemModel>data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_home2);
+        setContentView(R.layout.activity_beranda);
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
         layoutManager = new GridLayoutManager(this,2);
-        recyclerView.setLayoutManager(RecyclerView.LayoutManager);
+        recyclerView.setLayoutManager(layoutManager);
 
         data = new ArrayList<>();
-        for (int i = 0; i<Myitem.tumbuhan.lenght; i++){
-            data.add(new model(
-                    Myitem.namatumbuhan(i),
-                    Myitem.tumbuhan(i)
+        for (int i = 0; i<MyItem.poster.length; i++){
+            data.add(new ItemModel(
+                    MyItem.namatumbuhan[i],
+                    MyItem.poster[i]
             ));
         }
 
-        adapter = new adapter(data);
+        adapter = new AdapterRecyclerView(data);
         recyclerView.setAdapter(adapter);
     }
-
-
 }
