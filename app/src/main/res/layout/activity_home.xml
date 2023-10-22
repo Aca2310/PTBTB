@@ -10,7 +10,7 @@
     <EditText
         android:id="@+id/search"
         android:layout_width="323dp"
-        android:layout_height="45dp"
+        android:layout_height="50dp"
         android:layout_marginTop="200dp"
         android:background="@drawable/search_background"
         android:drawablePadding="16sp"
@@ -69,12 +69,11 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
-                            android:src="@tools:sample/avatars"
+                            android:src="@drawable/plant"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/plant"
                             tools:ignore="DuplicateIds" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -83,7 +82,7 @@
                         android:id="@+id/textBarter"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Barter"
+                        android:text="@string/barter"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -110,12 +109,12 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
-                            android:src="@tools:sample/avatars"
+                            android:src="@drawable/group_users"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/group_users" />
+                             />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -123,7 +122,7 @@
                         android:id="@+id/textCommunity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Community"
+                        android:text="@string/community"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -148,12 +147,11 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
-                            android:src="@tools:sample/avatars"
+                            android:src="@drawable/file"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/file" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -161,7 +159,7 @@
                         android:id="@+id/textArticle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Article"
+                        android:text="@string/article"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -197,12 +195,11 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
-                            android:src="@tools:sample/avatars"
+                            android:src="@drawable/user"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/user"
                             tools:ignore="DuplicateIds" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -211,7 +208,7 @@
                         android:id="@+id/textArticle"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Profile"
+                        android:text="@string/profile1"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -239,12 +236,11 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
-                            android:src="@tools:sample/avatars"
+                            android:src="@drawable/history"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/history"
                             tools:ignore="DuplicateIds" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -253,7 +249,7 @@
                         android:id="@+id/textHistory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="History"
+                        android:text="@string/history"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
@@ -279,12 +275,11 @@
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
-                            android:src="@tools:sample/avatars"
+                            android:src="@drawable/user"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/user"
                             tools:ignore="DuplicateIds" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -293,7 +288,7 @@
                         android:id="@+id/textProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Profile"
+                        android:text="@string/profile"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"

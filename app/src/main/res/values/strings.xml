@@ -17,4 +17,11 @@
     <string name="lidah_mertua">Lidah Mertua</string>
     <string name="janda_bolong">janda bolong</string>
     <string name="lidah_buaya">Lidah Buaya</string>
+    <string name="welcome_back">Welcome Back!</string>
+    <string name="history">History</string>
+    <string name="profile">Profile</string>
+    <string name="profile1">Profile</string>
+    <string name="article">Article</string>
+    <string name="community">Community</string>
+    <string name="barter">Barter</string>
 </resources>
