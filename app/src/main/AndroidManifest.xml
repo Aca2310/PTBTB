@@ -13,10 +13,10 @@
         android:theme="@style/Theme.PTBTB"
         tools:targetApi="31">
         <activity
-            android:name=".beranda"
+            android:name=".artikel"
             android:exported="false" />
         <activity
-            android:name=".Home_2"
+            android:name=".beranda"
             android:exported="false" />
         <activity
             android:name=".profile"
@@ -29,9 +29,6 @@
             android:exported="false" />
         <activity
             android:name=".Regist"
-            android:exported="false" />
-        <activity
-            android:name=".regist"
             android:exported="false" />
         <activity
             android:name=".Login"
