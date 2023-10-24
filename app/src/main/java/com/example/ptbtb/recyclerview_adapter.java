@@ -19,6 +19,8 @@ public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adap
     private ArrayList<recyclerview_list> recyclerview_lists;
     private Context context;
 
+
+
     public recyclerview_adapter(ArrayList<recyclerview_list> recyclerview_lists, Context context) {
         this.recyclerview_lists = recyclerview_lists;
         this.context = context;
