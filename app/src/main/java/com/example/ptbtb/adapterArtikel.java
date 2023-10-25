@@ -60,7 +60,7 @@ public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cardView);
-            imageView = itemView.findViewById(R.id.imageArtikel);
+            imageView = itemView.findViewById(R.id.imagebawang);
             textView = itemView.findViewById(R.id.judul);
             textView2 = itemView.findViewById(R.id.subjudul);
         }
