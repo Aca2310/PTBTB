@@ -40,4 +40,5 @@
     <string name="detail_postingan">Detail Postingan</string>
     <string name="title">Title</string>
     <string name="input_title_postingan">Title Postingan</string>
+    <string name="edit_profile">Edit Profile</string>
 </resources>

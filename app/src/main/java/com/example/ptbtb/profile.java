@@ -5,7 +5,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
 
 import java.util.ArrayList;
 
@@ -13,10 +16,23 @@ public class profile extends AppCompatActivity {
 
     ArrayList<recyclerview_list> recyclerview_lists;
     RecyclerView recyclerView;
+
+    Button button_profile;
+    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        button_profile = (Button) findViewById(R.id.button_profile);
+
+        button_profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), edit_profile.class);
+                startActivity(intent);
+            }
+        });
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
