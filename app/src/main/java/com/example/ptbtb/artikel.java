@@ -9,9 +9,9 @@ import android.os.Bundle;
 import java.util.ArrayList;
 
 public class artikel extends AppCompatActivity {
-    ArrayList<listArtikel> lists;
-    RecyclerView recyclerView;
 
+    ArrayList<listArtikel>lists;
+    RecyclerView recyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,8 +29,8 @@ public class artikel extends AppCompatActivity {
 
 
 
-        adapterArtikel adapter = new adapterArtikel(lists, this);
-        recyclerView.setAdapter(adapter);
+        adapterArtikel adapterartikel = new adapterArtikel(lists, this);
+        recyclerView.setAdapter(adapterartikel);
 
     }
 }
