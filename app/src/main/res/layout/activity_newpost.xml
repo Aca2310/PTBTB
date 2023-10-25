@@ -92,7 +92,7 @@
             android:id="@+id/textViewFU"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/file_uploud"
+            android:text="File Upload"
             android:layout_marginTop="20dp"
             android:textSize="20sp" />
 
