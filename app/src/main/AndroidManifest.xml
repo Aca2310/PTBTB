@@ -15,8 +15,16 @@
         <activity
             android:name=".newpost"
             android:exported="false" />
+        <activity android:name=".pages"
+            android:exported="false"/>
+        <activity
+            android:name=".komunitas"
+            android:exported="false" />
         <activity
             android:name=".rating"
+            android:exported="false" />
+        <activity
+            android:name=".desc"
             android:exported="false" />
         <activity
             android:name=".artikel"

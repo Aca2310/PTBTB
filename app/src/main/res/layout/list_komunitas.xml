@@ -34,7 +34,7 @@
                 android:padding="5dp"
                 android:text="TextView"
                 android:textAlignment="viewStart"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
