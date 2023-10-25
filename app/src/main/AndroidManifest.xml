@@ -19,9 +19,6 @@
             android:name=".pages"
             android:exported="false" />
         <activity
-            android:name=".komunitas"
-            android:exported="false" />
-        <activity
             android:name=".artikel"
             android:exported="false" />
         <activity
@@ -47,6 +44,9 @@
             android:exported="false" />
         <activity
             android:name=".Login"
+            android:exported="false" />
+        <activity
+            android:name=".komunitas"
             android:exported="false" />
         <activity
             android:name=".MainActivity"
