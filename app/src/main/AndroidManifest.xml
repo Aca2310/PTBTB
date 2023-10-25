@@ -13,6 +13,12 @@
         android:theme="@style/Theme.PTBTB"
         tools:targetApi="31">
         <activity
+            android:name=".newpost"
+            android:exported="false" />
+        <activity
+            android:name=".rating"
+            android:exported="false" />
+        <activity
             android:name=".artikel"
             android:exported="false" />
         <activity

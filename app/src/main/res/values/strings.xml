@@ -29,4 +29,15 @@
     <string name="join">join</string>
     <string name="textview">TextView</string>
     <string name="button">button</string>
+    <string name="rating">RATING</string>
+    <string name="rating_bplant_app">Rating Bplant App</string>
+    <string name="new_post">New Post</string>
+    <string name="upload">UPLOAD</string>
+    <string name="file_uploud">File Uploud</string>
+    <string name="detail">Detail</string>
+    <string name="title_postingan">Title Postingan</string>
+    <string name="request_barter">Request Barter</string>
+    <string name="detail_postingan">Detail Postingan</string>
+    <string name="title">Title</string>
+    <string name="input_title_postingan">Title Postingan</string>
 </resources>
