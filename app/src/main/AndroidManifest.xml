@@ -46,6 +46,9 @@
             android:name=".beranda"
             android:exported="false" />
         <activity
+            android:name=".edit_tanaman"
+            android:exported="false" />
+        <activity
             android:name=".profile"
             android:exported="false" />
         <activity

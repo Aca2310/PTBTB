@@ -7,11 +7,13 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 public class desctp extends AppCompatActivity {
     AppCompatImageView button_back;
+    Button button_edit;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -26,6 +28,16 @@ public class desctp extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(desctp.this, profile.class));
+            }
+        });
+
+        button_edit = (Button) findViewById(R.id.button_edit);
+
+        button_edit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), edit_tanaman.class);
+                startActivity(intent);
             }
         });
 
