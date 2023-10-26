@@ -18,6 +18,7 @@ public class beranda extends AppCompatActivity {
     ArrayList<recyclerview_list> recyclerview_lists;
     RecyclerView recyclerView;
 
+
    AppCompatImageView button_back;
 
     @Override
@@ -32,6 +33,8 @@ public class beranda extends AppCompatActivity {
                 startActivity(new Intent(beranda.this, Home.class));
             }
         });
+
+
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);

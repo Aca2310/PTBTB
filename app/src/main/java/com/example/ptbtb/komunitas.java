@@ -17,6 +17,8 @@ public class komunitas extends AppCompatActivity {
     RecyclerView recyclerView;
     AppCompatImageView button_back;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,14 +37,9 @@ public class komunitas extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         lists = new ArrayList<list>();
-        lists.add(new list(R.drawable.lidahbuaya,"lidah buaya","a"));
-        lists.add(new list(R.drawable.dara,"dara","b"));
-        lists.add(new list(R.drawable.aglonema,"aglonema","c"));
-        lists.add(new list(R.drawable.cactus,"kaktus", "d"));
-        lists.add(new list(R.drawable.jandabolong,"janda bolong","e"));
-        lists.add(new list(R.drawable.zinnae,"zinnae", "f"));
-
-
+        lists.add(new list(R.drawable.grub28,"aa","a"));
+        lists.add(new list(R.drawable.grub29,"dara","b"));
+        lists.add(new list(R.drawable.grub30,"aglonema","c"));
 
         adapter adapter = new adapter(lists, this);
         recyclerView.setAdapter(adapter);

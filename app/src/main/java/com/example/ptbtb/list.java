@@ -3,12 +3,12 @@ package com.example.ptbtb;
 public class list {
 
     private Integer image;
-    private  String text,text2;
+    private  String judul,subjudl;
 
-    public list(Integer image, String text, String text2) {
+    public list(Integer image, String judul, String subjudul) {
         this.image = image;
-        this.text = text;
-        this.text2 = text2;
+        this.judul = judul;
+        this.subjudl = subjudul;
     }
 
     public Integer getImage() {
@@ -19,19 +19,19 @@ public class list {
         this.image = image;
     }
 
-    public String getText() {
-        return text;
+    public String getJudul() {
+        return judul;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setJudul(String judul) {
+        this.judul = judul;
     }
 
-    public String getText2() {
-        return text2;
+    public String getSubjudl() {
+        return subjudl;
     }
 
-    public void setText2(String text2) {
-        this.text2 = text2;
+    public void setSubjudl(String subjudl) {
+        this.subjudl = subjudl;
     }
 }
