@@ -14,41 +14,40 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
+public class adapterhistory extends RecyclerView.Adapter<adapterhistory.ViewHolder> {
 
-    private ArrayList<list> lists;
+    private ArrayList<list_history> list_histories;
     private Context context;
 
-    public adapter(ArrayList<list> recyclerview_lists, Context context) {
-        this.lists = recyclerview_lists;
+    public adapterhistory(ArrayList<list_history> recyclerview_lists, Context context){
+        this.list_histories = recyclerview_lists;
         this.context = context;
     }
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_komunitas,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_history,parent,false);
         return new ViewHolder(view);
     }
-
-
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
-        holder.imageView.setImageResource(lists.get(position).getImage());
-        holder.textView.setText(lists.get(position).getText());
-        holder.textView.setText(lists.get(position).getText2());
+        holder.imageView.setImageResource(list_histories.get(position).getImage());
+        holder.textView.setText(list_histories.get(position).getText());
+        holder.textView.setText(list_histories.get(position).getText2());
 
         holder.cardView.setOnClickListener(e->{
             Intent intent = new Intent(context,pages.class);
             intent.putExtra("id",position);
             context.startActivity(intent);
         });
+
     }
+
 
     @Override
     public int getItemCount() {
-        return lists.size();
+        return list_histories.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -60,7 +59,7 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cardView);
-            imageView = itemView.findViewById(R.id.imagekomunitas);
+            imageView = itemView.findViewById(R.id.imageHistory);
             textView = itemView.findViewById(R.id.judul);
             textView2 = itemView.findViewById(R.id.subjudul);
         }

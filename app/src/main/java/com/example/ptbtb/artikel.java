@@ -26,9 +26,6 @@ public class artikel extends AppCompatActivity {
         lists.add(new listArtikel(R.drawable.bawang,"bawang","a"));
         lists.add(new listArtikel(R.drawable.jeruk,"jeruk","b"));
 
-
-
-
         adapterArtikel adapterartikel = new adapterArtikel(lists, this);
         recyclerView.setAdapter(adapterartikel);
 

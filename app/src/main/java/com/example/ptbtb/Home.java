@@ -12,6 +12,8 @@ public class Home extends AppCompatActivity {
     ImageView imageProfile;
     ImageView imageCommunity;
     ImageView imageArtikel;
+    ImageView imageHistory;
+
 
 
     @Override
@@ -44,6 +46,12 @@ public class Home extends AppCompatActivity {
         imageArtikel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {startActivity(new Intent(Home.this, artikel.class));}
+        });
+
+        imageHistory = findViewById(R.id.imageHistory);
+        imageHistory.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { startActivity(new Intent(Home.this, history.class));}
         });
     }
 }
