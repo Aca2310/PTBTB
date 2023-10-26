@@ -41,4 +41,6 @@
     <string name="title">Title</string>
     <string name="input_title_postingan">Title Postingan</string>
     <string name="edit_profile">Edit Profile</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="nama_komunitas">Nama Komunitas</string>
 </resources>
