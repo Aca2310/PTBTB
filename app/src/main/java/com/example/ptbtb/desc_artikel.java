@@ -21,6 +21,7 @@ public class desc_artikel extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(desc_artikel.this, artikel.class));
+
             }
         });
     }

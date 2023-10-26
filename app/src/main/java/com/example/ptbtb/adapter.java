@@ -37,7 +37,7 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
 
         holder.imageView.setImageResource(lists.get(position).getImage());
         holder.textView.setText(lists.get(position).getJudul());
-        holder.textView.setText(lists.get(position).getSubjudl());
+        holder.textView2.setText(lists.get(position).getSubjudl());
 
         holder.cardView.setOnClickListener(e->{
             Intent intent = new Intent(context,chat.class);

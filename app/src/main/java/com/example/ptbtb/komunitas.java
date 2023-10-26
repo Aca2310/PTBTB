@@ -38,9 +38,9 @@ public class komunitas extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         lists = new ArrayList<list>();
-        lists.add(new list(R.drawable.grub28,"aa","a"));
-        lists.add(new list(R.drawable.grub29,"dara","b"));
-        lists.add(new list(R.drawable.grub30,"aglonema","c"));
+        lists.add(new list(R.drawable.grub28,"Inspirasi Tanaman Hias","Grub ini akan memberikan sensasi kekeluargaan untuk anda. -Dengan wadah yang kondusif......"));
+        lists.add(new list(R.drawable.grub29,"Belajar Menanam","Grup ini adalah wadah bagi siapa saja yang ingin belajar dan berbagi ilmu tentang tanaman hias "));
+        lists.add(new list(R.drawable.grub30,"KOLEKTOR TANAMAN","TUJUAN dibuat mempererat antar sesama pecinta kolektor tanaman hias indonesia."));
 
         adapter adapter = new adapter(lists, this);
         recyclerView.setAdapter(adapter);
