@@ -40,7 +40,7 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         holder.textView.setText(lists.get(position).getText2());
 
         holder.cardView.setOnClickListener(e->{
-            Intent intent = new Intent(context,pages.class);
+            Intent intent = new Intent(context,chat.class);
             intent.putExtra("id",position);
             context.startActivity(intent);
         });
