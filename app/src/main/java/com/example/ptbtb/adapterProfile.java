@@ -14,15 +14,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
-public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adapter.ViewHolder> {
+public class adapterProfile extends RecyclerView.Adapter<adapterProfile.ViewHolder> {
 
-    private ArrayList<recyclerview_list> recyclerview_lists;
+    private ArrayList<list_profile> list_profiles;
     private Context context;
 
-
-
-    public recyclerview_adapter(ArrayList<recyclerview_list> recyclerview_lists, Context context) {
-        this.recyclerview_lists = recyclerview_lists;
+    public adapterProfile(ArrayList<list_profile> list_profiles, Context context) {
+        this.list_profiles = list_profiles;
         this.context = context;
     }
 
@@ -36,25 +34,26 @@ public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.imageView.setImageResource(recyclerview_lists.get(position).getImage());
-        holder.textView.setText(recyclerview_lists.get(position).getText());
+        holder.imageView.setImageResource(list_profiles.get(position).getImage());
+        holder.textView.setText(list_profiles.get(position).getText());
 
         holder.cardView.setOnClickListener(e -> {
-            Intent intent = new Intent(context, desc.class);
+            Intent intent = new Intent(context, desctp.class);
             intent.putExtra("id", position);
-            intent.putExtra("image", recyclerview_lists.get(position).getImage());
-            intent.putExtra("title", recyclerview_lists.get(position).getText());
-            intent.putExtra("detail", recyclerview_lists.get(position).getDetail());
-            intent.putExtra("location", recyclerview_lists.get(position).getLokasi()); // Mengirim lokasi
-            intent.putExtra("barterInfo", recyclerview_lists.get(position).getBarter()); // Mengirim informasi barter
+            intent.putExtra("image", list_profiles.get(position).getImage()); // Mengirim ID gambar
+            intent.putExtra("title", list_profiles.get(position).getText()); // Mengirim judul
+            intent.putExtra("detail", list_profiles.get(position).getDetail());
+            intent.putExtra("location", list_profiles.get(position).getLokasi()); // Mengirim lokasi
+            intent.putExtra("barterInfo", list_profiles.get(position).getBarter()); // Mengirim informasi barter
 
             context.startActivity(intent);
         });
+
     }
 
     @Override
     public int getItemCount() {
-        return recyclerview_lists.size();
+        return list_profiles.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
@@ -69,4 +68,5 @@ public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adap
             textView = itemView.findViewById(R.id.textView);
         }
     }
+
 }

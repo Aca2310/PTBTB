@@ -27,17 +27,33 @@ public class desc extends AppCompatActivity {
         });
 
         ImageView imageView = findViewById(R.id.imageView8);
+        TextView titleTextView = findViewById(R.id.judul);
+        TextView detailTextView = findViewById(R.id.textView6); // Teks detail
+        TextView locationTextView = findViewById(R.id.textView7); // Teks lokasi
+        TextView barterInfoTextView = findViewById(R.id.textView8); // Teks informasi barter
+
         Intent intent = getIntent();
         if (intent != null) {
             int imageId = intent.getIntExtra("image", -1);
             String title = intent.getStringExtra("title");
+            String detail = intent.getStringExtra("detail");
+            String location = intent.getStringExtra("location");
+            String barterInfo = intent.getStringExtra("barterInfo");
 
             if (imageId != -1) {
                 imageView.setImageResource(imageId);
             }
             if (title != null) {
-                TextView titleTextView = findViewById(R.id.judul);
                 titleTextView.setText(title);
+            }
+            if (detail != null) {
+                detailTextView.setText(detail);
+            }
+            if (location != null) {
+                locationTextView.setText(location);
+            }
+            if (barterInfo != null) {
+                barterInfoTextView.setText(barterInfo);
             }
         }
     }

@@ -17,7 +17,7 @@ import java.util.ArrayList;
 
 public class profile extends AppCompatActivity {
 
-    ArrayList<recyclerview_list> recyclerview_lists;
+    ArrayList<list_profile> list_profiles;
     RecyclerView recyclerView;
 
     Button button_profile;
@@ -60,15 +60,13 @@ public class profile extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
-        recyclerview_lists = new ArrayList<recyclerview_list>();
-        recyclerview_lists.add(new recyclerview_list(R.drawable.lidahbuaya,"lidah buaya"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.dara,"dara"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.aglonema,"aglonema"));
+        list_profiles = new ArrayList<list_profile>();
+        list_profiles.add(new list_profile(R.drawable.lidahbuaya,"lidah buaya","b","d","a","g"));
+        list_profiles.add(new list_profile(R.drawable.dara,"dara","b","d","a","g"));
+        list_profiles.add(new list_profile(R.drawable.aglonema,"aglonema", "Pasta", "Maggi", "Cake", "Pancake" ));
 
 
-
-
-        recyclerview_adapter recyclerview_adapter = new recyclerview_adapter(recyclerview_lists, this);
-        recyclerView.setAdapter(recyclerview_adapter);
+        adapterProfile adapterProfile = new adapterProfile(list_profiles, this);
+        recyclerView.setAdapter(adapterProfile);
     }
 }
