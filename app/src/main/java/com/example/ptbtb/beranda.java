@@ -38,11 +38,16 @@ public class beranda extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         recyclerview_lists = new ArrayList<recyclerview_list>();
-        recyclerview_lists.add(new recyclerview_list(R.drawable.lidahbuaya,"lidah buaya","b","d","a","g"));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.lidahbuaya,"lidah buaya","b","d","Padang, Sumatera Barat","g"));
         recyclerview_lists.add(new recyclerview_list(R.drawable.dara,"dara","b","d","a","g"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.aglonema,"aglonema", "Pasta", "Maggi", "Cake", "Pancake" ));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.cactus,"kaktus", "30 mins", "2 mins", "45 mins","10 mins"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.jandabolong,"janda bolong","30 mins", "2 mins", "45 mins","10 mins"));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.aglonema,"aglonema", "Pasta", "Maggi", "Padang, Sumatera Barat", "Pancake" ));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.cactus,"kaktus", "30 mins", "kaktus hijau", "45 mins","10 mins"));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.jandabolong,"janda bolong","30 mins", "Daun hijau tua\n" +
+                "Berukuran 30-35cm.\n" +
+                "Kondisi : baru\n" +
+                "Penyiraman 1x sehari\n" +
+                "Pemupukan 1x sebulan", "Padang, Sumatera Barat","Silver Monstera\n" +
+                "Monstera Variegata"));
         recyclerview_lists.add(new recyclerview_list(R.drawable.zinnae,"zinnae","Pasta", "Maggi", "Cake", "Pancake"));
 
 

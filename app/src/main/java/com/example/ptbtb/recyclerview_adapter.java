@@ -44,7 +44,6 @@ public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adap
             intent.putExtra("id", position);
             intent.putExtra("image", recyclerview_lists.get(position).getImage());
             intent.putExtra("title", recyclerview_lists.get(position).getText());
-            intent.putExtra("title", recyclerview_lists.get(position).getText()); // Mengirim judul
             intent.putExtra("detail", recyclerview_lists.get(position).getDetail());
             intent.putExtra("location", recyclerview_lists.get(position).getLokasi()); // Mengirim lokasi
             intent.putExtra("barterInfo", recyclerview_lists.get(position).getBarter()); // Mengirim informasi barter
