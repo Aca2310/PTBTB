@@ -1,6 +1,7 @@
 package com.example.ptbtb;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -20,11 +21,20 @@ public class profile extends AppCompatActivity {
     RecyclerView recyclerView;
 
     Button button_profile;
+    AppCompatImageView button_back;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+
+        button_back = findViewById(R.id.button_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(profile.this, Home.class));
+            }
+        });
 
         button_profile = (Button) findViewById(R.id.button_profile);
 

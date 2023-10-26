@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".desc_artikel">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="6dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/imageArtikel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/bawang"/>
+
+        <TextView
+            android:id="@+id/nama_artikel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tanam dan Panen Bawang Merah di Polybag"
+            android:padding="6dp"
+            style="@style/TextAppearance.AppCompat.Large"
+            />
+
+        <TextView
+            android:id="@+id/tentang"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="zzzzzzzzzzzzz"
+            android:padding="6dp"
+            style="@style/TextAppearance.AppCompat.Medium"
+            android:justificationMode="inter_word"/>
+
+
+    </LinearLayout>
+
+
+
+        
+    
+</ScrollView>
+

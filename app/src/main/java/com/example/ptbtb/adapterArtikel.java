@@ -40,7 +40,7 @@ public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.ViewHold
         holder.textView2.setText(listArtikels.get(position).getText2());
 
         holder.cardView.setOnClickListener(e->{
-            Intent intent = new Intent(context,pages.class);
+            Intent intent = new Intent(context, desc_artikel.class);
             intent.putExtra("id",position);
             context.startActivity(intent);
         });
@@ -60,7 +60,7 @@ public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.ViewHold
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             cardView = itemView.findViewById(R.id.cardView);
-            imageView = itemView.findViewById(R.id.imagebawang);
+            imageView = itemView.findViewById(R.id.imageArtikel);
             textView = itemView.findViewById(R.id.judul);
             textView2 = itemView.findViewById(R.id.subjudul);
         }

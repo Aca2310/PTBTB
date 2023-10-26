@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".edit_tanaman">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:padding="5dp"
+        android:src="@drawable/back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cactus" />
+
+        <TextView
+            android:id="@+id/textViewTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/title"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextTextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="Cactus"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="@string/detail"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextTextDetail"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/detail_postingan"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/textViewBarter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Barter"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/editTextTextBarter"
+            android:layout_width="match_parent"
+            android:layout_height="82dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/request_barter"
+            android:inputType="text"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp">
+
+            <Button
+                android:id="@+id/button_delete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="36dp"
+                android:backgroundTint="#C3C3C3"
+                android:text="Delete" />
+
+            <Button
+                android:id="@+id/button_barter"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="36dp"
+                android:backgroundTint="#9E326C"
+                android:text="Barter" />
+
+            <Button
+                android:id="@+id/button_save"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#347C1A"
+                android:text="Save" />
+        </TableRow>
+
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -43,6 +43,7 @@ public class Home extends AppCompatActivity {
         });
 
         imageArtikel = findViewById(R.id.imageArtikel);
+
         imageArtikel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {startActivity(new Intent(Home.this, artikel.class));}
@@ -51,7 +52,8 @@ public class Home extends AppCompatActivity {
         imageHistory = findViewById(R.id.imageHistory);
         imageHistory.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { startActivity(new Intent(Home.this, history.class));}
+            public void onClick(View view) {startActivity(new Intent(Home.this, history.class));}
         });
+
     }
 }
