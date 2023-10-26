@@ -1,6 +1,6 @@
 package com.example.ptbtb;
 
-public class recyclerview_list {
+public class list_profile {
     private Integer image;
     private  String text,judul,detail,lokasi,barter;
 
@@ -36,7 +36,7 @@ public class recyclerview_list {
         this.barter = barter;
     }
 
-    public recyclerview_list(Integer image, String text, String judul, String detail, String lokasi, String barter) {
+    public list_profile(Integer image, String text, String judul, String detail, String lokasi, String barter) {
         this.image = image;
         this.text = text;
         this.judul = judul;

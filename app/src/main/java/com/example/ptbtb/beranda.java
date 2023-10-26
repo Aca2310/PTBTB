@@ -38,12 +38,12 @@ public class beranda extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this,2));
 
         recyclerview_lists = new ArrayList<recyclerview_list>();
-        recyclerview_lists.add(new recyclerview_list(R.drawable.lidahbuaya,"lidah buaya"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.dara,"dara"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.aglonema,"aglonema"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.cactus,"kaktus"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.jandabolong,"janda bolong"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.zinnae,"zinnae"));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.lidahbuaya,"lidah buaya","b","d","a","g"));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.dara,"dara","b","d","a","g"));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.aglonema,"aglonema", "Pasta", "Maggi", "Cake", "Pancake" ));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.cactus,"kaktus", "30 mins", "2 mins", "45 mins","10 mins"));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.jandabolong,"janda bolong","30 mins", "2 mins", "45 mins","10 mins"));
+        recyclerview_lists.add(new recyclerview_list(R.drawable.zinnae,"zinnae","Pasta", "Maggi", "Cake", "Pancake"));
 
 
 
