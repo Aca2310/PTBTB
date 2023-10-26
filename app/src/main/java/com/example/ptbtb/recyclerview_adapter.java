@@ -40,7 +40,7 @@ public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adap
         holder.textView.setText(recyclerview_lists.get(position).getText());
 
         holder.cardView.setOnClickListener(e -> {
-            Intent intent = new Intent(context, desc.class);
+            Intent intent = new Intent(context, desctp.class);
             intent.putExtra("id", position);
             intent.putExtra("image", recyclerview_lists.get(position).getImage());
             intent.putExtra("title", recyclerview_lists.get(position).getText());
