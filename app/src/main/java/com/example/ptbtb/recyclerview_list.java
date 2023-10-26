@@ -2,15 +2,7 @@ package com.example.ptbtb;
 
 public class recyclerview_list {
     private Integer image;
-    private  String text,judul,detail,lokasi,barter;
-
-    public String getJudul() {
-        return judul;
-    }
-
-    public void setJudul(String judul) {
-        this.judul = judul;
-    }
+    private  String text,detail,lokasi,barter;
 
     public String getDetail() {
         return detail;
@@ -36,10 +28,9 @@ public class recyclerview_list {
         this.barter = barter;
     }
 
-    public recyclerview_list(Integer image, String text, String judul, String detail, String lokasi, String barter) {
+    public recyclerview_list(Integer image, String text, String detail, String lokasi, String barter) {
         this.image = image;
         this.text = text;
-        this.judul = judul;
         this.detail = detail;
         this.lokasi = lokasi;
         this.barter = barter;
