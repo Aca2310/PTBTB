@@ -5,7 +5,7 @@ import androidx.appcompat.widget.AppCompatImageView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+
 
 public class edit_tanaman extends AppCompatActivity {
 
@@ -17,11 +17,6 @@ public class edit_tanaman extends AppCompatActivity {
         setContentView(R.layout.activity_edit_tanaman);
 
         button_back = findViewById(R.id.button_back);
-        button_back.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(edit_tanaman.this, desctp.class));
-            }
-        });
+        button_back.setOnClickListener(view -> startActivity(new Intent(edit_tanaman.this, desctp.class)));
     }
 }
