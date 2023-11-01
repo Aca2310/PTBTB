@@ -75,7 +75,7 @@
                     app:layout_constraintTop_toBottomOf="@+id/usernamenya">
 
                     <EditText
-                        android:id="@+id/EditName"
+                        android:id="@+id/namaRegist"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginStart="32dp"
@@ -116,7 +116,7 @@
                         android:padding="10dp" />
 
                     <EditText
-                        android:id="@+id/editTextTextPassword3"
+                        android:id="@+id/passwordRegist"
                         android:layout_width="match_parent"
                         android:layout_height="50dp"
                         android:layout_marginStart="32dp"

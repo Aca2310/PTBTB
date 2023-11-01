@@ -41,7 +41,7 @@
             android:text="@string/login_to_your_account" />
 
         <EditText
-            android:id="@+id/input_email"
+            android:id="@+id/emailLogin"
             android:layout_width="283dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="62dp"
@@ -51,12 +51,13 @@
             android:background="@drawable/search_background"
             android:backgroundTint="@color/white"
             android:ems="10"
-            android:hint="@string/email"
+            android:hint="@string/email_username"
             android:inputType="textEmailAddress"
+            android:minHeight="48dp"
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/input_password"
+            android:id="@+id/passwordLogin"
             android:layout_width="283dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="62dp"
@@ -68,6 +69,7 @@
             android:ems="10"
             android:hint="@string/password"
             android:inputType="textPassword"
+            android:minHeight="48dp"
             android:padding="10dp" />
 
         <Button
@@ -89,6 +91,8 @@
             android:layout_marginTop="210dp"
             android:layout_marginEnd="73dp"
             android:layout_marginBottom="10dp"
+            android:minHeight="48dp"
+            android:onClick="redirectToRegist"
             android:text="@string/don_t_have_an_account_sign_up_here" />
     </LinearLayout>
 

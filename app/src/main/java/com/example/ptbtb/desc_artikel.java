@@ -7,9 +7,12 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class desc_artikel extends AppCompatActivity {
     AppCompatImageView button_back;
+
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,5 +27,21 @@ public class desc_artikel extends AppCompatActivity {
 
             }
         });
+
+        ImageView imageView = findViewById(R.id.imageArtikel);
+        TextView titleTextView = findViewById(R.id.judul);  // Gunakan ID yang sesuai
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            int imageId = intent.getIntExtra("image", -1);  // Gunakan kunci yang benar
+            String title = intent.getStringExtra("title");    // Gunakan kunci yang benar
+
+            if (imageId != -1) {
+                imageView.setImageResource(imageId);
+            }
+            if (title != null) {
+                titleTextView.setText(title);
+            }
+        }
     }
 }

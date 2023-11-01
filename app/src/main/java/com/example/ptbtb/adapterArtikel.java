@@ -37,7 +37,6 @@ public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.ViewHold
 
         holder.imageView.setImageResource(listArtikels.get(position).getImage());
         holder.textView.setText(listArtikels.get(position).getText());
-        holder.textView2.setText(listArtikels.get(position).getText2());
 
         holder.cardView.setOnClickListener(e->{
             Intent intent = new Intent(context, desc_artikel.class);

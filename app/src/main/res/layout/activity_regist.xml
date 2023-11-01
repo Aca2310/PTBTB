@@ -43,9 +43,9 @@
             android:text="@string/login_to_your_account" />
 
         <EditText
-            android:id="@+id/EditName"
+            android:id="@+id/namaRegist"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
@@ -57,9 +57,23 @@
             android:padding="10dp" />
 
         <EditText
+            android:id="@+id/usernameRegist"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_btn_background"
+            android:ems="10"
+            android:hint="@string/username"
+            android:inputType="text"
+            android:padding="10dp" />
+
+        <EditText
             android:id="@+id/email"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
@@ -70,23 +84,9 @@
             android:padding="10dp" />
 
         <EditText
-            android:id="@+id/Address"
+            android:id="@+id/passwordRegist"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/white_btn_background"
-            android:ems="10"
-            android:hint="@string/address"
-            android:inputType="text"
-            android:padding="10dp" />
-
-        <EditText
-            android:id="@+id/editTextTextPassword3"
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
@@ -100,7 +100,7 @@
         <EditText
             android:id="@+id/confirmPassword4"
             android:layout_width="match_parent"
-            android:layout_height="45dp"
+            android:layout_height="48dp"
             android:layout_marginStart="32dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="32dp"
@@ -129,7 +129,8 @@
             android:layout_marginTop="100dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="10dp"
-            android:text="Already have an account? Login here" />
+            android:text="@string/already_have_an_account_login_here"
+            android:onClick="redirectToLogin"/>
 
 
     </LinearLayout>

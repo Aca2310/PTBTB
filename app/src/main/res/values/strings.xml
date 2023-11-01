@@ -45,4 +45,7 @@
     <string name="nama_komunitas">Nama Komunitas</string>
     <string name="ihistory">History</string>
     <string name="idetail">Detail</string>
+    <string name="username">username</string>
+    <string name="already_have_an_account_login_here">Already have an account? Login here</string>
+    <string name="email_username">Email/Username</string>
 </resources>
