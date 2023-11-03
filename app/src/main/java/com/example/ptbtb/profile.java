@@ -32,16 +32,19 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
 
         Intent intent = getIntent();
-        String nama = intent.getStringExtra("username");
-        String username = intent.getStringExtra("email");
+        String nama = intent.getStringExtra("nama");
+        String username = intent.getStringExtra("username");
+        String telp = intent.getStringExtra("telp");
+        String email = intent.getStringExtra("email");
+        String address = intent.getStringExtra("address");
 
 
-        TextView textViewName = findViewById(R.id.nama_user);
+        TextView etnama = findViewById(R.id.nama_user);
         TextView textViewUsername = findViewById(R.id.usernamenya);
 
 
-        textViewName.setText(nama);
-        textViewUsername.setText(username);
+        etnama.setText(nama);
+        textViewUsername.setText("@"+ username);
 
 
 
@@ -58,12 +61,14 @@ public class profile extends AppCompatActivity {
         button_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String email = textViewName.getText().toString();
-                String username = textViewUsername.getText().toString();
-
                 Intent intent = new Intent(profile.this, edit_profile.class);
-                intent.putExtra("email", email);
+
+                intent.putExtra("nama", nama);
                 intent.putExtra("username", username);
+                intent.putExtra("telp", telp);
+                intent.putExtra("email", email);
+                intent.putExtra("address", address);
+
                 startActivity(intent);
 
             }

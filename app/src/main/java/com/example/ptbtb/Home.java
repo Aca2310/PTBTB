@@ -24,7 +24,9 @@ public class Home extends AppCompatActivity {
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
         String username = intent.getStringExtra("username");
-
+        String savedName = intent.getStringExtra("nama");
+        String savedAddress = intent.getStringExtra("address");
+        String savedTelp = intent.getStringExtra("telp");
 
 
         imageBarter = findViewById(R.id.imageBarter);
@@ -42,6 +44,9 @@ public class Home extends AppCompatActivity {
                 Intent intent = new Intent(Home.this, profile.class);
                 intent.putExtra("email", email);
                 intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("address", savedAddress);
                 startActivity(intent);
             }
         });

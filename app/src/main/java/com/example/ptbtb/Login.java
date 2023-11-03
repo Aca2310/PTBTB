@@ -55,25 +55,30 @@ public class Login extends AppCompatActivity {
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
                             if (snapshot.getChildrenCount() > 0) {
                                 for (DataSnapshot userSnapshot : snapshot.getChildren()) {
+
                                     String savedUsername = userSnapshot.child("username").getValue(String.class);
+                                    String savedName = userSnapshot.child("nama").getValue(String.class);
                                     String savedEmail = userSnapshot.child("email").getValue(String.class);
                                     String savedPassword = userSnapshot.child("password").getValue(String.class);
+                                    String savedTelp = userSnapshot.child("telp").getValue(String.class);
+                                    String savedAddress = userSnapshot.child("alamat").getValue(String.class);
 
                                     if ((savedUsername != null && savedUsername.equals(email)) ||
                                             (savedEmail != null && savedEmail.equals(email))) {
                                         if (savedPassword != null && savedPassword.equals(password)) {
                                             Toast.makeText(getApplicationContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
-                                            // Setelah login berhasil
                                             Intent masuk = new Intent(getApplicationContext(), Home.class);
-                                            masuk.putExtra("email", savedEmail); // Ganti dengan data email pengguna
-                                            masuk.putExtra("username", savedUsername); // Ganti dengan data username pengguna
-                                            startActivity(masuk);
 
-                                            return;  // Keluar dari loop jika login berhasil
+                                            masuk.putExtra("email", savedEmail);
+                                            masuk.putExtra("username", savedUsername);
+                                            masuk.putExtra("nama", savedName);
+                                            masuk.putExtra("telp", savedTelp);
+                                            masuk.putExtra("address", savedAddress);
+                                            startActivity(masuk);
+                                            return;
                                         }
                                     }
                                 }
-                                // Jika mencapai titik ini, tidak ada yang cocok
                                 Toast.makeText(getApplicationContext(), "Username/Email atau password salah!", Toast.LENGTH_LONG).show();
                             } else {
                                 Toast.makeText(getApplicationContext(), "Tidak ada pengguna terdaftar.", Toast.LENGTH_LONG).show();
