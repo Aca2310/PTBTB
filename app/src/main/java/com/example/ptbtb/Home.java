@@ -20,6 +20,13 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        Intent intent = getIntent();
+        String email = intent.getStringExtra("email");
+        String username = intent.getStringExtra("username");
+
+
+
         imageBarter = findViewById(R.id.imageBarter);
         imageBarter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -32,7 +39,10 @@ public class Home extends AppCompatActivity {
         imageProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Home.this, profile.class));
+                Intent intent = new Intent(Home.this, profile.class);
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                startActivity(intent);
             }
         });
 

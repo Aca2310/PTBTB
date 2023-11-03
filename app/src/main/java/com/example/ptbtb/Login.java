@@ -63,8 +63,12 @@ public class Login extends AppCompatActivity {
                                             (savedEmail != null && savedEmail.equals(email))) {
                                         if (savedPassword != null && savedPassword.equals(password)) {
                                             Toast.makeText(getApplicationContext(), "Login Berhasil", Toast.LENGTH_SHORT).show();
+                                            // Setelah login berhasil
                                             Intent masuk = new Intent(getApplicationContext(), Home.class);
+                                            masuk.putExtra("email", savedEmail); // Ganti dengan data email pengguna
+                                            masuk.putExtra("username", savedUsername); // Ganti dengan data username pengguna
                                             startActivity(masuk);
+
                                             return;  // Keluar dari loop jika login berhasil
                                         }
                                     }
@@ -90,7 +94,7 @@ public class Login extends AppCompatActivity {
     }
 
     public void redirectToRegist(View view) {
-        Intent intent = new Intent(Login.this, Regist.class); // Ganti "Home" dengan nama aktivitas home Anda
+        Intent intent = new Intent(Login.this, Regist.class);
         startActivity(intent);
     }
 }

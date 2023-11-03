@@ -84,6 +84,19 @@
             android:padding="10dp" />
 
         <EditText
+            android:id="@+id/telp"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/white_btn_background"
+            android:ems="10"
+            android:hint="@string/telp"
+            android:padding="10dp" />
+
+        <EditText
             android:id="@+id/passwordRegist"
             android:layout_width="match_parent"
             android:layout_height="48dp"
@@ -94,20 +107,6 @@
             android:background="@drawable/white_btn_background"
             android:ems="10"
             android:hint="@string/password"
-            android:inputType="textPassword"
-            android:padding="10dp" />
-
-        <EditText
-            android:id="@+id/confirmPassword4"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="10dp"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/white_btn_background"
-            android:ems="10"
-            android:hint="@string/confirmpassword"
             android:inputType="textPassword"
             android:padding="10dp" />
 
@@ -129,8 +128,9 @@
             android:layout_marginTop="100dp"
             android:layout_marginEnd="32dp"
             android:layout_marginBottom="10dp"
-            android:text="@string/already_have_an_account_login_here"
-            android:onClick="redirectToLogin"/>
+            android:minHeight="48dp"
+            android:onClick="redirectToLogin"
+            android:text="@string/already_have_an_account_login_here" />
 
 
     </LinearLayout>

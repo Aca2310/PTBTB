@@ -19,7 +19,7 @@ public class Regist extends AppCompatActivity {
     Button button_signup;
     private TextView textView;
 
-    private EditText etnama, etEmail, etPassword, etUsername;
+    private EditText etnama, etEmail, etPassword, etUsername, etTelp;
     private DatabaseReference database;
 
     @SuppressLint("MissingInflatedId")
@@ -31,6 +31,7 @@ public class Regist extends AppCompatActivity {
         etnama = findViewById(R.id.namaRegist);
         etUsername = findViewById(R.id.usernameRegist);
         etEmail = findViewById(R.id.email);
+        etTelp = findViewById(R.id.telp);
         etPassword = findViewById(R.id.passwordRegist);
 
 
@@ -47,15 +48,17 @@ public class Regist extends AppCompatActivity {
                 String nama = etnama.getText().toString();
                 String username = etUsername.getText().toString();
                 String email = etEmail.getText().toString();
+                String telp = etTelp.getText().toString();
                 String password = etPassword.getText().toString();
 
-                if (nama.isEmpty()  || username.isEmpty() || email.isEmpty() || password.isEmpty()) {
+                if (nama.isEmpty()  || username.isEmpty() || email.isEmpty() || telp.isEmpty() || password.isEmpty()) {
                     Toast.makeText(getApplicationContext(), "Ada Data yang Masih Kosong!", Toast.LENGTH_LONG).show();
                 }else {
                     database = FirebaseDatabase.getInstance().getReference("users");
                     database.child(username).child("nama").setValue(nama);
                     database.child(username).child("username").setValue(username);
                     database.child(username).child("email").setValue(email);
+                    database.child(username).child("telp").setValue(telp);
                     database.child(username).child("password").setValue(password);
 
 
@@ -68,7 +71,7 @@ public class Regist extends AppCompatActivity {
         });
     }
     public void redirectToLogin(View view) {
-        Intent intent = new Intent(Regist.this, Login.class); // Ganti "Home" dengan nama aktivitas home Anda
+        Intent intent = new Intent(Regist.this, Login.class);
         startActivity(intent);
     }
 }

@@ -33,12 +33,15 @@
 
                 <TextView
                     android:id="@+id/nama_user"
-                    android:layout_width="79dp"
-                    android:layout_height="36dp"
+                    android:layout_width="191dp"
+                    android:layout_height="38dp"
                     android:layout_marginTop="4dp"
+                    android:layout_marginBottom="4dp"
+                    android:gravity="center"
                     android:text="@string/khairinn"
                     android:textSize="24sp"
                     android:textStyle="bold"
+                    app:layout_constraintBottom_toTopOf="@+id/imageView8"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -57,6 +60,7 @@
                     android:id="@+id/usernamenya"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="center"
                     android:text="@string/khairin"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
