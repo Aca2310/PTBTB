@@ -56,6 +56,10 @@ public class edit_profile extends AppCompatActivity {
         textViewName.setText(nama);
         textViewUsername.setText("@"+username);
 
+        editUsername.setFocusable(false);
+        editUsername.setFocusableInTouchMode(false);
+        editUsername.setClickable(false);
+
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -69,8 +73,6 @@ public class edit_profile extends AppCompatActivity {
         save_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 if (isNamaChanged() || isUsernameChanged() || isEmailChanged()|| isTelpChanged() || isLokasiChanged()){
                     Toast.makeText(edit_profile.this, "Saved", Toast.LENGTH_SHORT).show();
                 } else {
@@ -78,6 +80,7 @@ public class edit_profile extends AppCompatActivity {
                 }
             }
         });
+
     }
 
 
@@ -119,14 +122,22 @@ public class edit_profile extends AppCompatActivity {
         }
     }
     private boolean isLokasiChanged() {
-        if (!AddresUser.equals(editAddres.getText().toString())){
-            reference.child(usernameUser).child("addres").setValue(editAddres.getText().toString());
-            AddresUser = editAddres.getText().toString();
-            return true;
+
+        String newAddress = editAddres.getText().toString();
+
+        if (AddresUser == null || AddresUser.isEmpty()) {
+            reference.child(usernameUser).child("addres").setValue(newAddress);
+            AddresUser = newAddress;
+        } else if (!AddresUser.equals(newAddress)) {
+            reference.child(usernameUser).child("addres").setValue(newAddress);
+            AddresUser = newAddress;
         } else {
             return false;
         }
+
+        return true;
     }
+
 
     public void showData(){
         Intent intent = getIntent();
@@ -134,13 +145,15 @@ public class edit_profile extends AppCompatActivity {
         emailUser = intent.getStringExtra("email");
         usernameUser = intent.getStringExtra("username");
         TelpUser = intent.getStringExtra("telp");
-        AddresUser = intent.getStringExtra("address");
+        AddresUser = intent.getStringExtra("addres");
 
         editName.setText(nameUser);
         editEmail.setText(emailUser);
         editUsername.setText(usernameUser);
         editTelp.setText(TelpUser);
         editAddres.setText(AddresUser);
+
+
     }
 
 

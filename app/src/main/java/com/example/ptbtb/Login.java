@@ -61,7 +61,7 @@ public class Login extends AppCompatActivity {
                                     String savedEmail = userSnapshot.child("email").getValue(String.class);
                                     String savedPassword = userSnapshot.child("password").getValue(String.class);
                                     String savedTelp = userSnapshot.child("telp").getValue(String.class);
-                                    String savedAddress = userSnapshot.child("alamat").getValue(String.class);
+                                    String savedAddress = userSnapshot.child("addres").getValue(String.class);
 
                                     if ((savedUsername != null && savedUsername.equals(email)) ||
                                             (savedEmail != null && savedEmail.equals(email))) {
@@ -73,7 +73,7 @@ public class Login extends AppCompatActivity {
                                             masuk.putExtra("username", savedUsername);
                                             masuk.putExtra("nama", savedName);
                                             masuk.putExtra("telp", savedTelp);
-                                            masuk.putExtra("address", savedAddress);
+                                            masuk.putExtra("addres", savedAddress);
                                             startActivity(masuk);
                                             return;
                                         }

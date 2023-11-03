@@ -36,7 +36,7 @@ public class profile extends AppCompatActivity {
         String username = intent.getStringExtra("username");
         String telp = intent.getStringExtra("telp");
         String email = intent.getStringExtra("email");
-        String address = intent.getStringExtra("address");
+        String addres = intent.getStringExtra("addres");
 
 
         TextView etnama = findViewById(R.id.nama_user);
@@ -67,7 +67,7 @@ public class profile extends AppCompatActivity {
                 intent.putExtra("username", username);
                 intent.putExtra("telp", telp);
                 intent.putExtra("email", email);
-                intent.putExtra("address", address);
+                intent.putExtra("addres", addres);
 
                 startActivity(intent);
 

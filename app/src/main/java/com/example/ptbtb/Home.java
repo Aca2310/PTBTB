@@ -25,7 +25,7 @@ public class Home extends AppCompatActivity {
         String email = intent.getStringExtra("email");
         String username = intent.getStringExtra("username");
         String savedName = intent.getStringExtra("nama");
-        String savedAddress = intent.getStringExtra("address");
+        String savedAddress = intent.getStringExtra("addres");
         String savedTelp = intent.getStringExtra("telp");
 
 
@@ -46,7 +46,7 @@ public class Home extends AppCompatActivity {
                 intent.putExtra("username", username);
                 intent.putExtra("nama", savedName);
                 intent.putExtra("telp", savedTelp);
-                intent.putExtra("address", savedAddress);
+                intent.putExtra("addres", savedAddress);
                 startActivity(intent);
             }
         });
