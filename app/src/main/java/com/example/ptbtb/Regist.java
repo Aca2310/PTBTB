@@ -12,7 +12,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.Firebase;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -25,6 +30,7 @@ public class Regist extends AppCompatActivity {
 
     private EditText etnama, etEmail, etPassword, etUsername, etTelp;
     private DatabaseReference database;
+    private FirebaseAuth auth;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -46,6 +52,7 @@ public class Regist extends AppCompatActivity {
         database = FirebaseDatabase.getInstance().getReferenceFromUrl("https://ptbtb-3ceea-default-rtdb.firebaseio.com/");
 
         database = FirebaseDatabase.getInstance().getReference("users");
+        auth = FirebaseAuth.getInstance();
 
         button_signup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,25 +69,36 @@ public class Regist extends AppCompatActivity {
                 } else if (!email.matches(emailPattern)) {
                     Toast.makeText(getApplicationContext(), "Format Email Tidak Benar!", Toast.LENGTH_LONG).show();
                 } else {
-                    // Check if username already exists
-                    database.child(username).addListenerForSingleValueEvent(new ValueEventListener() {
+                    // Check if email already exists
+                    database.orderByChild("email").equalTo(email).addListenerForSingleValueEvent(new ValueEventListener() {
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             if (dataSnapshot.exists()) {
-                                // Username sudah ada dalam database
-                                Toast.makeText(getApplicationContext(), "Username sudah ada!", Toast.LENGTH_LONG).show();
+                                // Email sudah ada dalam database
+                                Toast.makeText(getApplicationContext(), "Email sudah terdaftar!", Toast.LENGTH_LONG).show();
                             } else {
-                                // Username belum ada dalam database, lanjutkan proses registrasi
-                                DatabaseReference newUserRef = database.child(username);
-                                newUserRef.child("nama").setValue(nama);
-                                newUserRef.child("username").setValue(username);
-                                newUserRef.child("email").setValue(email);
-                                newUserRef.child("telp").setValue(telp);
-                                newUserRef.child("password").setValue(password);
+                                auth.createUserWithEmailAndPassword(email, password)
+                                        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                                if (task.isSuccessful()) {
+                                                    FirebaseUser currentUser = auth.getCurrentUser();
+                                                    String uid = currentUser.getUid();
 
-                                Toast.makeText(getApplicationContext(), "Registrasi Berhasil!", Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(getApplicationContext(), Login.class);
-                                startActivity(intent);
+                                                    DatabaseReference newUserRef = database.child(username);
+                                                    newUserRef.child("nama").setValue(nama);
+                                                    newUserRef.child("username").setValue(username);
+                                                    newUserRef.child("email").setValue(email);
+                                                    newUserRef.child("telp").setValue(telp);
+
+                                                    Toast.makeText(getApplicationContext(), "Registrasi Berhasil!", Toast.LENGTH_SHORT).show();
+                                                    Intent intent = new Intent(getApplicationContext(), Login.class);
+                                                    startActivity(intent);
+                                                } else {
+                                                    Toast.makeText(getApplicationContext(), "Gagal mendaftarkan pengguna: " + task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                                                }
+                                            }
+                                        });
                             }
                         }
 

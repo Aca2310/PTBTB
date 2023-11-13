@@ -72,23 +72,36 @@
             android:minHeight="48dp"
             android:padding="10dp" />
 
+        <TextView
+            android:id="@+id/forgetPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="28dp"
+            android:layout_marginStart="230dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="10dp"
+            android:onClick="redirectToRegist"
+            android:text="Forget Password?"
+             />
+
         <Button
             android:id="@+id/button_login"
             android:layout_width="279dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="62dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="10dp"
             android:layout_marginEnd="73dp"
             android:layout_marginBottom="5dp"
             android:backgroundTint="#9E326C"
             android:text="Login" />
+
 
         <TextView
             android:id="@+id/textView3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="80dp"
-            android:layout_marginTop="210dp"
+            android:layout_marginTop="200dp"
             android:layout_marginEnd="73dp"
             android:layout_marginBottom="10dp"
             android:minHeight="48dp"
