@@ -67,7 +67,13 @@ public class profile extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(profile.this, Home.class));
+                Intent intent = new Intent(profile.this, Home.class);
+                intent.putExtra("nama", nama);
+                intent.putExtra("username", username);
+                intent.putExtra("telp", telp);
+                intent.putExtra("email", email);
+                intent.putExtra("addres", addres);
+                startActivity(intent);
             }
         });
 

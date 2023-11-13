@@ -63,7 +63,13 @@ public class edit_profile extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(edit_profile.this, profile.class));
+                Intent intent = new Intent(edit_profile.this, profile.class);
+                intent.putExtra("nama", nameUser);
+                intent.putExtra("username", usernameUser);
+                intent.putExtra("telp", TelpUser);
+                intent.putExtra("email", emailUser);
+                intent.putExtra("addres", AddresUser);
+                startActivity(intent);
             }
         });
 
