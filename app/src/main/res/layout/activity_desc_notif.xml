@@ -1,0 +1,235 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".desc_notif">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:padding="5dp"
+        android:src="@drawable/back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="88dp"
+        android:src="@drawable/profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.098"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/usernameNotif"
+        android:layout_width="50dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="88dp"
+        android:text="Mutii"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.103"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/viaWA"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
+        android:backgroundTint="#9E326C"
+        android:text="Chat via WA"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.162"
+        app:layout_constraintStart_toEndOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/usernameNotif" />
+
+    <Button
+        android:id="@+id/delet"
+        android:layout_width="109dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="24dp"
+        android:backgroundTint="#9E326C"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/viaWA3"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.663" />
+
+    <Button
+        android:id="@+id/viaWA3"
+        android:layout_width="109dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="20dp"
+        android:backgroundTint="#9E326C"
+        android:text="Tolak"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/viaWA4"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.66" />
+
+    <Button
+        android:id="@+id/viaWA4"
+        android:layout_width="109dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="36dp"
+        android:backgroundTint="#9E326C"
+        android:text="Terima"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+
+    <TextView
+        android:id="@+id/Barter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="Barter dengan"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.077"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="361dp"
+        android:layout_height="159dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.48"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Barter">
+
+        <ImageView
+            android:id="@+id/namaTumbuhan2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/anngrek" />
+
+        <LinearLayout
+            android:layout_width="198dp"
+            android:layout_height="153dp"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/namaTumbuhan1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Anggrek"
+                android:textAlignment="center"
+                android:textColor="#014A59"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView12"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView13"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:text="TextView"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/lokasiNotif1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Location"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lokasi2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Padang, Sumatra Barat" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout4"
+        android:layout_width="363dp"
+        android:layout_height="166dp"
+        android:layout_marginTop="28dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viaWA">
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/anngrek" />
+
+        <LinearLayout
+            android:layout_width="198dp"
+            android:layout_height="156dp"
+            android:layout_marginStart="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/namaTumbuhan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Anggrek"
+                android:textAlignment="center"
+                android:textColor="#014A59"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/detailtext"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/detail"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="TextView"
+                android:textSize="10sp" />
+
+            <TextView
+                android:id="@+id/lokasiNotif"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Location"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView15"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Padang, Sumatra Barat" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
