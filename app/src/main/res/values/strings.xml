@@ -54,4 +54,5 @@
     <string name="password_baru">Password Baru</string>
     <string name="ubah_password">Ubah Password</string>
     <string name="pasword_huruf"><![CDATA[Kata sandi anda harus lebih dari enam karakter dan berisi kombinasi angka, huruf, dan karakter khusus (!#@%&)]]></string>
+    <string name="tambah_foto">Tambah Foto</string>
 </resources>

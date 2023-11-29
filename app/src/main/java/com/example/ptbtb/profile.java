@@ -10,11 +10,14 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.graphics.Color;
@@ -27,6 +30,11 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -40,10 +48,14 @@ public class profile extends AppCompatActivity {
     Button button_ubah;
     AppCompatImageView button_back;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
+        ImageView imageViewProfile = findViewById(R.id.imageView8);
+
+
 
         Intent intent = getIntent();
         String nama = intent.getStringExtra("nama");
@@ -51,6 +63,10 @@ public class profile extends AppCompatActivity {
         String telp = intent.getStringExtra("telp");
         String email = intent.getStringExtra("email");
         String addres = intent.getStringExtra("addres");
+        String imageUrl = intent.getStringExtra("imageUrl");
+
+        Picasso.get().load(imageUrl).into(imageViewProfile);
+
 
 
 
@@ -73,6 +89,7 @@ public class profile extends AppCompatActivity {
                 intent.putExtra("telp", telp);
                 intent.putExtra("email", email);
                 intent.putExtra("addres", addres);
+                intent.putExtra("imageUrl", imageUrl);
                 startActivity(intent);
             }
         });
@@ -89,9 +106,8 @@ public class profile extends AppCompatActivity {
                 intent.putExtra("telp", telp);
                 intent.putExtra("email", email);
                 intent.putExtra("addres", addres);
-
+                intent.putExtra("imageUrl", imageUrl);
                 startActivity(intent);
-
             }
         });
 
@@ -134,7 +150,7 @@ public class profile extends AppCompatActivity {
                         }
 
                         ubahpassword(pass, passbaru, passconf);
-                        
+
                     }
                 });
 

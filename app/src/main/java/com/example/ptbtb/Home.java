@@ -27,13 +27,21 @@ public class Home extends AppCompatActivity {
         String savedName = intent.getStringExtra("nama");
         String savedAddress = intent.getStringExtra("addres");
         String savedTelp = intent.getStringExtra("telp");
+        String imageUrl = intent.getStringExtra("imageUrl");
 
 
         imageBarter = findViewById(R.id.imageBarter);
         imageBarter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Home.this, beranda.class));
+                Intent intent = new Intent(Home.this, beranda.class);
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+                startActivity(intent);
             }
         });
 
@@ -47,6 +55,8 @@ public class Home extends AppCompatActivity {
                 intent.putExtra("nama", savedName);
                 intent.putExtra("telp", savedTelp);
                 intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+
                 startActivity(intent);
             }
         });
@@ -54,20 +64,47 @@ public class Home extends AppCompatActivity {
         imageCommunity = findViewById(R.id.imageCommunity);
         imageCommunity.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {startActivity(new Intent(Home.this, komunitas.class));}
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, komunitas.class);
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+                startActivity(intent);
+            }
         });
 
         imageArtikel = findViewById(R.id.imageArtikel);
 
         imageArtikel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {startActivity(new Intent(Home.this, artikel.class));}
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this,artikel.class);
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+                startActivity(intent);
+            }
         });
 
         imageHistory = findViewById(R.id.imageHistory);
         imageHistory.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {startActivity(new Intent(Home.this, history.class));}
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, history.class);
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+                startActivity(intent);
+            }
         });
 
     }

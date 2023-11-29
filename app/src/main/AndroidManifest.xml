@@ -12,6 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PTBTB"
         tools:targetApi="31">
+
         <activity
             android:name=".descHistory"
             android:exported="false" />

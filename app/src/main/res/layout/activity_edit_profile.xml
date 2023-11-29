@@ -30,6 +30,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+
                 <ImageView
                     android:id="@+id/imageView8"
                     android:layout_width="101dp"
@@ -55,6 +56,19 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+
+                <TextView
+                    android:id="@+id/textView14"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tambah Foto"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@+id/username_edit"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.501"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/imageView8" />
+
                 <TextView
                     android:id="@+id/username_edit"
                     android:layout_width="wrap_content"
@@ -68,10 +82,10 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/imageView8"
-                    app:layout_constraintHorizontal_bias="0.487"
+                    app:layout_constraintHorizontal_bias="0.461"
                     app:layout_constraintStart_toStartOf="@+id/imageView8"
                     app:layout_constraintTop_toBottomOf="@+id/imageView8"
-                    app:layout_constraintVertical_bias="0.027" />
+                    app:layout_constraintVertical_bias="0.039" />
 
                 <LinearLayout
                     android:layout_width="match_parent"

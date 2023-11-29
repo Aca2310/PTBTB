@@ -83,6 +83,7 @@ public class Login extends AppCompatActivity {
                                                     String savedName = userSnapshot.child("nama").getValue(String.class);
                                                     String savedTelp = userSnapshot.child("telp").getValue(String.class);
                                                     String savedAddress = userSnapshot.child("addres").getValue(String.class);
+                                                    String imageUrl = userSnapshot.child("imageUrl").getValue(String.class);
 
                                                     Intent masuk = new Intent(Login.this, Home.class);
                                                     masuk.putExtra("email", emailOrUsername);
@@ -90,6 +91,7 @@ public class Login extends AppCompatActivity {
                                                     masuk.putExtra("nama", savedName);
                                                     masuk.putExtra("telp", savedTelp);
                                                     masuk.putExtra("addres", savedAddress);
+                                                    masuk.putExtra("imageUrl", imageUrl);
                                                     startActivity(masuk);
                                                     finish();
                                                 } else {
@@ -122,6 +124,7 @@ public class Login extends AppCompatActivity {
                                     String savedName = userSnapshot.child("nama").getValue(String.class);
                                     String savedTelp = userSnapshot.child("telp").getValue(String.class);
                                     String savedAddress = userSnapshot.child("addres").getValue(String.class);
+                                    String imageUrl = userSnapshot.child("imageUrl").getValue(String.class);
 
                                     auth.signInWithEmailAndPassword(savedEmail, password)
                                             .addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -133,6 +136,8 @@ public class Login extends AppCompatActivity {
                                                     masuk.putExtra("nama", savedName);
                                                     masuk.putExtra("telp", savedTelp);
                                                     masuk.putExtra("addres", savedAddress);
+                                                    masuk.putExtra("imageUrl", imageUrl);
+
                                                     startActivity(masuk);
                                                     finish();
                                                 }
