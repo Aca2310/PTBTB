@@ -65,12 +65,18 @@ public class edit_profile extends AppCompatActivity {
 
         Intent intent = getIntent();
         usernameUser = intent.getStringExtra("username");
+        String nama = intent.getStringExtra("nama");
 
         editUsername.setFocusable(false);
         editUsername.setFocusableInTouchMode(false);
         editUsername.setClickable(false);
 
+        TextView etnama = findViewById(R.id.nama_edit);
+        TextView textViewUsername = findViewById(R.id.username_edit);
 
+
+        etnama.setText(nama);
+        textViewUsername.setText("@"+ usernameUser);
 
 
         button_back.setOnClickListener(new View.OnClickListener() {

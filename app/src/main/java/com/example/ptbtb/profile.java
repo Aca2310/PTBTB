@@ -55,8 +55,6 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ImageView imageViewProfile = findViewById(R.id.imageView8);
 
-
-
         Intent intent = getIntent();
         String nama = intent.getStringExtra("nama");
         String username = intent.getStringExtra("username");
@@ -66,9 +64,6 @@ public class profile extends AppCompatActivity {
         String imageUrl = intent.getStringExtra("imageUrl");
 
         Picasso.get().load(imageUrl).into(imageViewProfile);
-
-
-
 
         TextView etnama = findViewById(R.id.nama_user);
         TextView textViewUsername = findViewById(R.id.usernamenya);
