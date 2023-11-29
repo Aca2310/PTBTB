@@ -74,6 +74,7 @@ public class profile extends AppCompatActivity {
             }
         });
 
+
         FloatingActionButton floatingActionButton = findViewById(R.id.floatingActionButton);
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override

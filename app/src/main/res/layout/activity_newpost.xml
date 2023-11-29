@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -38,6 +39,22 @@
         android:padding="32dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
+        <ImageView
+            android:layout_width="110dp"
+            android:layout_height="110dp"
+            android:src="@drawable/imageup"
+            android:id="@+id/uploadImage"
+            android:layout_marginTop="1dp"
+            android:layout_gravity="center"
+            android:scaleType="fitXY"/>
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progressBar"
+            android:layout_gravity="center"
+            android:indeterminateTint="@color/pinkk"
+            android:visibility="invisible"/>
+
         <TextView
             android:id="@+id/textViewTitle"
             android:layout_width="match_parent"
@@ -47,7 +64,7 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextTitle"
+            android:id="@+id/Nptitle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:ems="10"
@@ -68,9 +85,9 @@
             />
 
         <EditText
-            android:id="@+id/editTextTextDetail"
+            android:id="@+id/Npdetail"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="130dp"
             android:ems="10"
             android:textSize="18sp"
             android:textColor="#000000"
@@ -88,9 +105,9 @@
             android:textSize="20sp" />
 
         <EditText
-            android:id="@+id/editTextTextBarter"
+            android:id="@+id/Npbarter"
             android:layout_width="match_parent"
-            android:layout_height="70dp"
+            android:layout_height="50dp"
             android:ems="10"
             android:textSize="18sp"
             android:textColor="#000000"
@@ -99,29 +116,9 @@
             android:inputType="text"
             android:hint ="@string/request_barter"
             />
-        <TextView
-            android:id="@+id/textViewFU"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="File Upload"
-            android:layout_marginTop="20dp"
-            android:textSize="20sp" />
-
-        <EditText
-            android:id="@+id/editTextText"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:ems="10"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:padding="12dp"
-            android:background="@drawable/edittext_bg"
-            android:inputType="text"
-            android:hint ="@string/title_postingan"
-            />
 
         <Button
-            android:id="@+id/button_up"
+            android:id="@+id/buttonup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:backgroundTint="#9E326C"
@@ -130,3 +127,16 @@
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+    <!--        <EditText-->
+    <!--            android:id="@+id/editTextText"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="70dp"-->
+    <!--            android:ems="10"-->
+    <!--            android:textSize="18sp"-->
+    <!--            android:textColor="#000000"-->
+    <!--            android:padding="12dp"-->
+    <!--            android:background="@drawable/edittext_bg"-->
+    <!--            android:inputType="text"-->
+    <!--            android:hint ="@string/title_postingan"-->
+    <!--            />-->
