@@ -37,8 +37,8 @@
 
                 <ImageView
                     android:id="@+id/imageView8"
-                    android:layout_width="316dp"
-                    android:layout_height="201dp"
+                    android:layout_width="295dp"
+                    android:layout_height="183dp"
                     android:src="@drawable/jandabolong"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.421"
@@ -47,11 +47,11 @@
 
                 <TextView
                     android:id="@+id/judul"
-                    android:layout_width="175dp"
-                    android:layout_height="56dp"
+                    android:layout_width="171dp"
+                    android:layout_height="47dp"
                     android:gravity="center"
                     android:text="TextView"
-                    android:textSize="34sp"
+                    android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
@@ -65,16 +65,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginTop="20dp"
                 android:text="Detail : "
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="183dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 android:text="Maggi Noodles \nWater\nMaggi Masala" />
 
 
@@ -83,8 +84,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="70dp"
+                android:layout_marginBottom="5dp"
                 android:text="Location :"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -101,7 +104,8 @@
                 android:layout_marginStart="70dp"
                 android:layout_marginBottom="10dp"
                 android:text="Barter :"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView8"
@@ -130,28 +134,36 @@
 
                     <TextView
                         android:id="@+id/textView10"
-                        android:layout_width="match_parent"
-                        android:layout_height="20dp"
+                        android:layout_width="161dp"
+                        android:layout_height="wrap_content"
                         android:layout_marginStart="10dp"
-                        android:layout_marginTop="20dp"
-                        android:text="khairin"
+                        android:layout_weight="1"
+                        android:text="Ditukar dengan : "
                         android:textStyle="bold" />
 
+                    <TextView
+                        android:id="@+id/textView11"
+                        android:layout_width="161dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="muti" />
                 </LinearLayout>
 
             </LinearLayout>
 
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="293dp"
-                android:layout_height="49dp"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:backgroundTint="#9E326C"
-                android:gravity="center_horizontal|center_vertical"
-                android:text="Tukar" />
-
         </LinearLayout>
     </ScrollView>
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="293dp"
+        android:layout_height="49dp"
+        android:layout_marginBottom="20dp"
+        android:backgroundTint="#9E326C"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
