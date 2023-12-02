@@ -1,54 +1,48 @@
 package com.example.ptbtb;
 
 public class recyclerview_list {
-    private Integer image;
-    private  String text,detail,lokasi,barter;
+    private String user_id;
+    private String dataTitle;
+    private String dataDetail;
+    private String dataBarter;
+    private String dataImage;
 
-    public String getDetail() {
-        return detail;
+    private String username;
+
+    public  recyclerview_list (){
+
     }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
+    public String getDataTitle() {
+        return dataTitle;
     }
 
-    public String getLokasi() {
-        return lokasi;
+    public String getDataDetail() {
+        return dataDetail;
     }
 
-    public void setLokasi(String lokasi) {
-        this.lokasi = lokasi;
+    public String getDataBarter() {
+        return dataBarter;
     }
 
-    public String getBarter() {
-        return barter;
+    public String getDataImage() {
+        return dataImage;
     }
 
-    public void setBarter(String barter) {
-        this.barter = barter;
+    public recyclerview_list(String user_id, String username, String dataTitle, String dataDetail, String dataBarter, String dataImage) {
+        this.user_id = user_id;
+        this.dataTitle = dataTitle;
+        this.dataDetail = dataDetail;
+        this.dataBarter = dataBarter;
+        this.dataImage = dataImage;
+        this.username = username;
     }
 
-    public recyclerview_list(Integer image, String text, String detail, String lokasi, String barter) {
-        this.image = image;
-        this.text = text;
-        this.detail = detail;
-        this.lokasi = lokasi;
-        this.barter = barter;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public Integer getImage() {
-        return image;
-    }
-
-    public void setImage(Integer image) {
-        this.image = image;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public String getUsername() {
+        return username;
     }
 }

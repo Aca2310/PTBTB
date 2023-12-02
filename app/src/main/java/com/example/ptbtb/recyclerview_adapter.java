@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adapter.ViewHolder> {
@@ -36,18 +38,21 @@ public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adap
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.imageView.setImageResource(recyclerview_lists.get(position).getImage());
-        holder.textView.setText(recyclerview_lists.get(position).getText());
+        Picasso.get()
+                .load(recyclerview_lists.get(position).getDataImage())
+                .placeholder(R.drawable.dara) // Placeholder sementara gambar dimuat
+                .into(holder.imageView);
+
+        holder.textView.setText(recyclerview_lists.get(position).getDataTitle());
 
         holder.cardView.setOnClickListener(e -> {
             Intent intent = new Intent(context, desc.class);
-            intent.putExtra("id", position);
-            intent.putExtra("image", recyclerview_lists.get(position).getImage());
-            intent.putExtra("title", recyclerview_lists.get(position).getText());
-            intent.putExtra("detail", recyclerview_lists.get(position).getDetail());
-            intent.putExtra("location", recyclerview_lists.get(position).getLokasi()); // Mengirim lokasi
-            intent.putExtra("barterInfo", recyclerview_lists.get(position).getBarter()); // Mengirim informasi barter
-
+            intent.putExtra("user_id", recyclerview_lists.get(position).getUser_id());
+            intent.putExtra("username", recyclerview_lists.get(position).getUsername());
+            intent.putExtra("dataTitle", recyclerview_lists.get(position).getDataTitle());
+            intent.putExtra("dataDetail", recyclerview_lists.get(position).getDataDetail());
+            intent.putExtra("dataBarter", recyclerview_lists.get(position).getDataBarter());
+            intent.putExtra("dataImage", recyclerview_lists.get(position).getDataImage());
             context.startActivity(intent);
         });
     }

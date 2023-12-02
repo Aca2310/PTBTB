@@ -6,10 +6,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 
@@ -17,8 +24,7 @@ public class beranda extends AppCompatActivity {
 
     ArrayList<recyclerview_list> recyclerview_lists;
     RecyclerView recyclerView;
-
-
+    ValueEventListener eventListener;
 
    AppCompatImageView button_back;
 
@@ -40,44 +46,37 @@ public class beranda extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(beranda.this, Home.class);
-
-                intent.putExtra("email", email);
-                intent.putExtra("username", username);
-                intent.putExtra("nama", savedName);
-                intent.putExtra("telp", savedTelp);
-                intent.putExtra("addres", savedAddress);
-                intent.putExtra("imageUrl", imageUrl);
-
-                startActivity(intent);
-                finish();
+                onBackPressed();
             }
         });
 
-
-
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        recyclerview_lists = new ArrayList<recyclerview_list>();
-        recyclerview_lists.add(new recyclerview_list(R.drawable.jandabolong,"janda bolong","Daun hijau tua\n" +
-                "Berukuran 30-35cm.\n" +
-                "Kondisi : baru\n" +
-                "Penyiraman 1x sehari\n" +
-                "Pemupukan 1x sebulan", "Padang, Sumatera Barat","Silver Monstera\n" +
-                "Monstera Variegata"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.lidahbuaya,"lidah buaya","d","Padang, Sumatera Barat","g"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.dara,"dara","d","a","g"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.aglonema,"aglonema",  "Maggi", "Padang, Sumatera Barat", "Pancake" ));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.cactus,"kaktus",  "kaktus hijau", "45 mins","10 mins"));
-        recyclerview_lists.add(new recyclerview_list(R.drawable.zinnae,"zinnae", "Maggi", "Cake", "Pancake"));
+        recyclerview_lists = new ArrayList<>();
 
+        // Mengambil data dari Firebase
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Postingan");
+        eventListener = databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                recyclerview_lists.clear();
 
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    recyclerview_list data = snapshot.getValue(recyclerview_list.class);
+                    recyclerview_lists.add(data);
+                }
 
-        recyclerview_adapter recyclerview_adapter = new recyclerview_adapter(recyclerview_lists, this);
-        recyclerView.setAdapter(recyclerview_adapter);
+                // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView
+                recyclerview_adapter recyclerview_adapter = new recyclerview_adapter(recyclerview_lists, beranda.this);
+                recyclerView.setAdapter(recyclerview_adapter);
+            }
 
-
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
     }
 }
