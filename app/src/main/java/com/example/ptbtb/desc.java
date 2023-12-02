@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
+import com.squareup.picasso.Picasso;
+
 public class desc extends AppCompatActivity {
     AppCompatImageView button_back;
 
@@ -47,20 +49,23 @@ public class desc extends AppCompatActivity {
 
         ImageView imageView = findViewById(R.id.imageView8);
         TextView titleTextView = findViewById(R.id.judul);
-        TextView detailTextView = findViewById(R.id.textView6); // Teks detail
-        TextView locationTextView = findViewById(R.id.textView7); // Teks lokasi
-        TextView barterInfoTextView = findViewById(R.id.textView8); // Teks informasi barter
+        TextView detailTextView = findViewById(R.id.textView6);
+        TextView locationTextView = findViewById(R.id.textView7);
+        TextView barterInfoTextView = findViewById(R.id.textView8);
+        TextView usernameInfo = findViewById(R.id.textView10);
+
 
         if (intent != null) {
-            int imageId = intent.getIntExtra("image", -1);
-            String title = intent.getStringExtra("title");
-            String detail = intent.getStringExtra("detail");
-            String location = intent.getStringExtra("location");
-            String barterInfo = intent.getStringExtra("barterInfo");
+            String title = intent.getStringExtra("dataTitle");
+            String detail = intent.getStringExtra("dataDetail");
+            String location = intent.getStringExtra("dataLocation");
+            String barterInfo = intent.getStringExtra("dataBarter");
+            String dataImage = intent.getStringExtra("dataImage");
 
-            if (imageId != -1) {
-                imageView.setImageResource(imageId);
+            if (dataImage != null) {
+                Picasso.get().load(dataImage).into(imageView);
             }
+
             if (title != null) {
                 titleTextView.setText(title);
             }
@@ -73,6 +78,9 @@ public class desc extends AppCompatActivity {
             if (barterInfo != null) {
                 barterInfoTextView.setText(barterInfo);
             }
+            if (username != null) {
+                usernameInfo.setText("@"+username);
+            }
         }
     }
-    }
+}
