@@ -5,65 +5,66 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.ViewHolder> {
-
-    private ArrayList<listArtikel> listArtikels;
+public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.MyViewHolder> {
     private Context context;
-
-    public adapterArtikel(ArrayList<listArtikel> recyclerview_lists, Context context) {
-        this.listArtikels = recyclerview_lists;
+    private ArrayList<listArtikel> list;
+    public adapterArtikel(Context context, ArrayList<listArtikel> list){
         this.context = context;
+        this.list = list;
     }
 
     @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_artikel,parent,false);
-        return new ViewHolder(view);
+        return new adapterArtikel.MyViewHolder(view);
     }
 
-
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        Picasso.get()
+                .load(list.get(position).getImageArtikel())
+                .placeholder(R.drawable.dara) // Placeholder sementara gambar dimuat
+                .into(holder.imageArtikel);
 
-        holder.imageView.setImageResource(listArtikels.get(position).getImage());
-        holder.textView.setText(listArtikels.get(position).getText());
+        holder.judul.setText(list.get(position).getJudul());
 
-        holder.cardView.setOnClickListener(e->{
+        holder.imageArtikel.setOnClickListener(e -> {
             Intent intent = new Intent(context, desc_artikel.class);
-            intent.putExtra("id",position);
+            intent.putExtra("desc", list.get(position).getDesc());
+            intent.putExtra("judul", list.get(position).getJudul());
+            intent.putExtra("imageArtikel", list.get(position).getImageArtikel());
             context.startActivity(intent);
         });
+
     }
 
     @Override
     public int getItemCount() {
-        return listArtikels.size();
+        return list.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
-        CardView cardView;
-        ImageView imageView;
-        TextView textView;
-        TextView textView2;
-
-        public ViewHolder(@NonNull View itemView) {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+        TextView judul, desc;
+        ImageView imageArtikel;
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            cardView = itemView.findViewById(R.id.cardView);
-            imageView = itemView.findViewById(R.id.imageArtikel);
-            textView = itemView.findViewById(R.id.judul);
-            textView2 = itemView.findViewById(R.id.subjudul);
+
+            judul = itemView.findViewById(R.id.judul);
+            desc = itemView.findViewById(R.id.desc);
+            imageArtikel = itemView.findViewById(R.id.imageArtikel);
         }
     }
-
 
 }

@@ -19,11 +19,30 @@ public class desc_artikel extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc_artikel);
 
+        Intent intent = getIntent();
+        String email = intent.getStringExtra("email");
+        String username = intent.getStringExtra("username");
+        String savedName = intent.getStringExtra("nama");
+        String savedAddress = intent.getStringExtra("addres");
+        String savedTelp = intent.getStringExtra("telp");
+        String imageUrl = intent.getStringExtra("imageUrl");
+
+
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(desc_artikel.this, artikel.class));
+                Intent intent = new Intent(desc_artikel.this, artikel.class);
+
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+
+                startActivity(intent);
+                finish();
 
             }
         });
@@ -31,7 +50,6 @@ public class desc_artikel extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageArtikel);
         TextView titleTextView = findViewById(R.id.judul);  // Gunakan ID yang sesuai
 
-        Intent intent = getIntent();
         if (intent != null) {
             int imageId = intent.getIntExtra("image", -1);  // Gunakan kunci yang benar
             String title = intent.getStringExtra("title");    // Gunakan kunci yang benar

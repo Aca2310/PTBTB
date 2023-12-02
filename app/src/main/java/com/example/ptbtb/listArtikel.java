@@ -2,36 +2,38 @@ package com.example.ptbtb;
 
 public class listArtikel {
 
-    private Integer image;
-    private  String text,text2;
+        private String judul, desc, imageArtikel;
 
-    public listArtikel(Integer image, String text, String text2) {
-        this.image = image;
-        this.text = text;
-        this.text2 = text2;
-    }
+        public listArtikel(String judul, String desc, String imageArtikel) {
+            this.judul = judul;
+            this.desc = desc;
+            this.imageArtikel = imageArtikel;
+        }
 
-    public Integer getImage() {
-        return image;
-    }
+        public  listArtikel(){
+        }
 
-    public void setImage(Integer image) {
-        this.image = image;
-    }
+        public String getJudul() {
+            return judul;
+        }
 
-    public String getText() {
-        return text;
-    }
+        public void setJudul(String judul) {
+            this.judul = judul;
+        }
 
-    public void setText(String text) {
-        this.text = text;
-    }
+        public String getDesc() {
+            return desc;
+        }
 
-    public String getText2() {
-        return text2;
-    }
+        public void setDesc(String desc) {
+            this.desc = desc;
+        }
 
-    public void setText2(String text2) {
-        this.text2 = text2;
+        public String getImageArtikel() {
+            return imageArtikel;
+        }
+
+        public void setImageArtikel(String imageArtikel) {
+            this.imageArtikel = imageArtikel;
+        }
     }
-}
