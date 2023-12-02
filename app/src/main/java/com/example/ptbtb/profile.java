@@ -30,8 +30,11 @@ import com.google.firebase.auth.AuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
@@ -45,6 +48,7 @@ public class profile extends AppCompatActivity {
     private AlertDialog dialog;
 
     Button button_profile;
+    ValueEventListener eventListener;
     Button button_ubah;
     AppCompatImageView button_back;
 
@@ -70,8 +74,7 @@ public class profile extends AppCompatActivity {
 
 
         etnama.setText(nama);
-        textViewUsername.setText("@"+ username);
-
+        textViewUsername.setText("@" + username);
 
 
         button_back = findViewById(R.id.button_back);
@@ -130,12 +133,12 @@ public class profile extends AppCompatActivity {
                         String passconf = pass3.getText().toString().trim();
                         String pass = pass1.getText().toString().trim();
 
-                        if (TextUtils.isEmpty(pass)){
-                            Toast.makeText(profile.this,"Enter your current password...", Toast.LENGTH_SHORT).show();
+                        if (TextUtils.isEmpty(pass)) {
+                            Toast.makeText(profile.this, "Enter your current password...", Toast.LENGTH_SHORT).show();
                             return;
                         }
-                        if (passbaru.length()<6){
-                            Toast.makeText(profile.this,"password harus minimal 6 karater", Toast.LENGTH_SHORT).show();
+                        if (passbaru.length() < 6) {
+                            Toast.makeText(profile.this, "password harus minimal 6 karater", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         if (passbaru.equals(passconf)) {
@@ -165,16 +168,34 @@ public class profile extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new GridLayoutManager(this,2));
+        recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
-        list_profiles = new ArrayList<list_profile>();
-        list_profiles.add(new list_profile(R.drawable.lidahbuaya,"lidah buaya","b","d","a","g"));
-        list_profiles.add(new list_profile(R.drawable.dara,"dara","b","d","a","g"));
-        list_profiles.add(new list_profile(R.drawable.aglonema,"aglonema", "Pasta", "Maggi", "Cake", "Pancake" ));
+        list_profiles = new ArrayList<>();
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        String loggedInUserId = currentUser.getUid();
 
+// Mengambil data dari Firebase berdasarkan user_id
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Postingan");
+        eventListener = databaseReference.orderByChild("user_id").equalTo(loggedInUserId).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                list_profiles.clear();
 
-        adapterProfile adapterProfile = new adapterProfile(list_profiles, this);
-        recyclerView.setAdapter(adapterProfile);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    list_profile data = snapshot.getValue(list_profile.class);
+                    list_profiles.add(data);
+                }
+
+                // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView
+                adapterProfile adapterProfile = new adapterProfile(list_profiles, profile.this);
+                recyclerView.setAdapter(adapterProfile);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                // Handle error
+            }
+        });
     }
 
     private void ubahpassword(String pass, String passbaru, String passconf) {

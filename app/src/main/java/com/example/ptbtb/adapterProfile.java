@@ -12,6 +12,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class adapterProfile extends RecyclerView.Adapter<adapterProfile.ViewHolder> {
@@ -34,18 +36,21 @@ public class adapterProfile extends RecyclerView.Adapter<adapterProfile.ViewHold
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.imageView.setImageResource(list_profiles.get(position).getImage());
-        holder.textView.setText(list_profiles.get(position).getText());
+        Picasso.get()
+                .load(list_profiles.get(position).getDataImage())
+                .placeholder(R.drawable.dara) // Placeholder sementara gambar dimuat
+                .into(holder.imageView);
+
+        holder.textView.setText(list_profiles.get(position).getDataTitle());
 
         holder.cardView.setOnClickListener(e -> {
             Intent intent = new Intent(context, desctp.class);
-            intent.putExtra("id", position);
-            intent.putExtra("image", list_profiles.get(position).getImage()); // Mengirim ID gambar
-            intent.putExtra("title", list_profiles.get(position).getText()); // Mengirim judul
-            intent.putExtra("detail", list_profiles.get(position).getDetail());
-            intent.putExtra("location", list_profiles.get(position).getLokasi()); // Mengirim lokasi
-            intent.putExtra("barterInfo", list_profiles.get(position).getBarter()); // Mengirim informasi barter
-
+            intent.putExtra("user_id", list_profiles.get(position).getUser_id());
+            intent.putExtra("username", list_profiles.get(position).getUsername());
+            intent.putExtra("dataTitle", list_profiles.get(position).getDataTitle());
+            intent.putExtra("dataDetail", list_profiles.get(position).getDataDetail());
+            intent.putExtra("dataBarter", list_profiles.get(position).getDataBarter());
+            intent.putExtra("dataImage", list_profiles.get(position).getDataImage());
             context.startActivity(intent);
         });
 

@@ -1,63 +1,48 @@
 package com.example.ptbtb;
 
 public class list_profile {
-    private Integer image;
-    private  String text,judul,detail,lokasi,barter;
+    private String user_id;
+    private String dataTitle;
+    private String dataDetail;
+    private String dataBarter;
+    private String dataImage;
 
-    public String getJudul() {
-        return judul;
+    private String username;
+
+    public  list_profile  (){
+
     }
 
-    public void setJudul(String judul) {
-        this.judul = judul;
+    public String getDataTitle() {
+        return dataTitle;
     }
 
-    public String getDetail() {
-        return detail;
+    public String getDataDetail() {
+        return dataDetail;
     }
 
-    public void setDetail(String detail) {
-        this.detail = detail;
+    public String getDataBarter() {
+        return dataBarter;
     }
 
-    public String getLokasi() {
-        return lokasi;
+    public String getDataImage() {
+        return dataImage;
     }
 
-    public void setLokasi(String lokasi) {
-        this.lokasi = lokasi;
+    public list_profile (String user_id, String username, String dataTitle, String dataDetail, String dataBarter, String dataImage) {
+        this.user_id = user_id;
+        this.dataTitle = dataTitle;
+        this.dataDetail = dataDetail;
+        this.dataBarter = dataBarter;
+        this.dataImage = dataImage;
+        this.username = username;
     }
 
-    public String getBarter() {
-        return barter;
+    public String getUser_id() {
+        return user_id;
     }
 
-    public void setBarter(String barter) {
-        this.barter = barter;
-    }
-
-    public list_profile(Integer image, String text, String judul, String detail, String lokasi, String barter) {
-        this.image = image;
-        this.text = text;
-        this.judul = judul;
-        this.detail = detail;
-        this.lokasi = lokasi;
-        this.barter = barter;
-    }
-
-    public Integer getImage() {
-        return image;
-    }
-
-    public void setImage(Integer image) {
-        this.image = image;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public String getUsername() {
+        return username;
     }
 }
