@@ -85,7 +85,7 @@ public class Regist extends AppCompatActivity {
                                                     FirebaseUser currentUser = auth.getCurrentUser();
                                                     String uid = currentUser.getUid();
 
-                                                    DatabaseReference newUserRef = database.child(username);
+                                                    DatabaseReference newUserRef = database.child(uid);
                                                     newUserRef.child("nama").setValue(nama);
                                                     newUserRef.child("username").setValue(username);
                                                     newUserRef.child("email").setValue(email);

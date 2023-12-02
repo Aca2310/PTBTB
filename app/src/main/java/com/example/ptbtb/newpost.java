@@ -26,7 +26,12 @@ import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -38,7 +43,7 @@ public class newpost extends AppCompatActivity {
 
     ImageView uploadImage;
     Button buttonup;
-    EditText Nptitle,Npdetail,Npbarter;
+    EditText Nptitle, Npdetail, Npbarter;
     String imageURL;
     Uri uri;
 
@@ -58,7 +63,7 @@ public class newpost extends AppCompatActivity {
                 new ActivityResultCallback<ActivityResult>() {
                     @Override
                     public void onActivityResult(ActivityResult result) {
-                        if (result.getResultCode() == Activity.RESULT_OK){
+                        if (result.getResultCode() == Activity.RESULT_OK) {
                             Intent data = result.getData();
                             uri = data.getData();
                             uploadImage.setImageURI(uri);
@@ -67,6 +72,7 @@ public class newpost extends AppCompatActivity {
                         }
                     }
                 });
+
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -81,60 +87,87 @@ public class newpost extends AppCompatActivity {
             public void onClick(View v) {
                 saveData();
             }
-    public void saveData() {
-       StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Images Postingan")
-               .child(uri.getLastPathSegment());
-        AlertDialog.Builder builder = new AlertDialog.Builder(newpost.this);
-        builder.setCancelable(false);
-        builder.setView(R.layout.progress_layout);
-        AlertDialog dialog = builder.create();
-        dialog.show();
 
-        storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
-                while (!uriTask.isComplete());
-                Uri urlImage = uriTask.getResult();
-                imageURL = urlImage.toString();
-                uploadData();
-                dialog.dismiss();
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                dialog.dismiss();
-            }
-        });
+            public void saveData() {
+                StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Images Postingan")
+                        .child(uri.getLastPathSegment());
+                AlertDialog.Builder builder = new AlertDialog.Builder(newpost.this);
+                builder.setCancelable(false);
+                builder.setView(R.layout.progress_layout);
+                AlertDialog dialog = builder.create();
+                dialog.show();
 
-
-            }
-
-    public void uploadData() {
-        String title = Nptitle.getText().toString();
-        String detail = Npdetail.getText().toString();
-        String barter = Npbarter.getText().toString();
-        DataClass dataClass = new DataClass(title, detail, barter, imageURL);
-        //We are changing the child from title to currentDate,
-        // because we will be updating title as well and it may affect child value.
-
-        FirebaseDatabase.getInstance().getReference("Postingan").child(title)
-                .setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                storageReference.putFile(uri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                     @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()){
-                            Toast.makeText(newpost.this, "Saved", Toast.LENGTH_SHORT).show();
-                            finish();
-                        }
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        Task<Uri> uriTask = taskSnapshot.getStorage().getDownloadUrl();
+                        uriTask.addOnCompleteListener(new OnCompleteListener<Uri>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Uri> task) {
+                                if (task.isSuccessful()) {
+                                    Uri urlImage = task.getResult();
+                                    imageURL = urlImage.toString();
+                                    String currentUserUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                                    // Mengambil username dari Realtime Database
+                                    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(currentUserUid);
+                                    userRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                                        @Override
+                                        public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                                            if (dataSnapshot.exists()) {
+                                                String username = dataSnapshot.child("username").getValue(String.class);
+                                                // Sekarang Anda memiliki username, Anda dapat menggunakannya di DataClass
+                                                uploadData(currentUserUid, username);
+                                                dialog.dismiss();
+                                            } else {
+                                                // Menangani kasus di mana data pengguna tidak ditemukan
+                                                dialog.dismiss();
+                                                Toast.makeText(newpost.this, "Data pengguna tidak ditemukan", Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+
+                                        @Override
+                                        public void onCancelled(@NonNull DatabaseError databaseError) {
+                                            dialog.dismiss();
+                                            Toast.makeText(newpost.this, "Error mengambil data pengguna: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                                        }
+                                    });
+                                } else {
+                                    dialog.dismiss();
+                                    Toast.makeText(newpost.this, "Gagal mendapatkan URL gambar", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override
                     public void onFailure(@NonNull Exception e) {
-                        Toast.makeText(newpost.this, e.getMessage().toString(),Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
+                        Toast.makeText(newpost.this, "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
                     }
                 });
-    }
+            }
+
+            public void uploadData(String user_id, String username) {
+                String title = Nptitle.getText().toString();
+                String detail = Npdetail.getText().toString();
+                String barter = Npbarter.getText().toString();
+
+                DataClass dataClass = new DataClass(user_id, username, title, detail, barter, imageURL);
+
+                DatabaseReference postReference = FirebaseDatabase.getInstance().getReference("Postingan").push();
+                postReference.setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Toast.makeText(newpost.this, "Tersimpan", Toast.LENGTH_SHORT).show();
+                            finish();
+                        } else {
+                            Toast.makeText(newpost.this, "Gagal menyimpan data: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
         });
     }
-
 }
