@@ -46,7 +46,17 @@ public class beranda extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                Intent intent = new Intent(beranda.this, Home.class);
+
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+
+                startActivity(intent);
+                finish();
             }
         });
 

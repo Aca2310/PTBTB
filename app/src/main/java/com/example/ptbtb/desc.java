@@ -18,11 +18,30 @@ public class desc extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc);
+
+        Intent intent = getIntent();
+        String email = intent.getStringExtra("email");
+        String username = intent.getStringExtra("username");
+        String savedName = intent.getStringExtra("nama");
+        String savedAddress = intent.getStringExtra("addres");
+        String savedTelp = intent.getStringExtra("telp");
+        String imageUrl = intent.getStringExtra("imageUrl");
+
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(desc.this, beranda.class));
+                Intent intent = new Intent(desc.this, beranda.class);
+
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+
+                startActivity(intent);
+                finish();
             }
         });
 
@@ -32,7 +51,6 @@ public class desc extends AppCompatActivity {
         TextView locationTextView = findViewById(R.id.textView7); // Teks lokasi
         TextView barterInfoTextView = findViewById(R.id.textView8); // Teks informasi barter
 
-        Intent intent = getIntent();
         if (intent != null) {
             int imageId = intent.getIntExtra("image", -1);
             String title = intent.getStringExtra("title");
