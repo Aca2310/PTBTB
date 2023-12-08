@@ -27,8 +27,9 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
 
     @NonNull
     @Override
-    public adapterTukardengan.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_tukardengan,parent,false);
+        return new ViewHolder(view);
     }
 
     @Override
@@ -42,8 +43,8 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
 
         holder.imageView.setOnClickListener(e -> {
             Intent intent = new Intent(context, beranda.class);
+            intent.putExtra("user_id", list.get(position).getUser_id());
             intent.putExtra("dataTitle", list.get(position).getDataTitle());
-            intent.putExtra("dataBarter", list.get(position).getDataBarter());
             intent.putExtra("dataImage", list.get(position).getDataImage());
             context.startActivity(intent);
         });
@@ -52,7 +53,7 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
 
     @Override
     public int getItemCount() {
-        return 0;
+        return list.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
