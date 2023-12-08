@@ -128,7 +128,7 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/button_tukar"
         android:layout_width="293dp"
         android:layout_height="49dp"
         android:layout_gravity="center"

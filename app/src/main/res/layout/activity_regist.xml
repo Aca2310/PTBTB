@@ -16,6 +16,7 @@
         android:layout_marginEnd="191dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/sign_up"
+        android:textColor="#000000"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.578"
@@ -40,7 +41,8 @@
             android:layout_marginStart="35dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="73dp"
-            android:text="@string/login_to_your_account" />
+            android:text="@string/login_to_your_account"
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/namaRegist"
@@ -130,7 +132,8 @@
             android:layout_marginBottom="10dp"
             android:minHeight="48dp"
             android:onClick="redirectToLogin"
-            android:text="@string/already_have_an_account_login_here" />
+            android:text="@string/already_have_an_account_login_here"
+            android:textColor="#000000" />
 
 
     </LinearLayout>

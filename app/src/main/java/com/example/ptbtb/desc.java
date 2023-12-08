@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,6 +15,7 @@ import com.squareup.picasso.Picasso;
 
 public class desc extends AppCompatActivity {
     AppCompatImageView button_back;
+    Button button_tukar;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -29,6 +31,23 @@ public class desc extends AppCompatActivity {
         String savedTelp = intent.getStringExtra("telp");
         String imageUrl = intent.getStringExtra("imageUrl");
 
+        button_tukar = findViewById(R.id.button_tukar);
+        button_tukar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(desc.this, tukardengan.class);
+
+                intent.putExtra("email", email);
+                intent.putExtra("username", username);
+                intent.putExtra("nama", savedName);
+                intent.putExtra("telp", savedTelp);
+                intent.putExtra("addres", savedAddress);
+                intent.putExtra("imageUrl", imageUrl);
+
+                startActivity(intent);
+                finish();
+            }
+        });
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override

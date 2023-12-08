@@ -27,7 +27,7 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_komunitas,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_notif,parent,false);
         return new ViewHolder(view);
     }
 

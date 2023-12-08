@@ -16,6 +16,7 @@
         android:layout_marginEnd="191dp"
         android:fontFamily="sans-serif-black"
         android:text="@string/welcome_back"
+        android:textColor="#000000"
         android:textSize="34sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,7 +39,8 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="50dp"
             android:layout_marginEnd="73dp"
-            android:text="@string/login_to_your_account" />
+            android:text="@string/login_to_your_account"
+            android:textColor="#000000" />
 
         <EditText
             android:id="@+id/emailLogin"
@@ -82,7 +84,7 @@
             android:layout_marginBottom="10dp"
             android:onClick="redirectToRegist"
             android:text="Forget Password?"
-             />
+            android:textColor="#000000" />
 
         <Button
             android:id="@+id/button_login"
@@ -106,7 +108,8 @@
             android:layout_marginBottom="10dp"
             android:minHeight="48dp"
             android:onClick="redirectToRegist"
-            android:text="@string/don_t_have_an_account_sign_up_here" />
+            android:text="@string/don_t_have_an_account_sign_up_here"
+            android:textColor="#000000" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

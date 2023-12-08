@@ -19,7 +19,7 @@ public class chat extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(chat.this, komunitas.class));
+                startActivity(new Intent(chat.this, notif.class));
             }
         });
     }

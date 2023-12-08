@@ -52,7 +52,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="30dp"
+                    android:layout_margin="20dp"
                     android:orientation="vertical"
                     tools:layout_editor_absoluteX="54dp"
                     tools:layout_editor_absoluteY="16dp">
@@ -73,8 +73,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            tools:ignore="DuplicateIds" />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -105,16 +104,16 @@
                         android:background="@drawable/white_btn_background">
 
                         <ImageView
-                            android:id="@+id/imageCommunity"
+                            android:id="@+id/imageNotif"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
-                            android:src="@drawable/group_users"
+                            android:src="@drawable/bell"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                             />
+                            />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -122,7 +121,7 @@
                         android:id="@+id/textCommunity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/community"
+                        android:text="Notifikasi"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
@@ -143,7 +142,7 @@
                         android:background="@drawable/white_btn_background">
 
                         <ImageView
-                            android:id="@+id/imageArtikel"
+                            android:id="@+id/imgArtikel"
                             android:layout_width="50dp"
                             android:layout_height="50dp"
                             android:layout_margin="15dp"
@@ -180,13 +179,15 @@
                     android:layout_height="wrap_content"
                     android:layout_margin="20dp"
                     android:orientation="vertical"
-                    tools:layout_editor_absoluteX="166dp"
+                    tools:layout_editor_absoluteX="54dp"
                     tools:layout_editor_absoluteY="16dp">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:background="@drawable/white_btn_background">
+                        android:background="@drawable/white_btn_background"
+                        tools:layout_editor_absoluteX="54dp"
+                        tools:layout_editor_absoluteY="16dp">
 
                         <ImageView
                             android:id="@+id/imageHistory"
@@ -246,6 +247,44 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="@string/profile"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp"
+                        tools:ignore="DuplicateIds" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="166dp"
+                    tools:layout_editor_absoluteY="16dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/white_btn_background">
+
+                        <ImageView
+                            android:id="@+id/imageLogout"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:layout_margin="15dp"
+                            android:src="@drawable/arrow"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/textLogout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Logout"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
