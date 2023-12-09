@@ -20,6 +20,8 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -43,7 +45,6 @@ public class edit_profile extends AppCompatActivity {
     private DatabaseReference reference;
     private StorageReference storageReference;
     private BroadcastReceiver receiver;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,10 +75,8 @@ public class edit_profile extends AppCompatActivity {
         TextView etnama = findViewById(R.id.nama_edit);
         TextView textViewUsername = findViewById(R.id.username_edit);
 
-
         etnama.setText(nama);
-        textViewUsername.setText("@"+ usernameUser);
-
+        textViewUsername.setText("@" + usernameUser);
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,14 +95,12 @@ public class edit_profile extends AppCompatActivity {
         save_edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
                 if (isNamaChanged() || isUsernameChanged() || isEmailChanged() || isTelpChanged() || isLokasiChanged()) {
                     Toast.makeText(edit_profile.this, "Data tersimpan", Toast.LENGTH_SHORT).show();
                     saveProfileChanges();
                 } else {
                     Toast.makeText(edit_profile.this, "Tidak ada perubahan ditemukan", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
 
@@ -128,76 +125,99 @@ public class edit_profile extends AppCompatActivity {
         }
     }
 
-
-
     private boolean isProfileChanged() {
         return isNamaChanged() || isUsernameChanged() || isEmailChanged() || isTelpChanged() || isLokasiChanged() || isProfileImageChanged();
     }
 
     private void updateProfileInformation() {
-        reference.child(usernameUser).child("nama").setValue(editName.getText().toString());
-        reference.child(usernameUser).child("email").setValue(editEmail.getText().toString());
-        reference.child(usernameUser).child("telp").setValue(editTelp.getText().toString());
-        reference.child(usernameUser).child("addres").setValue(editAddres.getText().toString());
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            reference.child(userId).child("nama").setValue(editName.getText().toString());
+            reference.child(userId).child("email").setValue(editEmail.getText().toString());
+            reference.child(userId).child("telp").setValue(editTelp.getText().toString());
+            reference.child(userId).child("addres").setValue(editAddres.getText().toString());
+        }
     }
 
     private void uploadImage() {
         if (imageUri != null) {
-            StorageReference fileReference = storageReference.child(System.currentTimeMillis() + "." + getFileExtension(imageUri));
+            FirebaseAuth mAuth = FirebaseAuth.getInstance();
+            FirebaseUser currentUser = mAuth.getCurrentUser();
 
-            fileReference.putFile(imageUri)
-                    .addOnSuccessListener(taskSnapshot -> {
-                        Task<Uri> downloadUrlTask = taskSnapshot.getStorage().getDownloadUrl();
-                        downloadUrlTask.addOnCompleteListener(new OnCompleteListener<Uri>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Uri> task) {
-                                if (task.isSuccessful()) {
-                                    String downloadUrl = task.getResult().toString();
-                                    updateImageUrl(downloadUrl);
-                                    loadProfileImage(); // Memuat kembali gambar profil setelah diunggah
-                                    Toast.makeText(edit_profile.this, "Gambar profil berhasil diunggah", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(edit_profile.this, "Gagal mendapatkan URL gambar", Toast.LENGTH_SHORT).show();
+            if (currentUser != null) {
+                String userId = currentUser.getUid();
+
+                StorageReference fileReference = storageReference.child(userId + "." + getFileExtension(imageUri));
+
+                fileReference.putFile(imageUri)
+                        .addOnSuccessListener(taskSnapshot -> {
+                            Task<Uri> downloadUrlTask = taskSnapshot.getStorage().getDownloadUrl();
+                            downloadUrlTask.addOnCompleteListener(new OnCompleteListener<Uri>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Uri> task) {
+                                    if (task.isSuccessful()) {
+                                        String downloadUrl = task.getResult().toString();
+                                        updateImageUrl(downloadUrl);
+                                        loadProfileImage();
+                                        Toast.makeText(edit_profile.this, "Gambar profil berhasil diunggah", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(edit_profile.this, "Gagal mendapatkan URL gambar", Toast.LENGTH_SHORT).show();
+                                    }
                                 }
-                            }
+                            });
+                        })
+                        .addOnFailureListener(e -> {
+                            Toast.makeText(edit_profile.this, "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
                         });
-                    })
-                    .addOnFailureListener(e -> {
-                        Toast.makeText(edit_profile.this, "Gagal mengunggah gambar", Toast.LENGTH_SHORT).show();
-                    });
+            }
         }
     }
 
     private void updateImageUrl(String downloadUrl) {
-        reference.child(usernameUser).child("imageUrl").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                if (task.isSuccessful()) {
-                    sendBroadcast(new Intent("UPDATE_PROFILE_IMAGE"));
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            reference.child(userId).child("imageUrl").setValue(downloadUrl).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        sendBroadcast(new Intent("UPDATE_PROFILE_IMAGE"));
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     private void loadProfileImage() {
-        // Ambil URL gambar profil dari Firebase Realtime Database
-        reference.child(usernameUser).child("imageUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    String imageUrl = task.getResult().getValue(String.class);
-                    if (imageUrl != null && !imageUrl.isEmpty()) {
-                        Picasso.get().invalidate(imageUrl);
-                        Picasso.get().load(imageUrl).into(imageViewProfile);
-                    } else {
-                        Picasso.get().load(R.drawable.profile).into(imageViewProfile);
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
+
+            reference.child(userId).child("imageUrl").get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        String imageUrl = task.getResult().getValue(String.class);
+                        if (imageUrl != null && !imageUrl.isEmpty()) {
+                            Picasso.get().invalidate(imageUrl);
+                            Picasso.get().load(imageUrl).into(imageViewProfile);
+                        } else {
+                            Picasso.get().load(R.drawable.profile).into(imageViewProfile);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     }
-
-
 
     private boolean isUsernameChanged() {
         return !usernameUser.equals(editUsername.getText().toString());
@@ -246,42 +266,44 @@ public class edit_profile extends AppCompatActivity {
     }
 
     private void showData() {
-        Intent intent = getIntent();
-        nameUser = intent.getStringExtra("nama");
-        emailUser = intent.getStringExtra("email");
-        usernameUser = intent.getStringExtra("username");
-        TelpUser = intent.getStringExtra("telp");
-        AddresUser = intent.getStringExtra("addres");
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        editName.setText(nameUser);
-        editEmail.setText(emailUser);
-        editUsername.setText(usernameUser);
-        editTelp.setText(TelpUser);
-        editAddres.setText(AddresUser);
+        if (currentUser != null) {
+            String userId = currentUser.getUid();
 
-        // Update the UI with the latest data from Firebase
-        reference.child(usernameUser).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DataSnapshot dataSnapshot = task.getResult();
-                    if (dataSnapshot.exists()) {
-                        // Update the UI with the latest data
-                        nameUser = dataSnapshot.child("nama").getValue(String.class);
-                        emailUser = dataSnapshot.child("email").getValue(String.class);
-                        TelpUser = dataSnapshot.child("telp").getValue(String.class);
-                        AddresUser = dataSnapshot.child("addres").getValue(String.class);
+            Intent intent = getIntent();
+            nameUser = intent.getStringExtra("nama");
+            emailUser = intent.getStringExtra("email");
+            usernameUser = intent.getStringExtra("username");
+            TelpUser = intent.getStringExtra("telp");
+            AddresUser = intent.getStringExtra("addres");
 
-                        editName.setText(nameUser);
-                        editEmail.setText(emailUser);
-                        editTelp.setText(TelpUser);
-                        editAddres.setText(AddresUser);
+            editName.setText(nameUser);
+            editEmail.setText(emailUser);
+            editUsername.setText(usernameUser);
+            editTelp.setText(TelpUser);
+            editAddres.setText(AddresUser);
+
+            reference.child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        DataSnapshot dataSnapshot = task.getResult();
+                        if (dataSnapshot.exists()) {
+                            nameUser = dataSnapshot.child("nama").getValue(String.class);
+                            emailUser = dataSnapshot.child("email").getValue(String.class);
+                            TelpUser = dataSnapshot.child("telp").getValue(String.class);
+                            AddresUser = dataSnapshot.child("addres").getValue(String.class);
+
+                            editName.setText(nameUser);
+                            editEmail.setText(emailUser);
+                            editTelp.setText(TelpUser);
+                            editAddres.setText(AddresUser);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }
     }
-
-
-
 }

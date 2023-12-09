@@ -48,6 +48,8 @@ public class desc extends AppCompatActivity {
                 finish();
             }
         });
+
+
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override

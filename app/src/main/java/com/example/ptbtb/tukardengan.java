@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -23,9 +24,11 @@ import java.util.ArrayList;
 
 public class tukardengan extends AppCompatActivity {
     ArrayList<list_tukardengan> list;
-     RecyclerView recyclerView;
+    RecyclerView recyclerView;
     ValueEventListener eventListener;
     AppCompatImageView button_back;
+
+    Button button_tukar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,18 +68,18 @@ public class tukardengan extends AppCompatActivity {
         String loggedInUserId = currentUser.getUid();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Postingan");
 
-        eventListener = reference.orderByChild("user_id").equalTo(loggedInUserId).addValueEventListener(new ValueEventListener(){
+        eventListener = reference.orderByChild("user_id").equalTo(loggedInUserId).addValueEventListener(new ValueEventListener() {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-            list.clear();
+                list.clear();
 
-            for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                list_tukardengan data = snapshot.getValue(list_tukardengan.class);
-                list.add(data);
-            }
-            // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView
-            adapterTukardengan adapterTukardengan= new adapterTukardengan(tukardengan.this, list);
-                recyclerView.setAdapter(adapterTukardengan);
+                for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                    list_tukardengan data = snapshot.getValue(list_tukardengan.class);
+                    list.add(data);
                 }
+                // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView
+                adapterTukardengan adapterTukardengan = new adapterTukardengan(tukardengan.this, list);
+                recyclerView.setAdapter(adapterTukardengan);
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
@@ -85,5 +88,4 @@ public class tukardengan extends AppCompatActivity {
             }
         });
     }
-
 }

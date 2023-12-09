@@ -53,45 +53,6 @@
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/usernameNotif" />
 
-    <Button
-        android:id="@+id/delet"
-        android:layout_width="109dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="24dp"
-        android:backgroundTint="#9E326C"
-        android:text="Delete"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/viaWA3"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.663" />
-
-    <Button
-        android:id="@+id/viaWA3"
-        android:layout_width="109dp"
-        android:layout_height="48dp"
-        android:layout_marginEnd="20dp"
-        android:backgroundTint="#9E326C"
-        android:text="Tolak"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/viaWA4"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.66" />
-
-    <Button
-        android:id="@+id/viaWA4"
-        android:layout_width="109dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="72dp"
-        android:layout_marginEnd="24dp"
-        android:layout_marginBottom="36dp"
-        android:backgroundTint="#9E326C"
-        android:text="Terima"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
-
     <TextView
         android:id="@+id/Barter"
         android:layout_width="wrap_content"
@@ -104,6 +65,44 @@
         app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
+
+    <LinearLayout
+        android:layout_width="413dp"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
+        app:layout_constraintVertical_bias="0.813">
+
+        <Button
+            android:id="@+id/delet"
+            android:layout_width="109dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="40dp"
+            android:backgroundTint="#9E326C"
+            android:text="Delete" />
+
+        <Button
+            android:id="@+id/tolak"
+            android:layout_width="109dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#9E326C"
+            android:text="Tolak" />
+
+        <Button
+            android:id="@+id/terima"
+            android:layout_width="109dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="36dp"
+            android:backgroundTint="#9E326C"
+            android:text="Terima" />
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -120,6 +119,7 @@
             android:id="@+id/namaTumbuhan2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:src="@drawable/anngrek" />
 
         <LinearLayout
@@ -183,6 +183,7 @@
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
             android:src="@drawable/anngrek" />
 
         <LinearLayout

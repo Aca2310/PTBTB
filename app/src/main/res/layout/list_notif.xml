@@ -49,16 +49,15 @@
                 android:textAlignment="viewStart"
                 android:textSize="10sp" />
 
+            <Button
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#9E326C"
+
+                android:text="Detail" />
+
         </LinearLayout>
-
-        <Button
-            android:id="@+id/detail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#9E326C"
-            android:insetTop="50dp"
-
-            android:text="Detail" />
 
     </LinearLayout>
 

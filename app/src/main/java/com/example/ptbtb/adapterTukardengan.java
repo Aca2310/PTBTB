@@ -1,6 +1,8 @@
 package com.example.ptbtb;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,12 +43,8 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
 
         holder.textView.setText(list.get(position).getDataTitle());
 
-        holder.imageView.setOnClickListener(e -> {
-            Intent intent = new Intent(context, beranda.class);
-            intent.putExtra("user_id", list.get(position).getUser_id());
-            intent.putExtra("dataTitle", list.get(position).getDataTitle());
-            intent.putExtra("dataImage", list.get(position).getDataImage());
-            context.startActivity(intent);
+        holder.button_pilih.setOnClickListener(e -> {
+            showDialog("Penawaran anda akan diproses", position);
         });
 
     }
@@ -59,7 +57,7 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
     public class ViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
-        Button button_back;
+        Button button_pilih;
         CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
@@ -67,7 +65,23 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
             cardView = itemView.findViewById(R.id.cardView);
             imageView = itemView.findViewById(R.id.imageTukardengan);
             textView = itemView.findViewById(R.id.judul);
-            button_back = itemView.findViewById(R.id.button_tukar);
+            button_pilih= itemView.findViewById(R.id.button_tukar);
         }
+    }
+    private void showDialog(String message, int position) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setMessage(message)
+                .setPositiveButton("OK", (dialog, which) -> {
+                    // Lakukan tindakan yang sesuai saat tombol "OK" diklik
+                    // Contoh: Pindah ke aktivitas home
+                    Intent intent = new Intent(context, Home.class);
+                    intent.putExtra("user_id", list.get(position).getUser_id());
+                    intent.putExtra("dataTitle", list.get(position).getDataTitle());
+                    intent.putExtra("dataImage", list.get(position).getDataImage());
+                    context.startActivity(intent);
+                });
+
+        AlertDialog alertDialog = builder.create();
+        alertDialog.show();
     }
 }

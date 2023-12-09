@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -36,9 +37,8 @@ public class adapterhistory extends RecyclerView.Adapter<adapterhistory.ViewHold
         holder.textView.setText(list_histories.get(position).getText());
         holder.textView.setText(list_histories.get(position).getText2());
 
-        holder.cardView.setOnClickListener(e->{
-            Intent intent = new Intent(context,pages.class);
-            intent.putExtra("id",position);
+        holder.join.setOnClickListener(e->{
+            Intent intent = new Intent(context,descHistory.class);
             context.startActivity(intent);
         });
 
@@ -55,6 +55,7 @@ public class adapterhistory extends RecyclerView.Adapter<adapterhistory.ViewHold
         ImageView imageView;
         TextView textView;
         TextView textView2;
+        Button join;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -62,6 +63,8 @@ public class adapterhistory extends RecyclerView.Adapter<adapterhistory.ViewHold
             imageView = itemView.findViewById(R.id.imageHistory);
             textView = itemView.findViewById(R.id.judul);
             textView2 = itemView.findViewById(R.id.subjudul);
+            join = itemView.findViewById(R.id.join);
+
         }
     }
 

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -39,8 +40,8 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         holder.textView.setText(lists.get(position).getJudul());
         holder.textView2.setText(lists.get(position).getSubjudl());
 
-        holder.cardView.setOnClickListener(e->{
-            Intent intent = new Intent(context,chat.class);
+        holder.detail.setOnClickListener(e->{
+            Intent intent = new Intent(context,desc_notif.class);
             intent.putExtra("id",position);
             context.startActivity(intent);
         });
@@ -56,6 +57,7 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         ImageView imageView;
         TextView textView;
         TextView textView2;
+        Button detail;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -63,6 +65,7 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
             imageView = itemView.findViewById(R.id.imagekomunitas);
             textView = itemView.findViewById(R.id.judul);
             textView2 = itemView.findViewById(R.id.subjudul);
+            detail = itemView.findViewById(R.id.detail);
         }
     }
 

@@ -1,9 +1,12 @@
 package com.example.ptbtb;
 
+import android.widget.Button;
+
 public class list {
 
     private Integer image;
     private  String judul,subjudl;
+    Button detail;
 
     public list(Integer image, String judul, String subjudul) {
         this.image = image;
