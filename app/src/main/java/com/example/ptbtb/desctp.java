@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
 public class desctp extends AppCompatActivity {
     AppCompatImageView button_back;
     Button button_edit;
@@ -20,7 +22,6 @@ public class desctp extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desctp);
-        ImageView imageView = findViewById(R.id.imageViewD);
 
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
@@ -48,6 +49,38 @@ public class desctp extends AppCompatActivity {
             }
         });
 
+        ImageView imageView = findViewById(R.id.imageViewD);
+        TextView titleTextView = findViewById(R.id.judul);
+        TextView detailTextView = findViewById(R.id.textViewDetail);
+        TextView locationTextView = findViewById(R.id.textViewLocation);
+        TextView barterInfoTextView = findViewById(R.id.textViewBarter);
+
+
+        if (intent != null) {
+            String title = intent.getStringExtra("dataTitle");
+            String detail = intent.getStringExtra("dataDetail");
+            String location = intent.getStringExtra("dataLocation");
+            String barterInfo = intent.getStringExtra("dataBarter");
+            String dataImage = intent.getStringExtra("dataImage");
+
+            if (dataImage != null) {
+                Picasso.get().load(dataImage).into(imageView);
+            }
+
+            if (title != null) {
+                titleTextView.setText(title);
+            }
+            if (detail != null) {
+                detailTextView.setText(detail);
+            }
+            if (location != null) {
+                locationTextView.setText(location);
+            }
+            if (barterInfo != null) {
+                barterInfoTextView.setText(barterInfo);
+            }
+        }
+
         button_edit = (Button) findViewById(R.id.button_edit);
 
         button_edit.setOnClickListener(new View.OnClickListener() {
@@ -57,18 +90,5 @@ public class desctp extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        if (intent != null) {
-            int imageId = intent.getIntExtra("image", -1);
-            String title = intent.getStringExtra("title");
-
-            if (imageId != -1) {
-                imageView.setImageResource(imageId);
-            }
-            if (title != null) {
-                TextView titleTextView = findViewById(R.id.judul);
-                titleTextView.setText(title);
-            }
-        }
     }
 }

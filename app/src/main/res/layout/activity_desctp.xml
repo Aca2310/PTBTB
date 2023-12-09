@@ -5,39 +5,41 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:backgroundTint="#9E326C"
-    tools:context=".desctp">
+    tools:context=".desctp"
+    tools:layout_editor_absoluteY="30dp">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/button_back"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="16dp"
+                android:padding="5dp"
+                android:src="@drawable/back" />
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="651dp"
+                android:layout_height="match_parent"
                 android:backgroundTint="#9E326C">
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/button_back"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:padding="5dp"
-                    android:src="@drawable/back"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageView
                     android:id="@+id/imageViewD"
-                    android:layout_width="373dp"
-                    android:layout_height="258dp"
-                    android:layout_marginTop="50dp"
-                    android:src="@drawable/lidahbuaya"
+                    android:layout_width="316dp"
+                    android:layout_height="201dp"
+                    android:src="@drawable/anngrek"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.421"
                     app:layout_constraintStart_toStartOf="parent"
@@ -45,60 +47,72 @@
 
                 <TextView
                     android:id="@+id/judul"
-                    android:layout_width="180dp"
-                    android:layout_height="40dp"
+                    android:layout_width="175dp"
+                    android:layout_height="56dp"
                     android:gravity="center"
-                    android:text="Tanaman"
-                    android:textSize="30sp"
+                    android:text="TextView"
+                    android:textSize="34sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.497"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/imageViewD" />
 
-                <TextView
-                    android:id="@+id/detail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="20dp"
-                    android:text="Detail Tanaman"
-                    android:textSize="18dp"
-                    app:layout_constraintBottom_toTopOf="@+id/lokasi"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/judul" />
-
-                <TextView
-                    android:id="@+id/lokasi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="20dp"
-                    android:text="Lokasi"
-                    app:layout_constraintBottom_toTopOf="@+id/bartertumbuhan"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/detail" />
-
-                <TextView
-                    android:id="@+id/bartertumbuhan"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="50dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_marginBottom="50dp"
-                    android:text="Barter"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/lokasi" />
-
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <TextView
+                android:id="@+id/detail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="10dp"
+                android:text="Detail : "
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewDetail"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginBottom="20dp"
+                android:text="Berwarna putih \nTinggi 15 cm \nLebar 7 cm\nDaun Hijau" />
+
+
+            <TextView
+                android:id="@+id/lokasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:text="Location :"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewLocation"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginBottom="20dp"
+                android:text="TextView" />
+
+            <TextView
+                android:id="@+id/bartertumbuhan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="40dp"
+                android:layout_marginBottom="10dp"
+                android:text="Barter :"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textViewBarter"
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="-5dp"
+                android:text="Anggrek \nTapak Dara \nBunga Mawar" />
 
         </LinearLayout>
     </ScrollView>
