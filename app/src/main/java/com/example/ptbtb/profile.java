@@ -59,22 +59,46 @@ public class profile extends AppCompatActivity {
         setContentView(R.layout.activity_profile);
         ImageView imageViewProfile = findViewById(R.id.imageView8);
 
-        Intent intent = getIntent();
-        String nama = intent.getStringExtra("nama");
-        String username = intent.getStringExtra("username");
-        String telp = intent.getStringExtra("telp");
-        String email = intent.getStringExtra("email");
-        String addres = intent.getStringExtra("addres");
-        String imageUrl = intent.getStringExtra("imageUrl");
-
-        Picasso.get().load(imageUrl).into(imageViewProfile);
 
         TextView etnama = findViewById(R.id.nama_user);
         TextView textViewUsername = findViewById(R.id.usernamenya);
 
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        etnama.setText(nama);
-        textViewUsername.setText("@" + username);
+        if (currentUser != null) {
+            // Pengguna sudah login
+            String userId = currentUser.getUid();
+
+            DatabaseReference userReference = FirebaseDatabase.getInstance().getReference("users").child(userId);
+            userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    if (dataSnapshot.exists()) {
+                        String nama = dataSnapshot.child("nama").getValue(String.class);
+                        String username = dataSnapshot.child("username").getValue(String.class);
+                        String imageUrl = dataSnapshot.child("imageUrl").getValue(String.class);
+
+                        etnama.setText(nama);
+                        textViewUsername.setText("@" + username);
+
+                        // Load gambar profil menggunakan Picasso
+                        if (imageUrl != null && !imageUrl.isEmpty()) {
+                            Picasso.get().load(imageUrl).into(imageViewProfile);
+                        } else {
+                           imageViewProfile.setImageResource(R.drawable.user);
+                        }
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle error
+                }
+            });
+        } else {
+            // Pengguna belum login
+            Toast.makeText(profile.this, "Pengguna belum login", Toast.LENGTH_SHORT).show();
+        }
 
 
         button_back = findViewById(R.id.button_back);
@@ -82,12 +106,6 @@ public class profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(profile.this, Home.class);
-                intent.putExtra("nama", nama);
-                intent.putExtra("username", username);
-                intent.putExtra("telp", telp);
-                intent.putExtra("email", email);
-                intent.putExtra("addres", addres);
-                intent.putExtra("imageUrl", imageUrl);
                 startActivity(intent);
             }
         });
@@ -98,13 +116,6 @@ public class profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(profile.this, edit_profile.class);
-
-                intent.putExtra("nama", nama);
-                intent.putExtra("username", username);
-                intent.putExtra("telp", telp);
-                intent.putExtra("email", email);
-                intent.putExtra("addres", addres);
-                intent.putExtra("imageUrl", imageUrl);
                 startActivity(intent);
             }
         });
@@ -171,7 +182,6 @@ public class profile extends AppCompatActivity {
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
 
         list_profiles = new ArrayList<>();
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
         String loggedInUserId = currentUser.getUid();
 
 // Mengambil data dari Firebase berdasarkan user_id

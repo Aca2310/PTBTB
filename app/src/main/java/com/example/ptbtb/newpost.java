@@ -114,7 +114,7 @@ public class newpost extends AppCompatActivity {
                                     userRef.addListenerForSingleValueEvent(new ValueEventListener() {
                                         @Override
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                                            if (dataSnapshot.exists()) {
+                                               if (dataSnapshot.exists()) {
                                                 String username = dataSnapshot.child("username").getValue(String.class);
                                                 // Sekarang Anda memiliki username, Anda dapat menggunakannya di DataClass
                                                 uploadData(currentUserUid, username);

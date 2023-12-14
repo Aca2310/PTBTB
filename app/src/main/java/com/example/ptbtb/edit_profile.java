@@ -75,8 +75,7 @@ public class edit_profile extends AppCompatActivity {
         TextView etnama = findViewById(R.id.nama_edit);
         TextView textViewUsername = findViewById(R.id.username_edit);
 
-        etnama.setText(nama);
-        textViewUsername.setText("@" + usernameUser);
+
 
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -272,38 +271,36 @@ public class edit_profile extends AppCompatActivity {
         if (currentUser != null) {
             String userId = currentUser.getUid();
 
-            Intent intent = getIntent();
-            nameUser = intent.getStringExtra("nama");
-            emailUser = intent.getStringExtra("email");
-            usernameUser = intent.getStringExtra("username");
-            TelpUser = intent.getStringExtra("telp");
-            AddresUser = intent.getStringExtra("addres");
-
-            editName.setText(nameUser);
-            editEmail.setText(emailUser);
-            editUsername.setText(usernameUser);
-            editTelp.setText(TelpUser);
-            editAddres.setText(AddresUser);
-
             reference.child(userId).get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
                 @Override
                 public void onComplete(@NonNull Task<DataSnapshot> task) {
                     if (task.isSuccessful()) {
                         DataSnapshot dataSnapshot = task.getResult();
                         if (dataSnapshot.exists()) {
+                            usernameUser = dataSnapshot.child("username").getValue(String.class);
                             nameUser = dataSnapshot.child("nama").getValue(String.class);
                             emailUser = dataSnapshot.child("email").getValue(String.class);
                             TelpUser = dataSnapshot.child("telp").getValue(String.class);
                             AddresUser = dataSnapshot.child("addres").getValue(String.class);
 
+                            // Perbarui tampilan dengan data pengguna
                             editName.setText(nameUser);
                             editEmail.setText(emailUser);
+                            editUsername.setText(usernameUser);
                             editTelp.setText(TelpUser);
                             editAddres.setText(AddresUser);
+
+                            TextView etnama = findViewById(R.id.nama_edit);
+                            TextView textViewUsername = findViewById(R.id.username_edit);
+
+                            etnama.setText(nameUser);
+                            textViewUsername.setText("@" + usernameUser);
                         }
                     }
                 }
             });
         }
     }
+
 }
+

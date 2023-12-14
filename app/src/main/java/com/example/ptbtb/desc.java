@@ -17,35 +17,24 @@ public class desc extends AppCompatActivity {
     AppCompatImageView button_back;
     Button button_tukar;
 
-    @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc);
 
         Intent intent = getIntent();
-        String email = intent.getStringExtra("email");
         String username = intent.getStringExtra("username");
-        String savedName = intent.getStringExtra("nama");
-        String savedAddress = intent.getStringExtra("addres");
-        String savedTelp = intent.getStringExtra("telp");
-        String imageUrl = intent.getStringExtra("imageUrl");
 
         button_tukar = findViewById(R.id.button_tukar);
         button_tukar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(desc.this, tukardengan.class);
-
-                intent.putExtra("email", email);
-                intent.putExtra("username", username);
-                intent.putExtra("nama", savedName);
-                intent.putExtra("telp", savedTelp);
-                intent.putExtra("addres", savedAddress);
-                intent.putExtra("imageUrl", imageUrl);
-
                 startActivity(intent);
                 finish();
+
+
+
             }
         });
 
@@ -56,12 +45,6 @@ public class desc extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(desc.this, beranda.class);
 
-                intent.putExtra("email", email);
-                intent.putExtra("username", username);
-                intent.putExtra("nama", savedName);
-                intent.putExtra("telp", savedTelp);
-                intent.putExtra("addres", savedAddress);
-                intent.putExtra("imageUrl", imageUrl);
 
                 startActivity(intent);
                 finish();

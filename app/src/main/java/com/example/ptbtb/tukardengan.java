@@ -35,25 +35,12 @@ public class tukardengan extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tukardengan);
 
-        Intent intent = getIntent();
-        String nama = intent.getStringExtra("nama");
-        String username = intent.getStringExtra("username");
-        String telp = intent.getStringExtra("telp");
-        String email = intent.getStringExtra("email");
-        String addres = intent.getStringExtra("addres");
-        String imageUrl = intent.getStringExtra("imageUrl");
 
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(tukardengan.this, Home.class);
-                intent.putExtra("nama", nama);
-                intent.putExtra("username", username);
-                intent.putExtra("telp", telp);
-                intent.putExtra("email", email);
-                intent.putExtra("addres", addres);
-                intent.putExtra("imageUrl", imageUrl);
                 startActivity(intent);
             }
 
