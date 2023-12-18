@@ -15,6 +15,8 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -45,6 +47,7 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
 
         holder.button_pilih.setOnClickListener(e -> {
             showDialog("Penawaran anda akan diproses", position);
+
         });
 
     }
@@ -72,15 +75,35 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
         AlertDialog.Builder builder = new AlertDialog.Builder(context);
         builder.setMessage(message)
                 .setPositiveButton("OK", (dialog, which) -> {
-                    // Lakukan tindakan yang sesuai saat tombol "OK" diklik
-                    // Contoh: Pindah ke aktivitas home
+                    String username = desc.tempUsername;
+                    String userId = desc.tempUserId;
+                    String dataTitle = desc.tempDataTitle;
+                    String dataDetail = desc.tempDataDetail;
+                    String dataBarter = desc.tempDataBarter;
+                    String dataImage = desc.tempDataImage;
+
+
+                    String dataTitleTukar = list.get(position).getDataTitle();
+                    String dataDetailTukar = list.get(position).getDataDetail();
+                    String dataBarterTukar = list.get(position).getDataBarter();
+                    String dataImageTukar = list.get(position).getDataImage();
+                    String usernameTukar = list.get(position).getUsername();
+                    String userIdTukar = list.get(position).getUser_id();
+
+                    DatabaseReference tawarRef = FirebaseDatabase.getInstance().getReference("tawar");
+
+                    TawarData tawarData = new TawarData(userId, username, dataTitle, dataDetail, dataBarter, dataImage, userIdTukar, usernameTukar, dataTitleTukar, dataDetailTukar, dataBarterTukar, dataImageTukar);
+
+                    String tawarKey = tawarRef.push().getKey(); // Mendapatkan kunci unik
+                    tawarRef.child(tawarKey).setValue(tawarData);
+
+                    // Pindah ke aktivitas home atau lakukan tindakan lain yang diperlukan setelah menyimpan data
                     Intent intent = new Intent(context, Home.class);
-                    intent.putExtra("user_id", list.get(position).getUser_id());
-                    intent.putExtra("dataTitle", list.get(position).getDataTitle());
-                    intent.putExtra("dataImage", list.get(position).getDataImage());
+                    intent.putExtra("user_id", userId);
+                    intent.putExtra("dataTitle", dataTitle);
+                    intent.putExtra("dataImage", dataImage);
                     context.startActivity(intent);
                 });
-
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
     }
