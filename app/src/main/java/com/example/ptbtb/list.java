@@ -4,22 +4,14 @@ import android.widget.Button;
 
 public class list {
 
-    private Integer image;
+    private String image;
     private  String judul,subjudl;
     Button detail;
 
-    public list(Integer image, String judul, String subjudul) {
+    public list(String image, String judul, String subjudul) {
         this.image = image;
         this.judul = judul;
         this.subjudl = subjudul;
-    }
-
-    public Integer getImage() {
-        return image;
-    }
-
-    public void setImage(Integer image) {
-        this.image = image;
     }
 
     public String getJudul() {
@@ -36,5 +28,13 @@ public class list {
 
     public void setSubjudl(String subjudl) {
         this.subjudl = subjudl;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

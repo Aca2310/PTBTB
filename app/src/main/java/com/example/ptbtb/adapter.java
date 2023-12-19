@@ -13,15 +13,17 @@ import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 
 public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
 
-    private ArrayList<list> lists;
+    private ArrayList<TawarData> listTawardata;
     private Context context;
 
-    public adapter(ArrayList<list> recyclerview_lists, Context context) {
-        this.lists = recyclerview_lists;
+    public adapter(ArrayList<TawarData> listTawardata, Context context) {
+        this.listTawardata = listTawardata;
         this.context = context;
     }
 
@@ -36,20 +38,35 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
-        holder.imageView.setImageResource(lists.get(position).getImage());
-        holder.textView.setText(lists.get(position).getJudul());
-        holder.textView2.setText(lists.get(position).getSubjudl());
+        Picasso.get().load(listTawardata.get(position).getDataImagePenerima()).into(holder.imageView);
+        holder.textView.setText(listTawardata.get(position).getUsernameTukar());
 
         holder.detail.setOnClickListener(e->{
-            Intent intent = new Intent(context,desc_notif.class);
-            intent.putExtra("id",position);
+            Intent intent = new Intent(context, desc_notif.class);
+            intent.putExtra("id", position);
+
+            intent.putExtra("user_idPenerima", listTawardata.get(position).getUser_idPenerima());
+            intent.putExtra("usernamePenerima", listTawardata.get(position).getUsernamePenerima());
+            intent.putExtra("dataTitlePenerima", listTawardata.get(position).getDataTitlePenerima());
+            intent.putExtra("dataDetailPenerima", listTawardata.get(position).getDataDetailPenerima());
+            intent.putExtra("dataBarterPenerima", listTawardata.get(position).getDataBarterPenerima());
+            intent.putExtra("dataImagePenerima", listTawardata.get(position).getDataImagePenerima());
+
+            // Menyimpan data user_idTukar ke dalam intent
+            intent.putExtra("user_idTukar", listTawardata.get(position).getUser_idTukar());
+            intent.putExtra("usernameTukar", listTawardata.get(position).getUsernameTukar());
+            intent.putExtra("dataTitleTukar", listTawardata.get(position).getDataTitleTukar());
+            intent.putExtra("dataDetailTukar", listTawardata.get(position).getDataDetailTukar());
+            intent.putExtra("dataBarterTukar", listTawardata.get(position).getDataBarterTukar());
+            intent.putExtra("dataImageTukar", listTawardata.get(position).getDataImageTukar());
+
             context.startActivity(intent);
         });
     }
 
     @Override
     public int getItemCount() {
-        return lists.size();
+        return listTawardata.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder{

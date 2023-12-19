@@ -6,6 +6,10 @@ import androidx.appcompat.widget.AppCompatImageView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class desc_notif extends AppCompatActivity {
 
@@ -16,31 +20,66 @@ public class desc_notif extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc_notif);
 
-        Intent intent = getIntent();
-        String email = intent.getStringExtra("email");
-        String username = intent.getStringExtra("username");
-        String savedName = intent.getStringExtra("nama");
-        String savedAddress = intent.getStringExtra("addres");
-        String savedTelp = intent.getStringExtra("telp");
-        String imageUrl = intent.getStringExtra("imageUrl");
-
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(desc_notif.this, notif.class);
-
-                intent.putExtra("email", email);
-                intent.putExtra("username", username);
-                intent.putExtra("nama", savedName);
-                intent.putExtra("telp", savedTelp);
-                intent.putExtra("addres", savedAddress);
-                intent.putExtra("imageUrl", imageUrl);
-
                 startActivity(intent);
                 finish();
             }
         });
 
+        ImageView imagePenerima = findViewById(R.id.imageView4);
+        TextView titlePenerima = findViewById(R.id.namaTumbuhan);
+        TextView detailPenerima = findViewById(R.id.textView);
+        TextView locationPenerima = findViewById(R.id.textView15);
+        ImageView imageViewTukar = findViewById(R.id.namaTumbuhan2);
+        TextView titleTukar = findViewById(R.id.namaTumbuhan1);
+        TextView detailTukar = findViewById(R.id.textView13);
+        TextView locationTukar = findViewById(R.id.lokasi2);
+        TextView usernameText = findViewById(R.id.usernameNotif);
+
+        Intent intent = getIntent();
+        if (intent != null) {
+            String DatatitlePenerima = intent.getStringExtra("dataTitlePenerima");
+            String DatadetailPenerima = intent.getStringExtra("dataDetailPenerima");
+            String DatalocationPenerima = intent.getStringExtra("dataLocationPenerima");
+            String dataImagePenerima = intent.getStringExtra("dataImagePenerima");
+            String title = intent.getStringExtra("dataTitleTukar");
+            String detail = intent.getStringExtra("dataDetailTukar");
+            String location = intent.getStringExtra("dataLocationTukar");
+            String usernamePenerima = intent.getStringExtra("usernameTukar");
+            String dataImage = intent.getStringExtra("dataImageTukar");
+
+            if (dataImage != null) {
+                Picasso.get().load(dataImage).into(imageViewTukar);
+            }
+            if (dataImagePenerima != null) {
+                Picasso.get().load(dataImagePenerima).into(imagePenerima);
+            }
+
+            if (title != null) {
+                titleTukar.setText(title);
+            }
+            if (DatatitlePenerima != null) {
+                titlePenerima.setText(DatatitlePenerima);
+            }
+            if (DatadetailPenerima != null) {
+                detailPenerima.setText(DatadetailPenerima);
+            }
+            if (detail != null) {
+                detailTukar.setText(detail);
+            }
+            if (DatalocationPenerima != null) {
+                locationPenerima.setText(DatalocationPenerima);
+            }
+            if (location != null) {
+                locationTukar.setText(location);
+            }
+            if (usernamePenerima != null) {
+                usernameText.setText("@" + usernamePenerima);
+            }
+        }
     }
 }

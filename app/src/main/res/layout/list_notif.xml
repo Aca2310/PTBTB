@@ -26,8 +26,9 @@
             />
 
         <LinearLayout
-            android:layout_width="143dp"
+            android:layout_width="225dp"
             android:layout_height="match_parent"
+            android:layout_marginStart="10dp"
             android:orientation="vertical">
 
             <TextView
@@ -42,19 +43,20 @@
 
             <TextView
                 android:id="@+id/subjudul"
-                android:layout_width="match_parent"
+                android:layout_width="183dp"
                 android:layout_height="wrap_content"
                 android:padding="5dp"
-                android:text="TextView"
+                android:text="Ingin bertukar tanaman dengan anda!"
                 android:textAlignment="viewStart"
-                android:textSize="10sp" />
+                android:textSize="12sp" />
 
             <Button
                 android:id="@+id/detail"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:backgroundTint="#9E326C"
+                android:layout_marginStart="0dp"
 
+                android:backgroundTint="#9E326C"
                 android:text="Detail" />
 
         </LinearLayout>
