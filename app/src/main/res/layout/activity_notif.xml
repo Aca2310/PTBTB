@@ -5,6 +5,7 @@
     android:id="@+id/komunitas"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".notif">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -25,6 +26,7 @@
         android:layout_marginTop="48dp"
         android:gravity="center"
         android:text="Notification"
+        android:textColor="#014A59"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,7 +56,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        tools:listitem="@layout/list_notif"/>
+        tools:listitem="@layout/list_notif" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

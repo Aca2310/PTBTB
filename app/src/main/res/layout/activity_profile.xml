@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#9E326C"
+    android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".profile">
 
     <ScrollView
@@ -15,6 +16,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:background="#FFFFFF"
             android:orientation="vertical">
 
             <androidx.appcompat.widget.AppCompatImageView
@@ -39,6 +41,7 @@
                     android:layout_marginBottom="4dp"
                     android:gravity="center"
                     android:text="@string/khairinn"
+                    android:textColor="#000000"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/imageView8"
@@ -51,20 +54,21 @@
                     android:layout_width="101dp"
                     android:layout_height="101dp"
                     android:layout_marginTop="8dp"
-                    android:src="@drawable/profile"
                     android:background="@drawable/circular_background"
                     android:scaleType="centerCrop"
+                    android:src="@drawable/profile"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/nama_user"
-                    />
+                    app:layout_constraintTop_toBottomOf="@+id/nama_user" />
 
                 <TextView
                     android:id="@+id/usernamenya"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
+                    android:layout_marginTop="7dp"
                     android:text="@string/khairin"
+                    android:textColor="#000000"
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="@+id/imageView8"
@@ -88,29 +92,29 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toStartOf="@+id/ubahPassword"
-                    app:layout_constraintHorizontal_bias="0.757"
+                    app:layout_constraintHorizontal_bias="0.895"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/usernamenya"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <Button
                     android:id="@+id/ubahPassword"
-                    android:layout_width="121dp"
+                    android:layout_width="128dp"
                     android:layout_height="48dp"
                     android:layout_marginTop="25dp"
                     android:backgroundTint="#D9D9D9"
                     android:paddingLeft="20dp"
                     android:paddingRight="20dp"
-                    android:text="Ubah password"
+                    android:text="Ubah Password"
                     android:textColor="#94000000"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.737"
+                    app:layout_constraintHorizontal_bias="0.773"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/usernamenya"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="1.0" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -130,13 +134,14 @@
         android:layout_marginStart="150dp"
         android:layout_marginEnd="-100dp"
         android:layout_marginBottom="50dp"
+        android:background="#063A38"
+        android:backgroundTint="#FFCFC5"
         android:clickable="true"
+        android:contentDescription="TODO"
+        android:focusable="true"
         android:src="@android:drawable/ic_input_add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:backgroundTint="#FFCFC5"
-        android:focusable="true"
-        android:contentDescription="TODO" />
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

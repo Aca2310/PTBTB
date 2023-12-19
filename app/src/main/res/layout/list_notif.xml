@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FDE0DA"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -21,9 +22,8 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:padding="10dp"
-            android:src="@drawable/anngrek"
             android:scaleType="centerCrop"
-            />
+            android:src="@drawable/anngrek" />
 
         <LinearLayout
             android:layout_width="225dp"
@@ -38,26 +38,40 @@
                 android:padding="5dp"
                 android:text="TextView"
                 android:textAlignment="viewStart"
-                android:textSize="16sp"
+                android:textColor="#000000"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/subjudul"
-                android:layout_width="183dp"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
                 android:padding="5dp"
                 android:text="Ingin bertukar tanaman dengan anda!"
                 android:textAlignment="viewStart"
+                android:textColor="#000000"
                 android:textSize="12sp" />
 
-            <Button
-                android:id="@+id/detail"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="0dp"
+            <LinearLayout
+                android:layout_width="214dp"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
 
-                android:backgroundTint="#9E326C"
-                android:text="Detail" />
+                <Space
+                    android:layout_width="50dp"
+                    android:layout_height="51dp"
+                    android:layout_weight="1" />
+
+                <Button
+                    android:id="@+id/detail"
+                    android:layout_width="118dp"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#9E326C"
+                    android:text="Detail"
+                    android:textColor="#FFFFFF" />
+
+
+            </LinearLayout>
 
         </LinearLayout>
 

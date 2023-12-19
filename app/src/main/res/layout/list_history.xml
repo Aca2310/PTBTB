@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FDE0DA"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -21,12 +22,11 @@
             android:layout_width="120dp"
             android:layout_height="120dp"
             android:padding="10dp"
-            android:src="@drawable/dara"
             android:scaleType="centerCrop"
-            />
+            android:src="@drawable/dara" />
 
         <LinearLayout
-            android:layout_width="100dp"
+            android:layout_width="145dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
@@ -37,6 +37,7 @@
                 android:padding="5dp"
                 android:text="TextView"
                 android:textAlignment="viewStart"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -47,18 +48,28 @@
                 android:padding="5dp"
                 android:text="TextView"
                 android:textAlignment="viewStart"
+                android:textColor="#000000"
                 android:textSize="15sp" />
 
         </LinearLayout>
 
-        <Button
-            android:id="@+id/join"
-            android:layout_width="105dp"
-            android:layout_height="wrap_content"
-            android:backgroundTint="#9E326C"
-            android:insetTop="50dp"
-            android:insetRight="15dp"
-            android:text="@string/idetail" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="67dp" />
+
+            <Button
+                android:id="@+id/join"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#9E326C"
+                android:text="@string/idetail"
+                android:textColor="#FFFFFF" />
+        </LinearLayout>
 
     </LinearLayout>
 
