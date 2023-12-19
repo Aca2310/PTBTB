@@ -11,43 +11,47 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class desc extends AppCompatActivity {
     AppCompatImageView button_back;
     Button button_tukar;
 
-    @SuppressLint("MissingInflatedId")
+    public static String tempDataTitle;
+    public static String tempDataDetail;
+    public static String tempDataBarter;
+    public static String tempDataImage;
+    public static String tempUsername;
+    public static String tempUserId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc);
 
         Intent intent = getIntent();
-        String email = intent.getStringExtra("email");
         String username = intent.getStringExtra("username");
-        String savedName = intent.getStringExtra("nama");
-        String savedAddress = intent.getStringExtra("addres");
-        String savedTelp = intent.getStringExtra("telp");
-        String imageUrl = intent.getStringExtra("imageUrl");
 
         button_tukar = findViewById(R.id.button_tukar);
         button_tukar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(desc.this, tukardengan.class);
+                tempDataTitle = intent.getStringExtra("dataTitle");
+                tempDataDetail = intent.getStringExtra("dataDetail");
+                tempDataBarter = intent.getStringExtra("dataBarter");
+                tempDataImage = intent.getStringExtra("dataImage");
+                tempUsername = intent.getStringExtra("username");
+                tempUserId = intent.getStringExtra("user_id");
 
-                intent.putExtra("email", email);
-                intent.putExtra("username", username);
-                intent.putExtra("nama", savedName);
-                intent.putExtra("telp", savedTelp);
-                intent.putExtra("addres", savedAddress);
-                intent.putExtra("imageUrl", imageUrl);
-
-                startActivity(intent);
+                // Pindah ke aktivitas tukardengan atau lakukan tindakan lain yang diperlukan setelah menyimpan data sementara
+                Intent tukarintent = new Intent(desc.this, tukardengan.class);
+                startActivity(tukarintent);
                 finish();
             }
         });
+
+
 
 
         button_back = findViewById(R.id.button_back);
@@ -56,12 +60,6 @@ public class desc extends AppCompatActivity {
             public void onClick(View view) {
                 Intent intent = new Intent(desc.this, beranda.class);
 
-                intent.putExtra("email", email);
-                intent.putExtra("username", username);
-                intent.putExtra("nama", savedName);
-                intent.putExtra("telp", savedTelp);
-                intent.putExtra("addres", savedAddress);
-                intent.putExtra("imageUrl", imageUrl);
 
                 startActivity(intent);
                 finish();
