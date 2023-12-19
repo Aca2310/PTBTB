@@ -7,7 +7,7 @@ public class TawarData {
         private String dataImagePenerima;
 
         private String usernamePenerima;
-        private String user_idPenerima;
+        private String user_idPenerima,status;
         private String user_idTukar, usernameTukar, dataTitleTukar, dataDetailTukar, dataBarterTukar, dataImageTukar;
 
         String key;
@@ -31,7 +31,8 @@ public class TawarData {
     public TawarData(String user_idPenerima, String usernamePenerima, String dataTitlePenerima,
                      String dataDetailPenerima, String dataBarterPenerima, String dataImagePenerima,
                      String user_idTukar, String usernameTukar, String dataTitleTukar,
-                     String dataDetailTukar, String dataBarterTukar, String dataImageTukar) {
+                     String dataDetailTukar, String dataBarterTukar, String dataImageTukar,String status) {
+
 
         this.user_idPenerima = user_idPenerima;
         this.usernamePenerima = usernamePenerima;
@@ -48,6 +49,8 @@ public class TawarData {
         this.dataDetailTukar = dataDetailTukar;
         this.dataBarterTukar = dataBarterTukar;
         this.dataImageTukar = dataImageTukar;
+
+        this.status = status;
     }
 
 
@@ -145,5 +148,13 @@ public class TawarData {
 
     public void setDataImageTukar(String dataImageTukar) {
         this.dataImageTukar = dataImageTukar;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

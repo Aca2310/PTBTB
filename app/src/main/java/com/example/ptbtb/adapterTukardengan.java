@@ -90,9 +90,11 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
                     String usernameTukar = list.get(position).getUsername();
                     String userIdTukar = list.get(position).getUser_id();
 
+                    String status = "pending";
+
                     DatabaseReference tawarRef = FirebaseDatabase.getInstance().getReference("tawar");
 
-                    TawarData tawarData = new TawarData(userId, username, dataTitle, dataDetail, dataBarter, dataImage, userIdTukar, usernameTukar, dataTitleTukar, dataDetailTukar, dataBarterTukar, dataImageTukar);
+                    TawarData tawarData = new TawarData(userId, username, dataTitle, dataDetail, dataBarter, dataImage, userIdTukar, usernameTukar, dataTitleTukar, dataDetailTukar, dataBarterTukar, dataImageTukar,status);
 
                     String tawarKey = tawarRef.push().getKey(); // Mendapatkan kunci unik
                     tawarRef.child(tawarKey).setValue(tawarData);

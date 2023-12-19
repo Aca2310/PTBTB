@@ -6,22 +6,14 @@ import androidx.appcompat.widget.AppCompatImageView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
 
 public class desc_notif extends AppCompatActivity {
 
     AppCompatImageView button_back;
-    Button terimaButton;
-    String key = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +51,6 @@ public class desc_notif extends AppCompatActivity {
             String location = intent.getStringExtra("dataLocationTukar");
             String usernamePenerima = intent.getStringExtra("usernameTukar");
             String dataImage = intent.getStringExtra("dataImageTukar");
-            key = intent.getStringExtra("Key");
 
             if (dataImage != null) {
                 Picasso.get().load(dataImage).into(imageViewTukar);
@@ -89,23 +80,6 @@ public class desc_notif extends AppCompatActivity {
             if (usernamePenerima != null) {
                 usernameText.setText("@" + usernamePenerima);
             }
-
         }
-        
-        terimaButton = findViewById(R.id.terima);
-        terimaButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                updateStatus();
-            }
-
-            private void updateStatus() {
-                if (key != null){
-                    Task<Void> reference = FirebaseDatabase.getInstance().getReference("tawar").child(key).child("status").setValue("diterima");;
-
-                    Toast.makeText(desc_notif.this, "Status Tawaran Diterima", Toast.LENGTH_SHORT).show();
-                }
-            }
-        });
     }
 }
