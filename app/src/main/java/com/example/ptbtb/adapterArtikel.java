@@ -45,6 +45,7 @@ public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.MyViewHo
             intent.putExtra("desc", list.get(position).getDesc());
             intent.putExtra("judul", list.get(position).getJudul());
             intent.putExtra("imageArtikel", list.get(position).getImageArtikel());
+            intent.putExtra("Key", list.get(position).getKey());
             context.startActivity(intent);
         });
 

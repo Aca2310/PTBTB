@@ -183,7 +183,9 @@ public class profile extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     list_profile data = snapshot.getValue(list_profile.class);
+                    data.setKey(snapshot.getKey());
                     list_profiles.add(data);
+
                 }
 
                 // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView

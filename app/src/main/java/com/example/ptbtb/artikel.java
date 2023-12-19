@@ -72,6 +72,7 @@ public class artikel extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     listArtikel data = snapshot.getValue(listArtikel.class);
+                    data.setKey(snapshot.getKey());
                     list.add(data);
                 }
 

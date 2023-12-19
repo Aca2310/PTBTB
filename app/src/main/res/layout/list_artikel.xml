@@ -29,21 +29,12 @@
             <TextView
                 android:id="@+id/judul"
                 android:layout_width="251dp"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:padding="5dp"
                 android:text="Tanam dan Panen Bawang Merah di Polybag"
                 android:textAlignment="viewStart"
                 android:textSize="20sp"
                 android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/subjudul"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="TextView"
-                android:textAlignment="viewStart"
-                android:textSize="15sp" />
 
         </LinearLayout>
 

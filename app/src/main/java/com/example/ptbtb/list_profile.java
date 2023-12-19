@@ -6,11 +6,24 @@ public class list_profile {
     private String dataDetail;
     private String dataBarter;
     private String dataImage;
-
     private String username;
+
+    private String key ;
 
     public  list_profile  (){
 
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public list_profile(String key) {
+        this.key = key;
     }
 
     public String getDataTitle() {
