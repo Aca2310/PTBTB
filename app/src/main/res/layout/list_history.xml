@@ -60,7 +60,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="67dp" />
+                android:layout_height="65dp" />
 
             <Button
                 android:id="@+id/join"
@@ -68,7 +68,8 @@
                 android:layout_height="wrap_content"
                 android:backgroundTint="#9E326C"
                 android:text="@string/idetail"
-                android:textColor="#FFFFFF" />
+                android:textColor="#FFFFFF"
+                android:textSize="10sp" />
         </LinearLayout>
 
     </LinearLayout>
