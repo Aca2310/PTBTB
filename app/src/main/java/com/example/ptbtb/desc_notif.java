@@ -17,7 +17,7 @@ import com.squareup.picasso.Picasso;
 public class desc_notif extends AppCompatActivity {
 
     AppCompatImageView button_back;
-    Button terimaButton,button_tolak, button_wa, button_delet;
+    Button terimaButton,button_tolak, button_wa, button_delete;
     String key = "";
 
 
@@ -177,6 +177,23 @@ public class desc_notif extends AppCompatActivity {
                 }
             }
         });
+
+        button_delete = findViewById(R.id.delet);
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        button_wa = findViewById(R.id.viaWA);
+        button_wa .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
 
     }
 }
