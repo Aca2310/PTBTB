@@ -21,7 +21,7 @@ public class descHistory extends AppCompatActivity {
         Intent intent = getIntent();
 
         button_back = findViewById(R.id.button_back);
-        button_delete = findViewById(R.id.delete);
+        button_delete = findViewById(R.id.button2);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

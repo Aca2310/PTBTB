@@ -4,130 +4,113 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
-    android:backgroundTint="#FFFFFF"
     tools:context=".desc_notif">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:padding="5dp"
         android:src="@drawable/back"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.084"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/imageView3"
-        android:layout_width="81dp"
-        android:layout_height="81dp"
-        android:layout_marginTop="80dp"
-        android:background="@drawable/circular_background"
-        android:scaleType="centerCrop"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="88dp"
         android:src="@drawable/profile"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.096"
+        app:layout_constraintHorizontal_bias="0.098"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="@drawable/circular_background"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/usernameNotif"
-        android:layout_width="193dp"
-        android:layout_height="27dp"
-        android:layout_marginTop="80dp"
+        android:layout_width="262dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="88dp"
         android:text="Mutii"
-        android:textColor="#000000"
         android:textSize="16sp"
-        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.25"
+        app:layout_constraintHorizontal_bias="0.103"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/viaWA"
-        android:layout_width="127dp"
-        android:layout_height="45dp"
-        android:layout_marginTop="5dp"
+        android:layout_width="138dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="8dp"
         android:backgroundTint="#9E326C"
         android:text="Chat via WA"
-        android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.151"
+        app:layout_constraintHorizontal_bias="0.162"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
         app:layout_constraintTop_toBottomOf="@+id/usernameNotif" />
 
     <TextView
         android:id="@+id/Barter"
-        android:layout_width="0dp"
-        android:layout_height="22dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="Barter dengan :"
-        android:textColor="#063A38"
+        android:text="Barter dengan"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.446"
+        app:layout_constraintHorizontal_bias="0.077"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout4" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_width="413dp"
+        android:layout_height="80dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout3"
-        app:layout_constraintVertical_bias="0.649">
+        app:layout_constraintVertical_bias="0.813">
 
         <Button
             android:id="@+id/delet"
             android:layout_width="109dp"
             android:layout_height="48dp"
-            android:layout_marginStart="25dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginBottom="40dp"
             android:backgroundTint="#9E326C"
-            android:text="Delete"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:text="Delete" />
 
         <Button
             android:id="@+id/tolak"
             android:layout_width="109dp"
             android:layout_height="48dp"
-            android:layout_margin="15dp"
-            android:backgroundTint="#A12017"
-
-            android:text="Tolak"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:layout_marginStart="15dp"
+            android:layout_marginEnd="15dp"
+            android:backgroundTint="#9E326C"
+            android:text="Tolak" />
 
         <Button
             android:id="@+id/terima"
             android:layout_width="109dp"
             android:layout_height="48dp"
-            android:layout_marginRight="25dp"
-            android:backgroundTint="#014A59"
-            android:text="Terima"
-            android:textColor="#FFFFFF"
-            android:textColorHint="#FFFFFF" />
+            android:layout_marginEnd="24dp"
+            android:layout_marginBottom="36dp"
+            android:backgroundTint="#9E326C"
+            android:text="Terima" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
-        android:layout_width="0dp"
+        android:layout_width="351dp"
         android:layout_height="174dp"
         android:layout_marginTop="12dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.48"
@@ -136,14 +119,15 @@
 
         <ImageView
             android:id="@+id/namaTumbuhan2"
-            android:layout_width="124dp"
-            android:layout_height="match_parent"
+            android:layout_width="120dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/anngrek" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="223dp"
+            android:layout_height="158dp"
             android:layout_marginStart="20dp"
             android:orientation="vertical">
 
@@ -161,7 +145,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/detail"
-                android:textColor="#000000"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -169,10 +152,8 @@
                 android:id="@+id/textView13"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="5dp"
                 android:text="TextView"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+                android:textSize="10sp" />
 
             <TextView
                 android:id="@+id/lokasiNotif1"
@@ -180,28 +161,22 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Location"
-                android:textColor="#000000"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/lokasi2"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="5dp"
-                android:text="Padang, Sumatra Barat"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+                android:layout_height="42dp"
+                android:text="Padang, Sumatra Barat" />
         </LinearLayout>
 
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout4"
-        android:layout_width="0dp"
+        android:layout_width="364dp"
         android:layout_height="170dp"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="28dp"
-        android:layout_marginEnd="20dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -209,21 +184,22 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="124dp"
-            android:layout_height="match_parent"
+            android:layout_width="120dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="10dp"
             android:scaleType="centerCrop"
             android:src="@drawable/anngrek" />
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="236dp"
+            android:layout_height="156dp"
             android:layout_marginStart="20dp"
             android:orientation="vertical">
 
             <TextView
                 android:id="@+id/namaTumbuhan"
                 android:layout_width="match_parent"
-                android:layout_height="41dp"
+                android:layout_height="40dp"
                 android:text="Anggrek"
                 android:textColor="#014A59"
                 android:textSize="20sp"
@@ -234,7 +210,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/detail"
-                android:textColor="#000000"
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
@@ -242,9 +217,7 @@
                 android:id="@+id/textView"
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
-                android:layout_marginTop="5dp"
                 android:text="TextView"
-                android:textColor="#000000"
                 android:textSize="12sp" />
 
             <TextView
@@ -253,17 +226,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:text="Location"
-                android:textColor="#000000"
                 android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/textView15"
                 android:layout_width="match_parent"
-                android:layout_height="29dp"
-                android:layout_marginTop="5dp"
-                android:text="Padang, Sumatra Barat"
-                android:textColor="#000000"
-                android:textSize="12sp" />
+                android:layout_height="wrap_content"
+                android:text="Padang, Sumatra Barat" />
         </LinearLayout>
 
     </LinearLayout>

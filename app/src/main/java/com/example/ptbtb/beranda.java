@@ -35,26 +35,12 @@ public class beranda extends AppCompatActivity {
 
 
         Intent intent = getIntent();
-        String email = intent.getStringExtra("email");
-        String username = intent.getStringExtra("username");
-        String savedName = intent.getStringExtra("nama");
-        String savedAddress = intent.getStringExtra("addres");
-        String savedTelp = intent.getStringExtra("telp");
-        String imageUrl = intent.getStringExtra("imageUrl");
 
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(beranda.this, Home.class);
-
-                intent.putExtra("email", email);
-                intent.putExtra("username", username);
-                intent.putExtra("nama", savedName);
-                intent.putExtra("telp", savedTelp);
-                intent.putExtra("addres", savedAddress);
-                intent.putExtra("imageUrl", imageUrl);
-
                 startActivity(intent);
                 finish();
             }

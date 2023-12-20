@@ -6,20 +6,21 @@ public class list_tukardengan {
     private String dataBarter;
     private String dataImage;
     private String username;
-    private String dataDetail;
+    private String dataDetail, status;
 
 
     public list_tukardengan() {
 
     }
 
-    public list_tukardengan(String dataTitle, String dataBarter, String dataImage, String user_id, String username, String dataDetail) {
+    public list_tukardengan(String dataTitle, String dataBarter, String dataImage, String user_id, String username, String dataDetail, String status) {
         this.user_id = user_id;
         this.dataTitle = dataTitle;
         this.dataBarter = dataBarter;
         this.dataImage = dataImage;
         this.username = username;
         this.dataDetail = dataDetail;
+        this.status = status;
 
     }
 
@@ -66,4 +67,5 @@ public class list_tukardengan {
     public void setDataDetail(String dataDetail) {
         this.dataDetail = dataDetail;
     }
+
 }
