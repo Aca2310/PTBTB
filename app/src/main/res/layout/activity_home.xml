@@ -7,32 +7,15 @@
     android:background="#FFFFFF"
     tools:context=".Home">
 
-    <EditText
-        android:id="@+id/search"
-        android:layout_width="323dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="200dp"
-        android:background="@drawable/search_background"
-        android:drawablePadding="16sp"
-        android:ems="10"
-        android:hint="@string/search"
-        android:inputType="text"
-        android:padding="16sp"
-        android:textColor="@color/black"
-        android:textColorHint="@color/black"
-        android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginTop="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/search">
+        app:layout_constraintTop_toBottomOf="@+id/imageView23">
 
         <TableLayout
             android:layout_width="match_parent"
@@ -61,19 +44,20 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/white_btn_background"
-                        tools:layout_editor_absoluteX="54dp"
-                        tools:layout_editor_absoluteY="16dp">
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="0dp">
 
                         <ImageView
                             android:id="@+id/imageBarter"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:layout_margin="15dp"
                             android:src="@drawable/plant"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintVertical_bias="0.466" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -85,15 +69,15 @@
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
-                        tools:layout_editor_absoluteX="54dp"
-                        tools:layout_editor_absoluteY="95dp" />
+                        tools:layout_editor_absoluteX="0dp"
+                        tools:layout_editor_absoluteY="104dp" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
+                    android:layout_margin="25dp"
                     android:orientation="vertical"
                     tools:layout_editor_absoluteX="166dp"
                     tools:layout_editor_absoluteY="16dp">
@@ -105,48 +89,10 @@
 
                         <ImageView
                             android:id="@+id/imageNotif"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:layout_margin="15dp"
                             android:src="@drawable/bell"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
-
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <TextView
-                        android:id="@+id/textCommunity"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="Notifikasi"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="18sp" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="20dp"
-                    android:orientation="vertical"
-                    tools:layout_editor_absoluteX="277dp"
-                    tools:layout_editor_absoluteY="16dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:background="@drawable/white_btn_background">
-
-                        <ImageView
-                            android:id="@+id/imgArtikel"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
-                            android:layout_margin="15dp"
-                            android:src="@drawable/file"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -155,16 +101,16 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textArticle"
+                        android:id="@+id/textCommunity"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/article"
+                        android:layout_marginTop="5dp"
+                        android:text="Notifikasi"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp" />
 
                 </LinearLayout>
-
             </TableRow>
 
             <TableRow
@@ -191,15 +137,14 @@
 
                         <ImageView
                             android:id="@+id/imageHistory"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:layout_margin="15dp"
                             android:src="@drawable/history"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -207,6 +152,7 @@
                         android:id="@+id/textHistory"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="@string/history"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -229,16 +175,62 @@
                         android:background="@drawable/white_btn_background">
 
                         <ImageView
+                            android:id="@+id/imgArtikel"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
+                            android:layout_margin="15dp"
+                            android:src="@drawable/file"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/textArticle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:text="@string/article"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="18sp" />
+
+                </LinearLayout>
+
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="20dp"
+                    android:orientation="vertical"
+                    tools:layout_editor_absoluteX="277dp"
+                    tools:layout_editor_absoluteY="16dp">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/white_btn_background">
+
+                        <ImageView
                             android:id="@+id/imageProfile"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:layout_margin="15dp"
                             android:src="@drawable/user"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -246,6 +238,7 @@
                         android:id="@+id/textProfile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="@string/profile"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -253,6 +246,7 @@
                         tools:ignore="DuplicateIds" />
 
                 </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -268,15 +262,14 @@
 
                         <ImageView
                             android:id="@+id/imageLogout"
-                            android:layout_width="50dp"
-                            android:layout_height="50dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:layout_margin="15dp"
                             android:src="@drawable/arrow"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            />
+                            app:layout_constraintTop_toTopOf="parent" />
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -284,6 +277,7 @@
                         android:id="@+id/textLogout"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
                         android:text="Logout"
                         android:textAlignment="center"
                         android:textColor="@color/black"
@@ -300,8 +294,9 @@
         android:id="@+id/imageView23"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/search"
+        android:layout_marginTop="64dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/bplant" />

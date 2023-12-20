@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FDE0DA"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -33,6 +34,7 @@
                 android:padding="5dp"
                 android:text="Lidah buaya"
                 android:textAlignment="viewStart"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
@@ -40,11 +42,10 @@
                 android:id="@+id/button_tukar"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="5dp"
+                android:layout_marginTop="30dp"
                 android:backgroundTint="#9E326C"
-                android:text="Tukar" />
+                android:text="Tukar"
+                android:textColor="#FFFFFF" />
 
 
         </LinearLayout>

@@ -49,6 +49,7 @@
                     android:layout_marginBottom="8dp"
                     android:gravity="center"
                     android:text="@string/khairinn"
+                    android:textColor="#063A38"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@+id/imageView8"
@@ -109,7 +110,8 @@
                         android:ems="10"
                         android:hint="@string/username"
                         android:inputType="text"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/namaRegist"
@@ -123,7 +125,8 @@
                         android:ems="10"
                         android:hint="@string/namaa"
                         android:inputType="text"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/email"
@@ -136,7 +139,8 @@
                         android:background="@drawable/white_btn_background"
                         android:ems="10"
                         android:hint="@string/email"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/telp"
@@ -149,7 +153,8 @@
                         android:background="@drawable/white_btn_background"
                         android:ems="10"
                         android:hint="@string/telp"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:textColor="#000000" />
 
                     <EditText
                         android:id="@+id/Address"
@@ -163,7 +168,8 @@
                         android:ems="10"
                         android:hint="@string/address"
                         android:inputType="text"
-                        android:padding="10dp" />
+                        android:padding="10dp"
+                        android:textColor="#000000" />
 
                     <Button
                         android:id="@+id/save_edit"
@@ -174,7 +180,8 @@
                         android:layout_marginEnd="32dp"
                         android:layout_marginBottom="10dp"
                         android:backgroundTint="#9E326C"
-                        android:text="@string/save" />
+                        android:text="@string/save"
+                        android:textColor="#FFFFFF" />
 
 
                 </LinearLayout>

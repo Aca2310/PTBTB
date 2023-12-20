@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     tools:context=".newpost">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -40,20 +40,21 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
+            android:id="@+id/uploadImage"
             android:layout_width="110dp"
             android:layout_height="110dp"
-            android:src="@drawable/imageup"
-            android:id="@+id/uploadImage"
-            android:layout_marginTop="1dp"
             android:layout_gravity="center"
-            android:scaleType="fitXY"/>
+            android:layout_marginTop="1dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/imageup" />
+
         <ProgressBar
+            android:id="@+id/progressBar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/progressBar"
             android:layout_gravity="center"
             android:indeterminateTint="@color/pinkk"
-            android:visibility="invisible"/>
+            android:visibility="invisible" />
 
         <TextView
             android:id="@+id/textViewTitle"
@@ -67,62 +68,60 @@
             android:id="@+id/Nptitle"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:ems="10"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:padding="12dp"
             android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/input_title_postingan"
             android:inputType="text"
-            android:hint ="@string/input_title_postingan"
-            />
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/textViewDetail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/detail"
             android:layout_marginTop="20dp"
-            android:textSize="20sp"
-            />
+            android:text="@string/detail"
+            android:textSize="20sp" />
 
         <EditText
             android:id="@+id/Npdetail"
             android:layout_width="match_parent"
             android:layout_height="130dp"
-            android:ems="10"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:padding="12dp"
             android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/detail_postingan"
             android:inputType="text"
-            android:hint ="@string/detail_postingan"
-            />
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
+
         <TextView
             android:id="@+id/textViewBarter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Barter"
             android:layout_marginTop="20dp"
+            android:text="Barter"
             android:textSize="20sp" />
 
         <EditText
             android:id="@+id/Npbarter"
             android:layout_width="match_parent"
             android:layout_height="50dp"
-            android:ems="10"
-            android:textSize="18sp"
-            android:textColor="#000000"
-            android:padding="12dp"
             android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="@string/request_barter"
             android:inputType="text"
-            android:hint ="@string/request_barter"
-            />
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <Button
             android:id="@+id/buttonup"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="#9E326C"
             android:layout_marginTop="20dp"
+            android:backgroundTint="#9E326C"
             android:text="@string/upload" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

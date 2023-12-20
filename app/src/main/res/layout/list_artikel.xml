@@ -12,6 +12,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#FDE0DA"
         android:orientation="horizontal"
         android:padding="10dp">
 
@@ -33,6 +34,7 @@
                 android:padding="5dp"
                 android:text="Tanam dan Panen Bawang Merah di Polybag"
                 android:textAlignment="viewStart"
+                android:textColor="#000000"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
