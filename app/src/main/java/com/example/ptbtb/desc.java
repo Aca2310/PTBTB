@@ -30,8 +30,15 @@ public class desc extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc);
 
+
         Intent intent = getIntent();
+        String email = intent.getStringExtra("email");
         String username = intent.getStringExtra("username");
+        String savedName = intent.getStringExtra("nama");
+        String savedAddress = intent.getStringExtra("addres");
+        String savedTelp = intent.getStringExtra("telp");
+        String imageUrl = intent.getStringExtra("imageUrl");
+        String user_id = intent.getStringExtra("user_id");
 
         button_tukar = findViewById(R.id.button_tukar);
         button_tukar.setOnClickListener(new View.OnClickListener() {
@@ -99,6 +106,24 @@ public class desc extends AppCompatActivity {
             }
             if (username != null) {
                 usernameInfo.setText("@"+username);
+
+                // Menambahkan OnClickListener ke TextView untuk membuka profilpenukar
+                usernameInfo.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent profileIntent = new Intent(desc.this, ProfilPenukar.class);
+
+                        // Mengirim data pengguna ke profilpenukar
+                        profileIntent.putExtra("user_id", user_id);
+                        profileIntent.putExtra("nama", savedName);
+                        profileIntent.putExtra("username", username);
+                        profileIntent.putExtra("telp", savedTelp);
+                        profileIntent.putExtra("email", email);
+                        profileIntent.putExtra("addres", savedAddress);
+                        profileIntent.putExtra("imageUrl", imageUrl);
+
+                        startActivity(profileIntent);                    }
+                });
             }
         }
     }

@@ -18,11 +18,11 @@ import java.util.ArrayList;
 
 public class adapterProfilPenukar extends RecyclerView.Adapter<adapterProfilPenukar.ViewHolder> {
 
-    private ArrayList<list_profile> list_profiles;
+    private ArrayList<com.example.ptbtb.list_profilpenukar> list_profilpenukar;
     private Context context;
 
-    public adapterProfilPenukar(ArrayList<list_profilpenukar> list_profiles, Context context) {
-        this.list_profiles = list_profiles;
+    public adapterProfilPenukar(ArrayList<com.example.ptbtb.list_profilpenukar> list_profilpenukar, Context context) {
+        this.list_profilpenukar = list_profilpenukar;
         this.context = context;
     }
 
@@ -37,20 +37,20 @@ public class adapterProfilPenukar extends RecyclerView.Adapter<adapterProfilPenu
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
 
         Picasso.get()
-                .load(list_profiles.get(position).getDataImage())
-                .placeholder(R.drawable.dara) // Placeholder sementara gambar dimuat
+                .load(list_profilpenukar.get(position).getDataImage())
+                .placeholder(R.drawable.dara)
                 .into(holder.imageView);
 
-        holder.textView.setText(list_profiles.get(position).getDataTitle());
+        holder.textView.setText(list_profilpenukar.get(position).getDataTitle());
 
         holder.cardView.setOnClickListener(e -> {
-            Intent intent = new Intent(context, desctp.class);
-            intent.putExtra("user_id", list_profiles.get(position).getUser_id());
-            intent.putExtra("username", list_profiles.get(position).getUsername());
-            intent.putExtra("dataTitle", list_profiles.get(position).getDataTitle());
-            intent.putExtra("dataDetail", list_profiles.get(position).getDataDetail());
-            intent.putExtra("dataBarter", list_profiles.get(position).getDataBarter());
-            intent.putExtra("dataImage", list_profiles.get(position).getDataImage());
+            Intent intent = new Intent(context, descpp.class);
+            intent.putExtra("user_id", list_profilpenukar.get(position).getUser_id());
+            intent.putExtra("username", list_profilpenukar.get(position).getUsername());
+            intent.putExtra("dataTitle", list_profilpenukar.get(position).getDataTitle());
+            intent.putExtra("dataDetail", list_profilpenukar.get(position).getDataDetail());
+            intent.putExtra("dataBarter", list_profilpenukar.get(position).getDataBarter());
+            intent.putExtra("dataImage", list_profilpenukar.get(position).getDataImage());
             context.startActivity(intent);
         });
 
@@ -58,7 +58,7 @@ public class adapterProfilPenukar extends RecyclerView.Adapter<adapterProfilPenu
 
     @Override
     public int getItemCount() {
-        return list_profiles.size();
+        return list_profilpenukar.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

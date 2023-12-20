@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PTBTB"
         tools:targetApi="31">
         <activity
+            android:name=".descpp"
+            android:exported="false" />
+        <activity
             android:name=".list_profilpenukar"
             android:exported="false" />
         <activity
