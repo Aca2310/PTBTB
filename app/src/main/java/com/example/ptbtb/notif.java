@@ -63,6 +63,7 @@ public class notif extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     TawarData data = snapshot.getValue(TawarData.class);
+                    data.setKey(snapshot.getKey());
                     listTawardata.add(data);
                 }
 

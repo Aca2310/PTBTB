@@ -10,10 +10,23 @@ public class TawarData {
         private String user_idPenerima;
         private String user_idTukar, usernameTukar, dataTitleTukar, dataDetailTukar, dataBarterTukar, dataImageTukar;
 
+        String key;
+
         public TawarData() {
             // Konstruktor kosong diperlukan untuk Firebase
         }
 
+    public TawarData(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public TawarData(String user_idPenerima, String usernamePenerima, String dataTitlePenerima,
                      String dataDetailPenerima, String dataBarterPenerima, String dataImagePenerima,

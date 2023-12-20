@@ -59,6 +59,7 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
             intent.putExtra("dataDetailTukar", listTawardata.get(position).getDataDetailTukar());
             intent.putExtra("dataBarterTukar", listTawardata.get(position).getDataBarterTukar());
             intent.putExtra("dataImageTukar", listTawardata.get(position).getDataImageTukar());
+            intent.putExtra("Key",listTawardata.get(position).getKey());
 
             context.startActivity(intent);
         });
