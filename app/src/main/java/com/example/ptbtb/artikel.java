@@ -3,10 +3,12 @@ package com.example.ptbtb;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -17,14 +19,18 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class artikel extends AppCompatActivity {
 
     private ArrayList<listArtikel> list;
     private RecyclerView recyclerView;
-
+    private SearchView searchView;
+    DatabaseReference reference;
     ValueEventListener eventListener;
     AppCompatImageView button_back;
+
+
 
 
     @Override
@@ -49,6 +55,22 @@ public class artikel extends AppCompatActivity {
 
         list = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("artikel");
+        searchView = findViewById(R.id.searchView);
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Tidak melakukan apa-apa saat pengguna menekan tombol "Enter" pada keyboard
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Memanggil metode filter pada adapter saat teks pencarian berubah
+                adapterArtikel.filter(newText);
+                return true;
+            }
+        });
 
         eventListener = reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -63,7 +85,7 @@ public class artikel extends AppCompatActivity {
 
                 // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView
                 adapterArtikel adapterArtikel = new adapterArtikel(artikel.this, list);
-                recyclerView.setAdapter(adapterArtikel );
+                recyclerView.setAdapter(adapterArtikel);
             }
 
             @Override
@@ -72,4 +94,6 @@ public class artikel extends AppCompatActivity {
             }
         });
     }
-}
+
+    }
+

@@ -8,6 +8,19 @@ public class DataClass {
     private String dataImage;
 
     private String username;
+    private String key;
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public DataClass() {
+        // Diperlukan untuk Firebase Database
+    }
     public String getDataTitle() {
         return dataTitle;
     }
