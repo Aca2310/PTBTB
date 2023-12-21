@@ -56,6 +56,8 @@ public class notif extends AppCompatActivity {
         String loggedInUserId = currentUser.getUid();
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("tawar");
 
+        // ...
+
         eventListener = databaseReference.orderByChild("user_idPenerima").equalTo(loggedInUserId).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -63,13 +65,16 @@ public class notif extends AppCompatActivity {
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     TawarData data = snapshot.getValue(TawarData.class);
-                    data.setKey(snapshot.getKey());
-                    listTawardata.add(data);
+
+                    // Filter data berdasarkan status "pending"
+                    if (data != null && "pending".equals(data.getStatus())) {
+                        data.setKey(snapshot.getKey());
+                        listTawardata.add(data);
+                    }
                 }
 
                 adapter adapter = new adapter(listTawardata, notif.this);
                 recyclerView.setAdapter(adapter);
-
             }
 
             @Override
