@@ -9,9 +9,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.squareup.picasso.Picasso;
 
 public class desc_artikel extends AppCompatActivity {
     AppCompatImageView button_back;
+    String key ;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -48,18 +52,16 @@ public class desc_artikel extends AppCompatActivity {
         });
 
         ImageView imageView = findViewById(R.id.imageArtikel);
-        TextView titleTextView = findViewById(R.id.judul);  // Gunakan ID yang sesuai
-
-        if (intent != null) {
-            int imageId = intent.getIntExtra("image", -1);  // Gunakan kunci yang benar
-            String title = intent.getStringExtra("title");    // Gunakan kunci yang benar
-
-            if (imageId != -1) {
-                imageView.setImageResource(imageId);
-            }
-            if (title != null) {
-                titleTextView.setText(title);
-            }
+        TextView titleTextView = findViewById(R.id.nama_artikel);  // Gunakan ID yang sesuai
+        TextView descTextView = findViewById(R.id.tentang);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null){
+            titleTextView.setText(bundle.getString("judul"));
+            descTextView.setText(bundle.getString("desc"));
+            key = bundle.getString("Key");
+            Picasso.get().load(bundle.getString("imageArtikel")).into(imageView);
+        }else{
+            Toast.makeText(desc_artikel.this, "null", Toast.LENGTH_SHORT).show();
         }
     }
 }
