@@ -1,7 +1,10 @@
 package com.example.ptbtb;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.squareup.picasso.Picasso;
+import android.app.AlertDialog;
 
 public class desc_notif extends AppCompatActivity {
 
@@ -127,7 +131,7 @@ public class desc_notif extends AppCompatActivity {
 
                     historyReference.child(historyKey).setValue(historyItem);
 
-                    Toast.makeText(desc_notif.this, "Status Tawaran Diterima", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(desc_notif.this, "Status Tawaran Ditolak", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -177,22 +181,74 @@ public class desc_notif extends AppCompatActivity {
                 }
             }
         });
-
         button_delete = findViewById(R.id.delet);
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                // Show a confirmation dialog before deleting
+                showDeleteConfirmationDialog();
+            }
 
+            private void showDeleteConfirmationDialog() {
+                AlertDialog.Builder builder = new AlertDialog.Builder(desc_notif.this);
+                builder.setTitle("Confirmation")
+                        .setMessage("Are you sure you want to delete this data?")
+                        .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Call a method to delete the data
+                                deleteData();
+                            }
+                        })
+                        .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                // Dismiss the dialog if "No" is clicked
+                                dialog.dismiss();
+                            }
+                        })
+                        .show();
+            }
+
+            private void deleteData() {
+                if (key != null) {
+                    // Remove the data from the "tawar" node
+                    DatabaseReference tawarReference = FirebaseDatabase.getInstance().getReference("tawar").child(key);
+                    tawarReference.removeValue();
+
+                    Toast.makeText(desc_notif.this, "Data Deleted", Toast.LENGTH_SHORT).show();
+
+                    navigateToNotifPage();
+                }
+            }
+
+            private void navigateToNotifPage() {
+                Intent intent = new Intent(desc_notif.this, notif.class);
+                startActivity(intent);
+                finish();
             }
         });
+
 
         button_wa = findViewById(R.id.viaWA);
-        button_wa .setOnClickListener(new View.OnClickListener() {
+        button_wa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                String phoneNumber = "6285263684214";
+                String message = "Halo saya dari bplant, ingin melakukan penawaran terkait dengan tumbuhan anda";
 
+                // Create a Uri for the WhatsApp API
+                String uri = "https://api.whatsapp.com/send?phone=" + phoneNumber + "&text=" + Uri.encode(message);
+
+                // Create an Intent with the Uri
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(uri));
+
+                // Start the activity to open WhatsApp
+                startActivity(intent);
             }
         });
+
 
 
     }

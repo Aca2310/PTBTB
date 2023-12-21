@@ -72,9 +72,9 @@
             <TextView
                 android:id="@+id/textView6"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="3dp"
+                android:layout_height="73dp"
                 android:layout_marginStart="20dp"
+                android:layout_marginTop="3dp"
                 android:text="Maggi Noodles \nWater\nMaggi Masala"
                 android:textColor="#000000" />
 
@@ -110,7 +110,7 @@
             <TextView
                 android:id="@+id/textView8"
                 android:layout_width="300dp"
-                android:layout_height="wrap_content"
+                android:layout_height="69dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="3dp"
                 android:text="Maggi Noodles \nWater\nMaggi Masala"
@@ -119,7 +119,7 @@
             <TextView
                 android:id="@+id/textView10"
                 android:layout_width="match_parent"
-                android:layout_height="20dp"
+                android:layout_height="41dp"
                 android:layout_marginTop="20dp"
                 android:text="@ khairin"
                 android:textColor="#000000"

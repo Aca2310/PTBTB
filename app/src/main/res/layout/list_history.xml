@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="163dp"
         android:background="#FDE0DA"
         android:orientation="horizontal"
         android:padding="10dp">
@@ -49,7 +49,25 @@
                 android:text="TextView"
                 android:textAlignment="viewStart"
                 android:textColor="#000000"
-                android:textSize="15sp" />
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/subjudul2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="TextView"
+                android:textAlignment="viewStart"
+                android:textColor="#6B000000"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/join"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#9E326C"
+                android:text="@string/idetail"
+                android:textColor="#FFFFFF" />
 
         </LinearLayout>
 
@@ -62,13 +80,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="67dp" />
 
-            <Button
-                android:id="@+id/join"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="#9E326C"
-                android:text="@string/idetail"
-                android:textColor="#FFFFFF" />
         </LinearLayout>
 
     </LinearLayout>

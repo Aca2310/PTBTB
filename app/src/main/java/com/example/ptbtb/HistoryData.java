@@ -1,5 +1,9 @@
 package com.example.ptbtb;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
 public class HistoryData {
     private String dataTitlePenerima;
     private String dataDetailPenerima;
@@ -10,9 +14,23 @@ public class HistoryData {
     private String user_idPenerima,status;
     private String user_idTukar, usernameTukar, dataTitleTukar, dataDetailTukar, dataBarterTukar, dataImageTukar;
     private  String id;
+    private String date;
 
+    String key;
     public HistoryData() {
         // Konstruktor kosong diperlukan untuk Firebase
+    }
+
+    public HistoryData(String key) {
+        this.key = key;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
 
@@ -39,6 +57,22 @@ public class HistoryData {
         this.dataImageTukar = dataImageTukar;
 
         this.status = status;
+
+        this.date = getCurrentDate();
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    private String getCurrentDate() {
+        // Get the current time in milliseconds
+        long currentTimeMillis = System.currentTimeMillis();
+
+        // Convert it to a readable date format (you can customize the format)
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Date currentDate = new Date(currentTimeMillis);
+        return dateFormat.format(currentDate);
     }
 
 
