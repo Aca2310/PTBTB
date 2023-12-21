@@ -20,7 +20,6 @@ public class adapterProfile extends RecyclerView.Adapter<adapterProfile.ViewHold
 
     private ArrayList<list_profile> list_profiles;
     private Context context;
-    String key ;
 
     public adapterProfile(ArrayList<list_profile> list_profiles, Context context) {
         this.list_profiles = list_profiles;
@@ -52,7 +51,6 @@ public class adapterProfile extends RecyclerView.Adapter<adapterProfile.ViewHold
             intent.putExtra("dataDetail", list_profiles.get(position).getDataDetail());
             intent.putExtra("dataBarter", list_profiles.get(position).getDataBarter());
             intent.putExtra("dataImage", list_profiles.get(position).getDataImage());
-            intent.putExtra("Key",list_profiles.get(position).getKey());
             context.startActivity(intent);
         });
 

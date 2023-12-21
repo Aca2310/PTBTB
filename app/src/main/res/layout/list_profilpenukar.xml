@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".list_profilpenukar">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
@@ -24,9 +25,8 @@
                 android:id="@+id/imageView"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
-                android:background="#FDE0DA"
                 android:padding="20dp"
-                android:src="@drawable/lidahbuaya" />
+                android:src="@drawable/aglonema" />
 
             <TextView
                 android:id="@+id/textView"
@@ -42,4 +42,5 @@
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>

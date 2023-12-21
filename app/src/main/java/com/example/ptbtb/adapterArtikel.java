@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -19,10 +20,36 @@ import java.util.ArrayList;
 public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.MyViewHolder> {
     private Context context;
     private ArrayList<listArtikel> list;
+
+    static SearchView searchView;
+
     public adapterArtikel(Context context, ArrayList<listArtikel> list){
         this.context = context;
         this.list = list;
     }
+
+    public static void filter(String newText) {
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                // Tidak melakukan apa-apa saat pengguna menekan tombol "Enter" pada keyboard
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                // Memanggil metode filter pada adapter saat teks pencarian berubah
+                adapterArtikel.filter(newText);
+                return true;
+            }
+        });
+    }
+
+    public void filterList(ArrayList<listArtikel> filteredList) {
+        this.list = filteredList;
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
@@ -45,7 +72,6 @@ public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.MyViewHo
             intent.putExtra("desc", list.get(position).getDesc());
             intent.putExtra("judul", list.get(position).getJudul());
             intent.putExtra("imageArtikel", list.get(position).getImageArtikel());
-            intent.putExtra("Key", list.get(position).getKey());
             context.startActivity(intent);
         });
 

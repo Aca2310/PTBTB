@@ -4,20 +4,24 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.os.Bundle;
+import android.content.Intent;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class desc_artikel extends AppCompatActivity {
+import com.squareup.picasso.Picasso;
+
+public class descpp extends AppCompatActivity {
     AppCompatImageView button_back;
+    Button button_edit;
 
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_desc_artikel);
+        setContentView(R.layout.activity_descpp);
 
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
@@ -27,12 +31,11 @@ public class desc_artikel extends AppCompatActivity {
         String savedTelp = intent.getStringExtra("telp");
         String imageUrl = intent.getStringExtra("imageUrl");
 
-
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(desc_artikel.this, artikel.class);
+                Intent intent = new Intent(descpp.this, profile.class);
 
                 intent.putExtra("email", email);
                 intent.putExtra("username", username);
@@ -43,22 +46,38 @@ public class desc_artikel extends AppCompatActivity {
 
                 startActivity(intent);
                 finish();
-
             }
         });
 
-        ImageView imageView = findViewById(R.id.imageArtikel);
-        TextView titleTextView = findViewById(R.id.judul);  // Gunakan ID yang sesuai
+        ImageView imageView = findViewById(R.id.imageViewD);
+        TextView titleTextView = findViewById(R.id.judul);
+        TextView detailTextView = findViewById(R.id.textViewDetail);
+        TextView locationTextView = findViewById(R.id.textViewLocation);
+        TextView barterInfoTextView = findViewById(R.id.textViewBarter);
+
 
         if (intent != null) {
-            int imageId = intent.getIntExtra("image", -1);  // Gunakan kunci yang benar
-            String title = intent.getStringExtra("title");    // Gunakan kunci yang benar
+            String title = intent.getStringExtra("dataTitle");
+            String detail = intent.getStringExtra("dataDetail");
+            String location = intent.getStringExtra("dataLocation");
+            String barterInfo = intent.getStringExtra("dataBarter");
+            String dataImage = intent.getStringExtra("dataImage");
 
-            if (imageId != -1) {
-                imageView.setImageResource(imageId);
+            if (dataImage != null) {
+                Picasso.get().load(dataImage).into(imageView);
             }
+
             if (title != null) {
                 titleTextView.setText(title);
+            }
+            if (detail != null) {
+                detailTextView.setText(detail);
+            }
+            if (location != null) {
+                locationTextView.setText(location);
+            }
+            if (barterInfo != null) {
+                barterInfoTextView.setText(barterInfo);
             }
         }
     }

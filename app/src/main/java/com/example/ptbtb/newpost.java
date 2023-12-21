@@ -153,7 +153,7 @@ public class newpost extends AppCompatActivity {
                 String detail = Npdetail.getText().toString();
                 String barter = Npbarter.getText().toString();
 
-                list_profile dataClass = new list_profile(user_id, username, title, detail, barter, imageURL);
+                DataClass dataClass = new DataClass(user_id, username, title, detail, barter, imageURL);
 
                 DatabaseReference postReference = FirebaseDatabase.getInstance().getReference("Postingan").push();
                 postReference.setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
