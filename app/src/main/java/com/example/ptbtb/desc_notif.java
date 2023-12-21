@@ -1,8 +1,6 @@
 package com.example.ptbtb;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +17,7 @@ import com.squareup.picasso.Picasso;
 public class desc_notif extends AppCompatActivity {
 
     AppCompatImageView button_back;
-    Button terimaButton;
+    Button terimaButton,button_tolak, button_wa, button_delete;
     String key = "";
 
 
@@ -27,7 +25,6 @@ public class desc_notif extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_desc_notif);
-
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,7 +34,6 @@ public class desc_notif extends AppCompatActivity {
                 finish();
             }
         });
-
         ImageView imagePenerima = findViewById(R.id.imageView4);
         TextView titlePenerima = findViewById(R.id.namaTumbuhan);
         TextView detailPenerima = findViewById(R.id.textView);
@@ -47,7 +43,6 @@ public class desc_notif extends AppCompatActivity {
         TextView detailTukar = findViewById(R.id.textView13);
         TextView locationTukar = findViewById(R.id.lokasi2);
         TextView usernameText = findViewById(R.id.usernameNotif);
-
         Intent intent = getIntent();
         if (intent != null) {
             String DatatitlePenerima = intent.getStringExtra("dataTitlePenerima");
@@ -67,7 +62,6 @@ public class desc_notif extends AppCompatActivity {
             if (dataImagePenerima != null) {
                 Picasso.get().load(dataImagePenerima).into(imagePenerima);
             }
-
             if (title != null) {
                 titleTukar.setText(title);
             }
@@ -91,21 +85,115 @@ public class desc_notif extends AppCompatActivity {
             }
 
         }
-        
-        terimaButton = findViewById(R.id.terima);
-        terimaButton.setOnClickListener(new View.OnClickListener() {
+
+        button_tolak = findViewById(R.id.tolak);
+        button_tolak.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 updateStatus();
+                navigateToNotifPage();
+            }
+            private void navigateToNotifPage() {
+                Intent intent = new Intent(desc_notif.this, notif.class);
+                startActivity(intent);
+                finish();
             }
 
             private void updateStatus() {
-                if (key != null){
-                    Task<Void> reference = FirebaseDatabase.getInstance().getReference("tawar").child(key).child("status").setValue("diterima");;
+                if (key != null) {
+                    // Update the status in the "tawar" node
+                    DatabaseReference tawarReference = FirebaseDatabase.getInstance().getReference("tawar").child(key);
+                    tawarReference.child("status").setValue("tolak");
+
+                    // Save data in history
+                    DatabaseReference historyReference = FirebaseDatabase.getInstance().getReference("history");
+                    String historyKey = historyReference.push().getKey();
+
+                    HistoryData historyItem = new HistoryData(
+                            getIntent().getStringExtra("user_idPenerima"),
+                            getIntent().getStringExtra("usernamePenerima"),
+                            getIntent().getStringExtra("dataTitlePenerima"),
+                            getIntent().getStringExtra("dataDetailPenerima"),
+                            getIntent().getStringExtra("dataBarterPenerima"),
+                            getIntent().getStringExtra("dataImagePenerima"),
+                            getIntent().getStringExtra("user_idTukar"),
+                            getIntent().getStringExtra("usernameTukar"),
+                            getIntent().getStringExtra("dataTitleTukar"),
+                            getIntent().getStringExtra("dataDetailTukar"),
+                            getIntent().getStringExtra("dataBarterTukar"),
+                            getIntent().getStringExtra("dataImageTukar"),
+                            "tolak"
+                    );
+
+                    historyReference.child(historyKey).setValue(historyItem);
 
                     Toast.makeText(desc_notif.this, "Status Tawaran Diterima", Toast.LENGTH_SHORT).show();
                 }
             }
         });
+
+        terimaButton = findViewById(R.id.terima);
+        terimaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                updateStatus();
+                navigateToNotifPage();
+            }
+            private void navigateToNotifPage() {
+                Intent intent = new Intent(desc_notif.this, notif.class);
+                startActivity(intent);
+                finish();
+            }
+
+            private void updateStatus() {
+                if (key != null) {
+                    // Update the status in the "tawar" node
+                    DatabaseReference tawarReference = FirebaseDatabase.getInstance().getReference("tawar").child(key);
+                    tawarReference.child("status").setValue("diterima");
+
+                    // Save data in history
+                    DatabaseReference historyReference = FirebaseDatabase.getInstance().getReference("history");
+                    String historyKey = historyReference.push().getKey();
+
+                    HistoryData historyItem = new HistoryData(
+                            getIntent().getStringExtra("user_idPenerima"),
+                            getIntent().getStringExtra("usernamePenerima"),
+                            getIntent().getStringExtra("dataTitlePenerima"),
+                            getIntent().getStringExtra("dataDetailPenerima"),
+                            getIntent().getStringExtra("dataBarterPenerima"),
+                            getIntent().getStringExtra("dataImagePenerima"),
+                            getIntent().getStringExtra("user_idTukar"),
+                            getIntent().getStringExtra("usernameTukar"),
+                            getIntent().getStringExtra("dataTitleTukar"),
+                            getIntent().getStringExtra("dataDetailTukar"),
+                            getIntent().getStringExtra("dataBarterTukar"),
+                            getIntent().getStringExtra("dataImageTukar"),
+                            "diterima"
+                    );
+
+                    historyReference.child(historyKey).setValue(historyItem);
+
+                    Toast.makeText(desc_notif.this, "Status Tawaran Diterima", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        button_delete = findViewById(R.id.delet);
+        button_delete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        button_wa = findViewById(R.id.viaWA);
+        button_wa .setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+
     }
 }

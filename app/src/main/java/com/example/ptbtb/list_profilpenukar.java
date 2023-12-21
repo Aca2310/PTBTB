@@ -1,15 +1,19 @@
 package com.example.ptbtb;
 
-public class list_profile {
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+
+public class list_profilpenukar {
     private String user_id;
+    private String username;
+    private String nama;
     private String dataTitle;
     private String dataDetail;
     private String dataBarter;
     private String dataImage;
 
-    private String username;
-
-    public  list_profile  (){
+    public list_profilpenukar() {
 
     }
 
@@ -29,13 +33,14 @@ public class list_profile {
         return dataImage;
     }
 
-    public list_profile (String user_id, String username, String dataTitle, String dataDetail, String dataBarter, String dataImage) {
+    public list_profilpenukar(String user_id, String username, String nama, String dataTitle, String dataDetail, String dataBarter, String dataImage) {
         this.user_id = user_id;
+        this.username = username;
+        this.nama = nama;
         this.dataTitle = dataTitle;
         this.dataDetail = dataDetail;
         this.dataBarter = dataBarter;
         this.dataImage = dataImage;
-        this.username = username;
     }
 
     public String getUser_id() {
@@ -44,5 +49,9 @@ public class list_profile {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getNama() {
+        return nama;
     }
 }
