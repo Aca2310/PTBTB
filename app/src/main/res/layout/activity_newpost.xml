@@ -87,7 +87,7 @@
         <EditText
             android:id="@+id/Npdetail"
             android:layout_width="match_parent"
-            android:layout_height="130dp"
+            android:layout_height="99dp"
             android:background="@drawable/edittext_bg"
             android:ems="10"
             android:hint="@string/detail_postingan"
@@ -107,7 +107,7 @@
         <EditText
             android:id="@+id/Npbarter"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="63dp"
             android:background="@drawable/edittext_bg"
             android:ems="10"
             android:hint="@string/request_barter"
