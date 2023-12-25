@@ -23,7 +23,7 @@ public class desc extends AppCompatActivity {
     public static String tempDataDetail;
     public static String tempDataBarter;
     public static String tempDataImage;
-    public static String tempUsername;
+    public static String tempUsername,tempTelp;
     public static String tempUserId;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +39,7 @@ public class desc extends AppCompatActivity {
         String savedTelp = intent.getStringExtra("telp");
         String imageUrl = intent.getStringExtra("imageUrl");
         String user_id = intent.getStringExtra("user_id");
+        String Telp = intent.getStringExtra("telp");
 
         button_tukar = findViewById(R.id.button_tukar);
         button_tukar.setOnClickListener(new View.OnClickListener() {
@@ -50,6 +51,7 @@ public class desc extends AppCompatActivity {
                 tempDataImage = intent.getStringExtra("dataImage");
                 tempUsername = intent.getStringExtra("username");
                 tempUserId = intent.getStringExtra("user_id");
+                tempTelp = intent.getStringExtra("telp");
 
                 // Pindah ke aktivitas tukardengan atau lakukan tindakan lain yang diperlukan setelah menyimpan data sementara
                 Intent tukarintent = new Intent(desc.this, tukardengan.class);

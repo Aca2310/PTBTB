@@ -91,10 +91,10 @@
             android:background="@drawable/edittext_bg"
             android:ems="10"
             android:hint="@string/detail_postingan"
-            android:inputType="text"
             android:padding="12dp"
             android:textColor="#000000"
             android:textSize="18sp" />
+
 
         <TextView
             android:id="@+id/textViewBarter"
@@ -111,7 +111,6 @@
             android:background="@drawable/edittext_bg"
             android:ems="10"
             android:hint="@string/request_barter"
-            android:inputType="text"
             android:padding="12dp"
             android:textColor="#000000"
             android:textSize="18sp" />

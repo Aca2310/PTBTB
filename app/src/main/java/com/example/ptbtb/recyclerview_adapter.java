@@ -53,6 +53,7 @@ public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adap
             intent.putExtra("dataDetail", recyclerview_lists.get(position).getDataDetail());
             intent.putExtra("dataBarter", recyclerview_lists.get(position).getDataBarter());
             intent.putExtra("dataImage", recyclerview_lists.get(position).getDataImage());
+            intent.putExtra("telp", recyclerview_lists.get(position).getTelp());
             context.startActivity(intent);
         });
     }

@@ -116,8 +116,9 @@ public class newpost extends AppCompatActivity {
                                         public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                                                if (dataSnapshot.exists()) {
                                                 String username = dataSnapshot.child("username").getValue(String.class);
+                                                   String telp = dataSnapshot.child("telp").getValue(String.class);
                                                 // Sekarang Anda memiliki username, Anda dapat menggunakannya di DataClass
-                                                uploadData(currentUserUid, username);
+                                                uploadData(currentUserUid, username, telp);
                                                 dialog.dismiss();
                                             } else {
                                                 // Menangani kasus di mana data pengguna tidak ditemukan
@@ -148,12 +149,12 @@ public class newpost extends AppCompatActivity {
                 });
             }
 
-            public void uploadData(String user_id, String username) {
+            public void uploadData(String user_id, String username, String telp) {
                 String title = Nptitle.getText().toString();
                 String detail = Npdetail.getText().toString();
                 String barter = Npbarter.getText().toString();
 
-                DataClass dataClass = new DataClass(user_id, username, title, detail, barter, imageURL);
+                DataClass dataClass = new DataClass(user_id, username, title, detail, barter, imageURL, telp);
 
                 DatabaseReference postReference = FirebaseDatabase.getInstance().getReference("Postingan").push();
                 postReference.setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {

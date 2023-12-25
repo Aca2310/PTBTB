@@ -7,7 +7,7 @@ public class DataClass {
     private String dataBarter;
     private String dataImage;
 
-    private String username;
+    private String username, telp;
     private String key;
 
     public String getKey() {
@@ -37,13 +37,14 @@ public class DataClass {
         return dataImage;
     }
 
-    public DataClass(String user_id, String username, String dataTitle, String dataDetail, String dataBarter, String dataImage) {
+    public DataClass(String user_id, String username, String dataTitle, String dataDetail, String dataBarter, String dataImage, String telp) {
         this.user_id = user_id;
         this.dataTitle = dataTitle;
         this.dataDetail = dataDetail;
         this.dataBarter = dataBarter;
         this.dataImage = dataImage;
         this.username = username;
+        this.telp = telp;
     }
 
     public String getUser_id() {
@@ -52,5 +53,13 @@ public class DataClass {
 
     public String getUsername() {
         return username;
+    }
+
+    public String getTelp() {
+        return telp;
+    }
+
+    public void setTelp(String telp) {
+        this.telp = telp;
     }
 }

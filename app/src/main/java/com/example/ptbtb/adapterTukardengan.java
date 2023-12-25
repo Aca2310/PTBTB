@@ -81,6 +81,7 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
                     String dataDetail = desc.tempDataDetail;
                     String dataBarter = desc.tempDataBarter;
                     String dataImage = desc.tempDataImage;
+                    String telp = desc.tempTelp;
 
 
                     String dataTitleTukar = list.get(position).getDataTitle();
@@ -94,7 +95,7 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
 
                     DatabaseReference tawarRef = FirebaseDatabase.getInstance().getReference("tawar");
 
-                    TawarData tawarData = new TawarData(userId, username, dataTitle, dataDetail, dataBarter, dataImage, userIdTukar, usernameTukar, dataTitleTukar, dataDetailTukar, dataBarterTukar, dataImageTukar, status);
+                    TawarData tawarData = new TawarData(userId, username, dataTitle, dataDetail, dataBarter, dataImage, userIdTukar, usernameTukar, dataTitleTukar, dataDetailTukar, dataBarterTukar, dataImageTukar, status, telp);
 
                     String tawarKey = tawarRef.push().getKey();
                     tawarRef.child(tawarKey).setValue(tawarData);

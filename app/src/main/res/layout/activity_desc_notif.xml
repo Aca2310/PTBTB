@@ -117,9 +117,10 @@
 
         <ImageView
             android:id="@+id/namaTumbuhan2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_width="120dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/anngrek" />
 
         <LinearLayout
@@ -181,9 +182,10 @@
 
         <ImageView
             android:id="@+id/imageView4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
+            android:layout_width="120dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="10dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/anngrek" />
 
         <LinearLayout
