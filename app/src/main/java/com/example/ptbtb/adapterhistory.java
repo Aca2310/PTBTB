@@ -71,6 +71,10 @@ public class adapterhistory extends RecyclerView.Adapter<adapterhistory.ViewHold
         return list_histories.size();
     }
 
+    public void searchDataList(ArrayList<HistoryData> searchList){
+        list_histories = searchList;
+        notifyDataSetChanged();
+    }
     public class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
         ImageView imageView;

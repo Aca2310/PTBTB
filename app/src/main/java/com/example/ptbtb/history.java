@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -29,7 +30,8 @@ public class history extends AppCompatActivity {
     ArrayList<HistoryData> list_histories;
     RecyclerView recyclerView;
     AppCompatImageView button_back;
-
+    SearchView searchView;
+    adapterhistory adapterhistory;
     ValueEventListener eventListener;
 
     @SuppressLint("MissingInflatedId")
@@ -83,7 +85,7 @@ public class history extends AppCompatActivity {
                                 }
 
                                 // Sekarang, list_histories berisi data dari user_idPenerima dan user_idTukar
-                                adapterhistory adapterhistory = new adapterhistory(list_histories, history.this);
+                                adapterhistory = new adapterhistory(list_histories, history.this);
                                 recyclerView.setAdapter(adapterhistory);
                             }
 
@@ -99,5 +101,30 @@ public class history extends AppCompatActivity {
                 // Tangani kesalahan
             }
         });
+
+        searchView = findViewById(R.id.searchView);
+        searchView.clearFocus();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+                return false;
+            }
+        });
+    }
+    public void searchList(String text){
+        ArrayList<HistoryData> searchList = new ArrayList<>();
+        for (HistoryData HistoryData: list_histories){
+            if (HistoryData.getDataTitlePenerima().toLowerCase().contains(text.toLowerCase())){
+                searchList.add(HistoryData);
+            }
+        }
+        adapterhistory.searchDataList(searchList);
     }
 }

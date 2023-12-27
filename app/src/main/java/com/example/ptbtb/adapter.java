@@ -70,6 +70,10 @@ public class  adapter extends RecyclerView.Adapter<adapter.ViewHolder> {
         return listTawardata.size();
     }
 
+    public void searchDataList(ArrayList<TawarData> searchList){
+        listTawardata = searchList;
+        notifyDataSetChanged();
+    }
     public class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
         ImageView imageView;

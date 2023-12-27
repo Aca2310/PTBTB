@@ -21,33 +21,12 @@ public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.MyViewHo
     private Context context;
     private ArrayList<listArtikel> list;
 
-    static SearchView searchView;
+
+
 
     public adapterArtikel(Context context, ArrayList<listArtikel> list){
         this.context = context;
         this.list = list;
-    }
-
-    public static void filter(String newText) {
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Tidak melakukan apa-apa saat pengguna menekan tombol "Enter" pada keyboard
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Memanggil metode filter pada adapter saat teks pencarian berubah
-                adapterArtikel.filter(newText);
-                return true;
-            }
-        });
-    }
-
-    public void filterList(ArrayList<listArtikel> filteredList) {
-        this.list = filteredList;
-        notifyDataSetChanged();
     }
 
 
@@ -81,6 +60,11 @@ public class adapterArtikel extends RecyclerView.Adapter<adapterArtikel.MyViewHo
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void searchDataList(ArrayList<listArtikel> searchList){
+        list = searchList;
+        notifyDataSetChanged();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

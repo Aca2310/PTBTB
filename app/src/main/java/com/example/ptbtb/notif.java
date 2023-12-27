@@ -7,6 +7,7 @@ import android.view.View;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -25,6 +26,8 @@ public class notif extends AppCompatActivity {
     ArrayList<TawarData> listTawardata;
     RecyclerView recyclerView;
     AppCompatImageView button_back;
+    SearchView searchView;
+    adapter adapter;
 
     ValueEventListener eventListener;
 
@@ -73,7 +76,7 @@ public class notif extends AppCompatActivity {
                     }
                 }
 
-                adapter adapter = new adapter(listTawardata, notif.this);
+                adapter = new adapter(listTawardata, notif.this);
                 recyclerView.setAdapter(adapter);
             }
 
@@ -82,5 +85,30 @@ public class notif extends AppCompatActivity {
                 // Handle error
             }
         });
+
+        searchView = findViewById(R.id.searchView);
+        searchView.clearFocus();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+                return false;
+            }
+        });
+    }
+    public void searchList(String text){
+        ArrayList<TawarData> searchList = new ArrayList<>();
+        for (TawarData listTawardata: listTawardata){
+            if (listTawardata.getUsernameTukar().toLowerCase().contains(text.toLowerCase())){
+                searchList.add(listTawardata);
+            }
+        }
+        adapter.searchDataList(searchList);
     }
 }

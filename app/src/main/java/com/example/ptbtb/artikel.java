@@ -25,11 +25,10 @@ public class artikel extends AppCompatActivity {
 
     private ArrayList<listArtikel> list;
     private RecyclerView recyclerView;
-    private SearchView searchView;
-    DatabaseReference reference;
     ValueEventListener eventListener;
     AppCompatImageView button_back;
-
+    SearchView searchView;
+    adapterArtikel adapterArtikel;
 
 
 
@@ -55,22 +54,6 @@ public class artikel extends AppCompatActivity {
 
         list = new ArrayList<>();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("artikel");
-        searchView = findViewById(R.id.searchView);
-
-        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                // Tidak melakukan apa-apa saat pengguna menekan tombol "Enter" pada keyboard
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                // Memanggil metode filter pada adapter saat teks pencarian berubah
-                adapterArtikel.filter(newText);
-                return true;
-            }
-        });
 
         eventListener = reference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -84,7 +67,7 @@ public class artikel extends AppCompatActivity {
                 }
 
                 // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView
-                adapterArtikel adapterArtikel = new adapterArtikel(artikel.this, list);
+                adapterArtikel = new adapterArtikel(artikel.this, list);
                 recyclerView.setAdapter(adapterArtikel);
             }
 
@@ -93,7 +76,36 @@ public class artikel extends AppCompatActivity {
                 // Handle error
             }
         });
+
+        searchView = findViewById(R.id.searchView);
+        searchView.clearFocus();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+                return false;
+            }
+        });
+
+
+
     }
+    public void searchList(String text){
+        ArrayList<listArtikel> searchList = new ArrayList<>();
+        for (listArtikel listArtikel: list){
+            if (listArtikel.getJudul().toLowerCase().contains(text.toLowerCase())){
+                searchList.add(listArtikel);
+            }
+        }
+        adapterArtikel.searchDataList(searchList);
+    }
+
 
 }
 
