@@ -24,8 +24,10 @@
 
         <ImageView
             android:id="@+id/imageView2"
-            android:layout_width="match_parent"
-            android:layout_height="163dp"
+            android:layout_width="173dp"
+            android:layout_height="133dp"
+            android:layout_gravity="center"
+            android:scaleType="centerCrop"
             android:src="@drawable/cactus" />
 
         <TextView
@@ -84,7 +86,7 @@
         <EditText
             android:id="@+id/editTextTextDetail"
             android:layout_width="match_parent"
-            android:layout_height="104dp"
+            android:layout_height="93dp"
             android:background="@drawable/edittext_bg"
             android:ems="10"
             android:hint="@string/detail_postingan"
