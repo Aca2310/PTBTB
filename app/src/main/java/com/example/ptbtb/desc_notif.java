@@ -2,10 +2,16 @@ package com.example.ptbtb;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.core.app.NotificationCompat;
 
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.media.RingtoneManager;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -27,6 +33,8 @@ public class desc_notif extends AppCompatActivity {
     AppCompatImageView button_back;
     Button terimaButton,button_tolak, button_wa, button_delete;
     String key = "";
+    private static final String CHANNEL_ID = "MyNotificationChannel";
+
 
 
     @Override
@@ -181,8 +189,40 @@ public class desc_notif extends AppCompatActivity {
 
                     historyReference.child(historyKey).setValue(historyItem);
 
+                    showNotification("Tawaran Diterima", "Anda telah menerima tawaran.");
+
                     Toast.makeText(desc_notif.this, "Status Tawaran Diterima", Toast.LENGTH_SHORT).show();
                 }
+            }
+
+
+            private void showNotification(String title, String message) {
+                NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+
+                // Create a notification channel (required for Android Oreo and above)
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    NotificationChannel channel = new NotificationChannel(
+                            CHANNEL_ID,
+                            "My Notification Channel",
+                            NotificationManager.IMPORTANCE_DEFAULT
+                    );
+                    notificationManager.createNotificationChannel(channel);
+                }
+
+                // Set the sound for the notification
+                Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+
+                // Create the notification
+                NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(desc_notif.this, CHANNEL_ID)
+                        .setSmallIcon(R.drawable.ic_send)
+                        .setContentTitle(title)
+                        .setContentText(message)
+                        .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                        .setSound(defaultSoundUri)
+                        .setAutoCancel(true);
+
+                // Show the notification
+                notificationManager.notify(0, notificationBuilder.build());
             }
         });
         button_delete = findViewById(R.id.delet);
@@ -270,9 +310,6 @@ public class desc_notif extends AppCompatActivity {
                 }
             }
         });
-
-
-
 
     }
 }
