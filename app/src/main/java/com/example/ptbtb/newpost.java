@@ -37,6 +37,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -58,6 +59,8 @@ public class newpost extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newpost);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("all_devices");
 
         uploadImage = findViewById(R.id.uploadImage);
         Nptitle = findViewById(R.id.Nptitle);
@@ -147,6 +150,7 @@ public class newpost extends AppCompatActivity {
                         }
                     }
                 });
+
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
@@ -176,7 +180,7 @@ public class newpost extends AppCompatActivity {
                 }
             }
         });
-        showNotification("Tawaran Diterima", "Anda telah menerima tawaran.");
+        showNotification("Postingan Terbaru", "Yeayy ada postingan tanaman baru nih... Ayok barter tanaman kamu sekarang juga");
     }
 
     private void showNotification(String title, String message) {

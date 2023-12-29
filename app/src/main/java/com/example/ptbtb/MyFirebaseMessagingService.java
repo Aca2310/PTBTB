@@ -16,11 +16,18 @@ import android.util.Log;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
     public MyFirebaseMessagingService() {
+    }
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        // Inisialisasi Firebase
+        FirebaseApp.initializeApp(this);
     }
 
     private static final String TAG = "MyFirebaseMsgService";
@@ -29,12 +36,10 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     @Override
     public void onMessageReceived(@NonNull RemoteMessage remoteMessage) {
         if (remoteMessage.getNotification() != null) {
-            Log.d(TAG, "Pesan Notifikasi: " + remoteMessage.getNotification().getBody());
-
-            // Pastikan pesan diterima dari topik yang di-subscribe (contoh: "all_devices")
-            if (remoteMessage.getFrom().startsWith("/topics/all_devices")) {
-                showNotification(remoteMessage.getNotification().getTitle(), remoteMessage.getNotification().getBody());
-            }
+            String title = remoteMessage.getNotification().getTitle();
+            String body = remoteMessage.getNotification().getBody();
+            // Tampilkan notifikasi menggunakan metode showNotification yang sudah Anda buat sebelumnya
+            showNotification(title, body);
         }
     }
 
@@ -81,11 +86,11 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     @Override
-    public void onNewToken(@NonNull String s) {
-        super.onNewToken(s);
-        // Token baru diperoleh saat perangkat baru diinstal atau token yang sudah ada di-refresh.
-        // Anda dapat mengirimkan token ini ke server Anda jika perlu.
-        Log.d(TAG, "Refreshed token: " + s);
+    public void onNewToken(@NonNull String token) {
+        super.onNewToken(token);
+        // Kirimkan token ke server Anda atau lakukan tindakan lain yang diperlukan
+        Log.d(TAG, "Refreshed token: " + token);
     }
+
 }
 
