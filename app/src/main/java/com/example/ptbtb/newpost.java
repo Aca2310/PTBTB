@@ -7,13 +7,17 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.core.content.ContextCompat;
 
 import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.location.Geocoder;
 import android.media.RingtoneManager;
 import android.net.Uri;
 import android.os.Build;
@@ -26,6 +30,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -43,7 +49,11 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.io.IOException;
 import java.time.Instant;
+import java.util.List;
+import java.util.Locale;
+import android.location.Address;
 
 public class newpost extends AppCompatActivity {
 
@@ -51,9 +61,11 @@ public class newpost extends AppCompatActivity {
 
     ImageView uploadImage;
     Button buttonup;
-    EditText Nptitle, Npdetail, Npbarter;
+    EditText Nptitle, Npdetail, Npbarter,lokasi,button_back;
     String imageURL;
     Uri uri;
+    private FusedLocationProviderClient fusedLocationProviderClient;
+    private static final int LOCATION_PERMISSION_REQUEST_CODE = 1001;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,12 +73,26 @@ public class newpost extends AppCompatActivity {
         setContentView(R.layout.activity_newpost);
 
         FirebaseMessaging.getInstance().subscribeToTopic("all_devices");
+        fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
+
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // Jika belum memiliki izin, minta izin
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            // Jika sudah memiliki izin, dapatkan lokasi
+            getLastLocation();
+        }
+
 
         uploadImage = findViewById(R.id.uploadImage);
         Nptitle = findViewById(R.id.Nptitle);
         Npdetail = findViewById(R.id.Npdetail);
         Npbarter = findViewById(R.id.Npbarter);
         buttonup = findViewById(R.id.buttonup);
+        lokasi = findViewById(R.id.NpLokasi);
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -82,6 +108,23 @@ public class newpost extends AppCompatActivity {
                         }
                     }
                 });
+
+        lokasi.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
+        button_back = findViewById(R.id.button_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(newpost.this, Home.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,4 +254,59 @@ public class newpost extends AppCompatActivity {
         // Show the notification
         notificationManager.notify(0, notificationBuilder.build());
     }
+
+    private void getLastLocation() {
+        if (ContextCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)
+                != PackageManager.PERMISSION_GRANTED) {
+            // If permission is not granted, request it
+            ActivityCompat.requestPermissions(this,
+                    new String[]{android.Manifest.permission.ACCESS_FINE_LOCATION},
+                    LOCATION_PERMISSION_REQUEST_CODE);
+        } else {
+            // If permission is granted, get the location
+            fusedLocationProviderClient.getLastLocation()
+                    .addOnSuccessListener(this, location -> {
+                        if (location != null) {
+                            // Convert location to location name and display it in EditText
+                            String locationName = getLocationName(location.getLatitude(), location.getLongitude());
+                            lokasi.setText(locationName);
+                        } else {
+                            Toast.makeText(this, "Location not available", Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnFailureListener(this, e -> {
+                        Toast.makeText(this, "Failed to get location", Toast.LENGTH_SHORT).show();
+                    });
+        }
+    }
+
+
+    private String getLocationName(double latitude, double longitude) {
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+            List<Address> addresses = geocoder.getFromLocation(latitude, longitude, 1);
+            if (addresses != null && addresses.size() > 0) {
+                Address address = addresses.get(0);
+                // Mengambil nama lokasi dari alamat
+                return address.getLocality();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "Lokasi Tidak Diketahui";
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == LOCATION_PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                // Jika izin diberikan, dapatkan lokasi
+                getLastLocation();
+            } else {
+                Toast.makeText(this, "Izin lokasi ditolak", Toast.LENGTH_SHORT).show();
+            }
+        }
+    }
+
 }
