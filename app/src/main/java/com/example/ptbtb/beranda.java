@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.SearchView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -24,9 +25,12 @@ public class beranda extends AppCompatActivity {
 
     ArrayList<recyclerview_list> recyclerview_lists;
     RecyclerView recyclerView;
+
+    SearchView searchView;
+    recyclerview_adapter recyclerview_adapter;
     ValueEventListener eventListener;
 
-   AppCompatImageView button_back;
+    AppCompatImageView button_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +69,7 @@ public class beranda extends AppCompatActivity {
                 }
 
                 // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView
-                recyclerview_adapter recyclerview_adapter = new recyclerview_adapter(recyclerview_lists, beranda.this);
+                recyclerview_adapter = new recyclerview_adapter(recyclerview_lists, beranda.this);
                 recyclerView.setAdapter(recyclerview_adapter);
             }
 
@@ -74,5 +78,32 @@ public class beranda extends AppCompatActivity {
                 // Handle error
             }
         });
+        searchView = findViewById(R.id.searchView);
+        searchView.clearFocus();
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+                return false;
+            }
+        });
+
+
+
+    }
+    public void searchList(String text){
+        ArrayList<recyclerview_list>  searchList = new ArrayList<>();
+        for (recyclerview_list recyclerview_list: recyclerview_lists){
+            if (recyclerview_list.getDataTitle().toLowerCase().contains(text.toLowerCase())){
+                searchList.add(recyclerview_list);
+            }
+        }
+        recyclerview_adapter.searchDataList(searchList);
     }
 }

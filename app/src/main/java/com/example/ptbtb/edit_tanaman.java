@@ -43,6 +43,7 @@ public class edit_tanaman extends AppCompatActivity {
     StorageReference storageReference;
     Uri uri;
     String imageURL;
+
     String title, detail, barter;
     DatabaseReference mDatabase;
     private String user_id, username;
@@ -60,6 +61,18 @@ public class edit_tanaman extends AppCompatActivity {
         editImage = findViewById(R.id.imageView2);
         deleteButton = findViewById(R.id.button_delete);
 
+        button_back = findViewById(R.id.back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(edit_tanaman.this, profile.class);
+                intent.putExtra("username", username);
+                intent.putExtra("user_id", user_id);
+
+                startActivity(intent);
+                finish();
+            }
+        });
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
                 new ActivityResultCallback<ActivityResult>() {

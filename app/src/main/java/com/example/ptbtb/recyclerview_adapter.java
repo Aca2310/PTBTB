@@ -63,6 +63,10 @@ public class recyclerview_adapter extends RecyclerView.Adapter<recyclerview_adap
         return recyclerview_lists.size();
     }
 
+    public void searchDataList(ArrayList<recyclerview_list> searchList){
+        recyclerview_lists = searchList;
+        notifyDataSetChanged();
+    }
     public class ViewHolder extends RecyclerView.ViewHolder{
         CardView cardView;
         ImageView imageView;

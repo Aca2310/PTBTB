@@ -28,6 +28,8 @@
         android:layout_marginTop="29dp"
         android:background="@drawable/pencarian"
         android:backgroundTint="#D9D9D9"
+        android:focusable="false"
+        android:foregroundTint="#000000"
         app:iconifiedByDefault="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -72,7 +74,9 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView"
-        tools:listitem="@layout/list_artikel" />
+        tools:listitem="@layout/list_artikel"
+        android:layout_below="@id/searchView"/>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
