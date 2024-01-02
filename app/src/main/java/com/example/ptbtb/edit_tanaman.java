@@ -116,6 +116,10 @@ public class edit_tanaman extends AppCompatActivity {
                 Intent photoPicker = new Intent(Intent.ACTION_PICK);
                 photoPicker.setType("image/*");
                 activityResultLauncher.launch(photoPicker);
+                if (uri == null) {
+                    // Pengguna membatalkan pemilihan gambar, hentikan proses selanjutnya
+                    return;
+                }
             }
         });
         saveButton.setOnClickListener(new View.OnClickListener() {
@@ -147,17 +151,8 @@ public class edit_tanaman extends AppCompatActivity {
                                         imageURL = urlImage.toString();
                                         updateData();
                                         dialog.dismiss();
+                                        navigateToProfileActivity();
 
-                                        // Setelah berhasil memperbarui data, kembali ke aktivitas edit_tanaman
-                                        Intent intent = new Intent(edit_tanaman.this, profile.class);
-                                        intent.putExtra("dataDetail", detail);
-                                        intent.putExtra("dataTitle", title);
-                                        intent.putExtra("dataBarter", barter);
-                                        intent.putExtra("username", username);
-                                        intent.putExtra("user_id", user_id);
-                                        intent.putExtra("Key", key);
-                                        intent.putExtra("dataImage", imageURL);
-                                        startActivity(intent);
                                     } else {
                                         dialog.dismiss();
                                         Toast.makeText(edit_tanaman.this, "Failed to get download URL", Toast.LENGTH_SHORT).show();
@@ -172,6 +167,15 @@ public class edit_tanaman extends AppCompatActivity {
                             Toast.makeText(edit_tanaman.this, "Upload failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     });
+                }else {
+                    if (oldImageURL != null) {
+                        // Tetapkan imageURL dengan nilai oldImageURL agar gambar tidak terhapus
+                        imageURL = oldImageURL;
+                        updateData();
+                        navigateToProfileActivity();
+                    } else {
+                        Toast.makeText(edit_tanaman.this, "Old Image URL is null", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
             }
@@ -240,18 +244,41 @@ public class edit_tanaman extends AppCompatActivity {
         });
 
     }
+
+    private void navigateToProfileActivity() {
+        // Setelah berhasil memperbarui data, kembali ke aktivitas edit_tanaman
+        Intent intent = new Intent(edit_tanaman.this, profile.class);
+        intent.putExtra("dataDetail", detail);
+        intent.putExtra("dataTitle", title);
+        intent.putExtra("dataBarter", barter);
+        intent.putExtra("username", username);
+        intent.putExtra("user_id", user_id);
+        intent.putExtra("Key", key);
+        intent.putExtra("dataImage", imageURL);
+        startActivity(intent);
+    }
+
     private void updateData() {
         if (mDatabase != null) {
             title = editTitle.getText().toString().trim();
             detail = editDetail.getText().toString().trim();
             barter = editBarter.getText().toString();
             list_profile dataClass = new list_profile(user_id, username,title, detail, barter, imageURL);
+            if (uri != null && oldImageURL != null) {
+                // Hapus gambar lama dari Firebase Storage setelah berhasil memperbarui data
+                StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(oldImageURL);
+                reference.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+                    @Override
+                    public void onSuccess(Void aVoid) {
+                        // Hanya jika penghapusan berhasil, set URI gambar menjadi null
+                        uri = null;
+                    }
+                });
+            }
             mDatabase.setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
-                        StorageReference reference = FirebaseStorage.getInstance().getReferenceFromUrl(oldImageURL);
-                        reference.delete();
                         Toast.makeText(edit_tanaman.this, "Updated", Toast.LENGTH_SHORT).show();
                         finish();
                     }
