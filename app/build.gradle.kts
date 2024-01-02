@@ -44,6 +44,7 @@ dependencies {
     implementation ("com.google.firebase:firebase-core:20.0.0")
     implementation ("com.android.volley:volley:1.2.0")
     implementation ("com.google.firebase:firebase-storage:20.3.0")
+    implementation ("com.google.android.gms:play-services-location:17.1.0")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.google.firebase:firebase-messaging:23.4.0") // Firebase Core
     testImplementation("junit:junit:4.13.2")
