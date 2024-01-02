@@ -6,6 +6,8 @@ import androidx.appcompat.widget.AppCompatImageView;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -22,6 +24,7 @@ public class descHistory extends AppCompatActivity {
     AppCompatImageView button_back;
     Button button_delete;
     String key = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +56,8 @@ public class descHistory extends AppCompatActivity {
         TextView usernametukar = findViewById(R.id.usernameNotif);
         TextView usernamepenerima = findViewById(R.id.usernameNotif2);
         TextView status = findViewById(R.id.barter3);
+
+
 
         if (intent != null) {
             String DatatitlePenerima = intent.getStringExtra("dataTitlePenerima");
@@ -100,9 +105,29 @@ public class descHistory extends AppCompatActivity {
             }
             if (statuss!= null) {
                 status.setText(statuss);
+                int cornerRadius = 10;
+                if (statuss.equalsIgnoreCase("diterima")) {
+                    int backgroundColor = Color.parseColor("#29C254");
+
+                    GradientDrawable gradientDrawable = new GradientDrawable();
+                    gradientDrawable.setColor(backgroundColor);
+                    gradientDrawable.setCornerRadius(cornerRadius);
+
+                    status.setBackground(gradientDrawable);
+
+                } else if (statuss.equalsIgnoreCase("tolak")) {
+                    int backgroundColor = Color.RED;
+
+                    GradientDrawable gradientDrawable = new GradientDrawable();
+                    gradientDrawable.setColor(backgroundColor);
+                    gradientDrawable.setCornerRadius(cornerRadius);
+
+                    status.setBackground(gradientDrawable);
+                }
             }
 
         }
+
 
         button_delete.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -110,6 +135,8 @@ public class descHistory extends AppCompatActivity {
                 // Show a confirmation dialog before deleting
                 showDeleteConfirmationDialog();
             }
+
+
 
             private void showDeleteConfirmationDialog() {
                 AlertDialog.Builder builder = new AlertDialog.Builder(descHistory.this);
@@ -149,6 +176,7 @@ public class descHistory extends AppCompatActivity {
                 startActivity(intent);
                 finish();
             }
+
         });
 
     }
