@@ -5,7 +5,7 @@ public class recyclerview_list {
     private String dataTitle;
     private String dataDetail;
     private String dataBarter;
-    private String dataImage;
+    private String dataImage, dataLocation;
 
     private String username,telp;
 
@@ -30,7 +30,7 @@ public class recyclerview_list {
         return dataImage;
     }
 
-    public recyclerview_list(String user_id, String username, String dataTitle, String dataDetail, String dataBarter, String dataImage, String telp) {
+    public recyclerview_list(String user_id, String username, String dataTitle, String dataDetail, String dataBarter, String dataImage, String telp, String dataLocation) {
         this.user_id = user_id;
         this.dataTitle = dataTitle;
         this.dataDetail = dataDetail;
@@ -38,6 +38,7 @@ public class recyclerview_list {
         this.dataImage = dataImage;
         this.username = username;
         this.telp = telp;
+        this.dataLocation = dataLocation;
     }
 
     public String getUser_id() {
@@ -54,5 +55,13 @@ public class recyclerview_list {
 
     public void setTelp(String telp) {
         this.telp = telp;
+    }
+
+    public String getDataLocation() {
+        return dataLocation;
+    }
+
+    public void setDataLocation(String dataLocation) {
+        this.dataLocation = dataLocation;
     }
 }

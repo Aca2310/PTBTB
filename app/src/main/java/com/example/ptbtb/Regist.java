@@ -17,6 +17,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -127,7 +128,7 @@ public class Regist extends AppCompatActivity {
                                                                 newUserRef.child("username").setValue(username);
                                                                 newUserRef.child("email").setValue(email);
                                                                 newUserRef.child("telp").setValue(telp);
-                                                                newUserRef.child("lokasi").setValue(lokasi);
+                                                                newUserRef.child("addres").setValue(lokasi);
 
                                                                 Toast.makeText(getApplicationContext(), "Registrasi Berhasil!", Toast.LENGTH_SHORT).show();
                                                                 Intent intent = new Intent(getApplicationContext(), Login.class);

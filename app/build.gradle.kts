@@ -45,7 +45,7 @@ dependencies {
     implementation ("com.android.volley:volley:1.2.1")
     implementation("com.squareup.picasso:picasso:2.71828")
     implementation("com.google.android.gms:play-services-maps:18.2.0")
-    implementation("com.google.android.gms:play-services-maps:18.2.0")
+    implementation ("com.google.android.gms:play-services-location:17.1.0")
     implementation("com.google.firebase:firebase-database:20.3.0")
     implementation ("com.google.firebase:firebase-auth:22.3.0")// Firebase Authentication
     implementation ("com.google.firebase:firebase-database:20.3.0") // Firebase Realtime Database
