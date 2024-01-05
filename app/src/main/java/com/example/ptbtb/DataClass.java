@@ -6,45 +6,29 @@ public class DataClass {
     private String dataDetail;
     private String dataBarter;
     private String dataImage;
+    private String dataLocation;
 
     private String username, telp;
     private String key;
 
-    public String getKey() {
-        return key;
-    }
-
-    public void setKey(String key) {
-        this.key = key;
-    }
-
-    public DataClass() {
-        // Diperlukan untuk Firebase Database
-    }
-    public String getDataTitle() {
-        return dataTitle;
-    }
-
-    public String getDataDetail() {
-        return dataDetail;
-    }
-
-    public String getDataBarter() {
-        return dataBarter;
-    }
-
-    public String getDataImage() {
-        return dataImage;
-    }
-
-    public DataClass(String user_id, String username, String dataTitle, String dataDetail, String dataBarter, String dataImage, String telp) {
+    public DataClass(String user_id, String username, String dataTitle, String dataDetail, String dataLocation, String dataBarter, String dataImage, String telp) {
         this.user_id = user_id;
+        this.username = username;
         this.dataTitle = dataTitle;
         this.dataDetail = dataDetail;
+        this.dataLocation = dataLocation;
         this.dataBarter = dataBarter;
         this.dataImage = dataImage;
-        this.username = username;
         this.telp = telp;
+    }
+
+    // Getter dan setter untuk atribut baru
+    public String getDataLocation() {
+        return dataLocation;
+    }
+
+    public void setDataLocation(String dataLocation) {
+        this.dataLocation = dataLocation;
     }
 
     public String getUser_id() {
@@ -61,5 +45,29 @@ public class DataClass {
 
     public void setTelp(String telp) {
         this.telp = telp;
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public String getDataTitle() {
+        return dataTitle;
+    }
+
+    public String getDataDetail() {
+        return dataDetail;
+    }
+
+    public String getDataBarter() {
+        return dataBarter;
+    }
+
+    public String getDataImage() {
+        return dataImage;
     }
 }

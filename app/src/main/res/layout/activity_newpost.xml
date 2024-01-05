@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
+    android:backgroundTint="#FFFFFF"
     tools:context=".newpost">
 
     <androidx.appcompat.widget.AppCompatImageView
@@ -36,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="650dp"
         android:orientation="vertical"
-        android:padding="32dp"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
@@ -87,7 +88,7 @@
         <EditText
             android:id="@+id/Npdetail"
             android:layout_width="match_parent"
-            android:layout_height="99dp"
+            android:layout_height="50dp"
             android:background="@drawable/edittext_bg"
             android:ems="10"
             android:hint="@string/detail_postingan"
@@ -95,6 +96,40 @@
             android:textColor="#000000"
             android:textSize="18sp" />
 
+        <LinearLayout
+            android:id="@+id/layoutLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/layoutmap"
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/textViewLocation"
+                android:layout_width="89dp"
+                android:layout_height="wrap_content"
+                android:text="Location"
+                android:textSize="20sp" />
+
+            <Button
+                android:id="@+id/buttonAddLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:onClick="onAddLocationButtonClick"
+                android:text="Add Location" />
+
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/Nplokasi"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/edittext_bg"
+            android:ems="10"
+            android:hint="Location Postingan"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="18sp" />
 
         <TextView
             android:id="@+id/textViewBarter"
@@ -107,7 +142,7 @@
         <EditText
             android:id="@+id/Npbarter"
             android:layout_width="match_parent"
-            android:layout_height="63dp"
+            android:layout_height="50dp"
             android:background="@drawable/edittext_bg"
             android:ems="10"
             android:hint="@string/request_barter"
@@ -124,17 +159,3 @@
             android:text="@string/upload" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-
-    <!--        <EditText-->
-    <!--            android:id="@+id/editTextText"-->
-    <!--            android:layout_width="match_parent"-->
-    <!--            android:layout_height="70dp"-->
-    <!--            android:ems="10"-->
-    <!--            android:textSize="18sp"-->
-    <!--            android:textColor="#000000"-->
-    <!--            android:padding="12dp"-->
-    <!--            android:background="@drawable/edittext_bg"-->
-    <!--            android:inputType="text"-->
-    <!--            android:hint ="@string/title_postingan"-->
-    <!--            />-->

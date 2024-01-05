@@ -7,6 +7,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.content.Intent;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -60,7 +61,7 @@ public class desctp extends AppCompatActivity {
         ImageView imageView = findViewById(R.id.imageViewD);
         TextView titleTextView = findViewById(R.id.judul);
         TextView detailTextView = findViewById(R.id.textViewDetail);
-        //  TextView locationTextView = findViewById(R.id.textViewLocation);
+        TextView locationTextView = findViewById(R.id.textViewLocation);
         TextView barterInfoTextView = findViewById(R.id.textViewBarter);
 
 
@@ -68,12 +69,17 @@ public class desctp extends AppCompatActivity {
         if (bundle != null){
             detailTextView.setText(bundle.getString("dataDetail"));
             titleTextView.setText(bundle.getString("dataTitle"));
+            locationTextView.setText(bundle.getString("dataLocation"));
             barterInfoTextView.setText(bundle.getString("dataBarter"));
             username = bundle.getString("username");
             user_id = bundle.getString("user_id");
             key = bundle.getString("Key");
             imageURL = bundle.getString("dataImage");
             Picasso.get().load(bundle.getString("dataImage")).into(imageView);
+
+            String locationValue = bundle.getString("dataLocation");
+            Log.d("LocationDebug", "Location Value: " + locationValue);
+            locationTextView.setText(locationValue);
         }
         button_edit = findViewById(R.id.button_edit);
         button_edit.setOnClickListener(new View.OnClickListener() {
@@ -82,6 +88,7 @@ public class desctp extends AppCompatActivity {
                 Intent intent = new Intent(desctp.this, edit_tanaman.class)
                         .putExtra("dataTitle",  titleTextView.getText().toString())
                         .putExtra("dataDetail", detailTextView.getText().toString())
+                        .putExtra("dataLocation", locationTextView.getText().toString())
                         .putExtra("dataBarter",  barterInfoTextView.getText().toString())
                         .putExtra("dataImage", imageURL)
                         .putExtra("username", username)
