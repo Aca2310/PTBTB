@@ -1,7 +1,5 @@
 package com.example.ptbtb;
 
-import static android.content.Intent.ACTION_PICK;
-
 import androidx.activity.result.ActivityResult;
 import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
@@ -21,15 +19,18 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -37,8 +38,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
+
+import java.time.Instant;
 
 public class newpost extends AppCompatActivity {
 
@@ -46,12 +50,9 @@ public class newpost extends AppCompatActivity {
 
     ImageView uploadImage;
     Button buttonup;
-    EditText Nptitle, Npdetail, Npbarter, Nplokasi;
+    EditText Nptitle, Npdetail, Npbarter;
     String imageURL;
     Uri uri;
-    private ActivityResultLauncher<Intent> activityResultLauncher;
-    private static final int REQUEST_CODE_MAPS = 123;
-    private Intent data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,19 +62,8 @@ public class newpost extends AppCompatActivity {
         uploadImage = findViewById(R.id.uploadImage);
         Nptitle = findViewById(R.id.Nptitle);
         Npdetail = findViewById(R.id.Npdetail);
-        Nplokasi = findViewById(R.id.Nplokasi);
         Npbarter = findViewById(R.id.Npbarter);
         buttonup = findViewById(R.id.buttonup);
-
-
-        Button buttonAddLocation = findViewById(R.id.buttonAddLocation);
-        buttonAddLocation.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // Panggil fungsi ketika tombol "Add Location" diklik
-                onAddLocationButtonClick(view);
-            }
-        });
 
         ActivityResultLauncher<Intent> activityResultLauncher = registerForActivityResult(
                 new ActivityResultContracts.StartActivityForResult(),
@@ -93,7 +83,7 @@ public class newpost extends AppCompatActivity {
         uploadImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent photoPicker = new Intent(ACTION_PICK);
+                Intent photoPicker = new Intent(Intent.ACTION_PICK);
                 photoPicker.setType("image/*");
                 activityResultLauncher.launch(photoPicker);
             }
@@ -106,34 +96,6 @@ public class newpost extends AppCompatActivity {
             }
         });
     }
-
-    //aa
-    public void onAddLocationButtonClick(View v) {
-        // Start MapsActivity langsung menggunakan Intent
-        Intent intent = new Intent(newpost.this, MapsActivity.class);
-        startActivityForResult(intent, 123);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-
-        if (requestCode == REQUEST_CODE_MAPS && resultCode == RESULT_OK) {
-            // Terima data yang dikirimkan dari MapsActivity
-            double latitude = data.getDoubleExtra("latitude", 0.0);
-            double longitude = data.getDoubleExtra("longitude", 0.0);
-            String locationName = data.getStringExtra("locationName");
-
-            // Pemeriksaan null sebelum menggunakan data
-            if (locationName != null) {
-                // Gunakan data untuk menampilkan atau menyimpan informasi lokasi
-                Nplokasi.setText(locationName);
-            } else {
-                Toast.makeText(this, "Nama lokasi tidak tersedia", Toast.LENGTH_SHORT).show();
-            }
-        }
-    }
-
 
     private void saveData() {
         StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("Images Postingan")
@@ -199,9 +161,8 @@ public class newpost extends AppCompatActivity {
         String title = Nptitle.getText().toString();
         String detail = Npdetail.getText().toString();
         String barter = Npbarter.getText().toString();
-        String location = Nplokasi.getText().toString();
 
-        DataClass dataClass = new DataClass(user_id, username, title, detail, location, barter, imageURL, telp);
+        DataClass dataClass = new DataClass(user_id, username, title, detail, barter, imageURL, telp);
 
         DatabaseReference postReference = FirebaseDatabase.getInstance().getReference("Postingan").push();
         postReference.setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
@@ -215,7 +176,7 @@ public class newpost extends AppCompatActivity {
                 }
             }
         });
-        showNotification("Postingann", "Yeee postingan anda berhasil.");
+        showNotification("Tawaran Diterima", "Anda telah menerima tawaran.");
     }
 
     private void showNotification(String title, String message) {

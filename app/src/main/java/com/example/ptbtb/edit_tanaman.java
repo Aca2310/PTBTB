@@ -36,14 +36,14 @@ import com.squareup.picasso.Picasso;
 public class edit_tanaman extends AppCompatActivity {
 
     AppCompatImageView button_back;
-    EditText editTitle, editDetail,  editBarter, editLocation;
+    EditText editTitle, editDetail,  editBarter;
     ImageView editImage;
     Button saveButton,deleteButton;
     String key, oldImageURL;
     StorageReference storageReference;
     Uri uri;
     String imageURL;
-    String title, detail, barter, location;
+    String title, detail, barter;
     DatabaseReference mDatabase;
     private String user_id, username;
 
@@ -54,7 +54,7 @@ public class edit_tanaman extends AppCompatActivity {
 
         editTitle = findViewById(R.id.editTextTextTitle);
         editDetail = findViewById(R.id.editTextTextDetail);
-        editLocation = findViewById(R.id.editTextTextLocation);
+        //editLocation = findViewById(R.id.editTextTextLocation);
         editBarter = findViewById(R.id.editTextTextBarter);
         saveButton = findViewById(R.id.button_save);
         editImage = findViewById(R.id.imageView2);
@@ -77,7 +77,6 @@ public class edit_tanaman extends AppCompatActivity {
         );
         Bundle bundle = getIntent().getExtras();
         if (bundle != null){
-            editLocation.setText(bundle.getString("dataLocation"));
             editDetail.setText(bundle.getString("dataDetail"));
             editTitle.setText(bundle.getString("dataTitle"));
             editBarter.setText(bundle.getString("dataBarter"));
@@ -138,7 +137,6 @@ public class edit_tanaman extends AppCompatActivity {
 
                                         // Setelah berhasil memperbarui data, kembali ke aktivitas edit_tanaman
                                         Intent intent = new Intent(edit_tanaman.this, profile.class);
-                                        intent.putExtra("dataLocation", location);
                                         intent.putExtra("dataDetail", detail);
                                         intent.putExtra("dataTitle", title);
                                         intent.putExtra("dataBarter", barter);
@@ -233,9 +231,8 @@ public class edit_tanaman extends AppCompatActivity {
         if (mDatabase != null) {
             title = editTitle.getText().toString().trim();
             detail = editDetail.getText().toString().trim();
-            location = editLocation.getText().toString().trim();
             barter = editBarter.getText().toString();
-            list_profile dataClass = new list_profile(user_id, username,title, detail, location, barter, imageURL);
+            list_profile dataClass = new list_profile(user_id, username,title, detail, barter, imageURL);
             mDatabase.setValue(dataClass).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
