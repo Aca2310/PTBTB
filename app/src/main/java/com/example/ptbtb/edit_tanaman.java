@@ -234,6 +234,7 @@ public class edit_tanaman extends AppCompatActivity {
         Intent intent = new Intent(edit_tanaman.this, profile.class);
         intent.putExtra("dataDetail", detail);
         intent.putExtra("dataTitle", title);
+        intent.putExtra("dataLocation", location);
         intent.putExtra("dataBarter", barter);
         intent.putExtra("username", username);
         intent.putExtra("user_id", user_id);
@@ -247,6 +248,7 @@ public class edit_tanaman extends AppCompatActivity {
             title = editTitle.getText().toString().trim();
             detail = editDetail.getText().toString().trim();
             barter = editBarter.getText().toString();
+            location = editLocation.getText().toString();
             list_profile dataClass = new list_profile(user_id, username,title, detail, location,barter, imageURL);
             if (uri != null && oldImageURL != null) {
                 // Hapus gambar lama dari Firebase Storage setelah berhasil memperbarui data
