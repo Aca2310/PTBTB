@@ -85,7 +85,7 @@ public class profile extends AppCompatActivity {
                         if (imageUrl != null && !imageUrl.isEmpty()) {
                             Picasso.get().load(imageUrl).into(imageViewProfile);
                         } else {
-                           imageViewProfile.setImageResource(R.drawable.user);
+                           imageViewProfile.setImageResource(R.drawable.profile);
                         }
                     }
                 }
