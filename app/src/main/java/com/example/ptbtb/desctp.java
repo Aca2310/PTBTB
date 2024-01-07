@@ -4,14 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.AppCompatImageView;
 
 import android.annotation.SuppressLint;
-import android.os.Bundle;
 import android.content.Intent;
-import android.support.annotation.Nullable;
+import android.net.Uri;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -19,10 +20,14 @@ public class desctp extends AppCompatActivity {
     AppCompatImageView button_back;
     Button button_edit;
     String username, user_id;
-
     String key = "";
     String imageURL = "";
-
+    public static String tempDataTitle;
+    public static String tempDataDetail;
+    public static String tempDataBarter;
+    public static String tempDataImage;
+    public static String tempUsername, tempTelp, tempDataLocation;
+    public static String tempUserId;
 
     @SuppressLint("MissingInflatedId")
     @Override
@@ -32,27 +37,15 @@ public class desctp extends AppCompatActivity {
 
         Intent intent = getIntent();
         String email = intent.getStringExtra("email");
-        String username1 = intent.getStringExtra("username");
-        String user_id1 = intent.getStringExtra("user_id");
         String savedName = intent.getStringExtra("nama");
         String savedAddress = intent.getStringExtra("addres");
         String savedTelp = intent.getStringExtra("telp");
-        String imageUrl = intent.getStringExtra("imageUrl");
 
         button_back = findViewById(R.id.button_back);
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(desctp.this, profile.class);
-
-                intent.putExtra("email", email);
-                intent.putExtra("username", username1);
-                intent.putExtra("nama", savedName);
-                intent.putExtra("user_id", user_id1);
-                intent.putExtra("telp", savedTelp);
-                intent.putExtra("addres", savedAddress);
-                intent.putExtra("imageUrl", imageUrl);
-
                 startActivity(intent);
                 finish();
             }
@@ -64,9 +57,8 @@ public class desctp extends AppCompatActivity {
         TextView locationTextView = findViewById(R.id.textViewLocation);
         TextView barterInfoTextView = findViewById(R.id.textViewBarter);
 
-
         Bundle bundle = getIntent().getExtras();
-        if (bundle != null){
+        if (bundle != null) {
             detailTextView.setText(bundle.getString("dataDetail"));
             titleTextView.setText(bundle.getString("dataTitle"));
             locationTextView.setText(bundle.getString("dataLocation"));
@@ -80,24 +72,39 @@ public class desctp extends AppCompatActivity {
             String locationValue = bundle.getString("dataLocation");
             Log.d("LocationDebug", "Location Value: " + locationValue);
             locationTextView.setText(locationValue);
+
+            // Open map on location text click
+            locationTextView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + Uri.encode(locationValue));
+                    Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+                    mapIntent.setPackage("com.google.android.apps.maps"); // Use Google Maps
+
+                    if (mapIntent.resolveActivity(getPackageManager()) != null) {
+                        startActivity(mapIntent);
+                    } else {
+                        Toast.makeText(desctp.this, "Map application not installed.", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+
+            button_edit = findViewById(R.id.button_edit);
+            button_edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent editIntent = new Intent(desctp.this, edit_tanaman.class)
+                            .putExtra("dataTitle", titleTextView.getText().toString())
+                            .putExtra("dataDetail", detailTextView.getText().toString())
+                            .putExtra("dataLocation", locationTextView.getText().toString())
+                            .putExtra("dataBarter", barterInfoTextView.getText().toString())
+                            .putExtra("dataImage", imageURL)
+                            .putExtra("username", username)
+                            .putExtra("user_id", user_id)
+                            .putExtra("Key", key);
+                    startActivity(editIntent);
+                }
+            });
         }
-        button_edit = findViewById(R.id.button_edit);
-        button_edit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(desctp.this, edit_tanaman.class)
-                        .putExtra("dataTitle",  titleTextView.getText().toString())
-                        .putExtra("dataDetail", detailTextView.getText().toString())
-                        .putExtra("dataLocation", locationTextView.getText().toString())
-                        .putExtra("dataBarter",  barterInfoTextView.getText().toString())
-                        .putExtra("dataImage", imageURL)
-                        .putExtra("username", username)
-                        .putExtra("user_id", user_id)
-                        .putExtra("Key", key);
-                startActivity(intent);
-            }
-        });
-
-
-
-    }}
+    }
+}

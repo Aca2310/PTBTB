@@ -31,7 +31,7 @@ public class Home extends AppCompatActivity {
         imageRate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this, rating.class);
+                Intent intent = new Intent(Home.this, detail_rating.class);
                 startActivity(intent);
             }
         });

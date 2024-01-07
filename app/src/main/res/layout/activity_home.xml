@@ -8,13 +8,13 @@
     tools:context=".Home">
 
     <ImageView
-        android:id="@+id/imageRate"
-        android:layout_width="70dp"
-        android:layout_height="70dp"
+        android:id="@+id/imageLogout"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
         android:layout_margin="15dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="124dp"
         android:layout_marginEnd="16dp"
-        android:src="@drawable/star"
+        android:src="@drawable/arrow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -272,11 +272,11 @@
                         android:background="@drawable/white_btn_background">
 
                         <ImageView
-                            android:id="@+id/imageLogout"
+                            android:id="@+id/imageRate"
                             android:layout_width="70dp"
                             android:layout_height="70dp"
                             android:layout_margin="15dp"
-                            android:src="@drawable/arrow"
+                            android:src="@drawable/star"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
@@ -289,7 +289,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="5dp"
-                        android:text="Logout"
+                        android:text="Rating"
                         android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="18sp"
