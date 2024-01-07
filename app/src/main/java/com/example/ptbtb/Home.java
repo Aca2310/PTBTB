@@ -17,6 +17,7 @@ public class Home extends AppCompatActivity {
     ImageView imageArtikel;
     ImageView imageHistory;
     ImageView imageLogout;
+    ImageView imageRate;
 
 
 
@@ -25,6 +26,15 @@ public class Home extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        imageRate = findViewById(R.id.imageRate);
+        imageRate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Home.this, rating.class);
+                startActivity(intent);
+            }
+        });
 
         imageBarter = findViewById(R.id.imageBarter);
         imageBarter.setOnClickListener(new View.OnClickListener() {

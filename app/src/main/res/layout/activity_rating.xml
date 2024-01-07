@@ -23,15 +23,26 @@
         android:id="@+id/trating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
+        android:layout_marginTop="180dp"
         android:fontFamily="sans-serif-black"
-        android:text="Rating dung"
+        android:text="Beri Rating Aplikasi Ini"
         android:textColor="#9E326C"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.464"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewrating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:text="Sampaikan pendapat Anda"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/trating" />
 
     <RatingBar
         android:id="@+id/ratingBar"
@@ -47,7 +58,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/trating" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewrating" />
 
     <EditText
         android:id="@+id/feedbackEditText"
