@@ -9,6 +9,7 @@ import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 import androidx.core.app.NotificationCompat;
 
 import android.app.Activity;
@@ -49,6 +50,7 @@ public class newpost extends AppCompatActivity {
     EditText Nptitle, Npdetail, Npbarter, Nplokasi;
     String imageURL;
     Uri uri;
+    AppCompatImageView button_back;
     private ActivityResultLauncher<Intent> activityResultLauncher;
     private static final int REQUEST_CODE_MAPS = 123;
     private Intent data;
@@ -58,12 +60,25 @@ public class newpost extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_newpost);
 
+
+
         uploadImage = findViewById(R.id.uploadImage);
         Nptitle = findViewById(R.id.Nptitle);
         Npdetail = findViewById(R.id.Npdetail);
         Nplokasi = findViewById(R.id.Nplokasi);
         Npbarter = findViewById(R.id.Npbarter);
         buttonup = findViewById(R.id.buttonup);
+
+
+        button_back = findViewById(R.id.button_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(newpost.this, profile.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
 
         Button buttonAddLocation = findViewById(R.id.buttonAddLocation);
@@ -105,6 +120,7 @@ public class newpost extends AppCompatActivity {
                 saveData();
             }
         });
+
     }
 
     //aa
