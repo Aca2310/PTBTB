@@ -74,7 +74,7 @@ public class newpost extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(newpost.this, profile.class);
+                Intent intent = new Intent(newpost.this, postingan.class);
                 startActivity(intent);
                 finish();
             }

@@ -43,7 +43,7 @@ public class desctp extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(desctp.this, profile.class);
+                Intent intent = new Intent(desctp.this, postingan.class);
                 startActivity(intent);
                 finish();
             }

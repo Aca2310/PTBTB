@@ -83,7 +83,7 @@
             android:name=".edit_tanaman"
             android:exported="false" />
         <activity
-            android:name=".profile"
+            android:name=".postingan"
             android:exported="false" />
         <activity
             android:name=".edit_profile"

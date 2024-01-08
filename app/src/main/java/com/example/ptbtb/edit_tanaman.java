@@ -197,7 +197,7 @@ public class edit_tanaman extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(Void aVoid) {
                                                 Toast.makeText(edit_tanaman.this, "Data deleted successfully", Toast.LENGTH_SHORT).show();
-                                                Intent intent = new Intent(edit_tanaman.this, profile.class);
+                                                Intent intent = new Intent(edit_tanaman.this, postingan.class);
                                                 intent.putExtra("username", username);
                                                 intent.putExtra("user_id", user_id);  // Sertakan data yang dibutuhkan untuk profil jika ada
                                                 startActivity(intent);                                                finish(); // Kembali ke halaman sebelumnya atau tutup aktivitas
@@ -231,7 +231,7 @@ public class edit_tanaman extends AppCompatActivity {
 
     private void navigateToProfileActivity() {
         // Setelah berhasil memperbarui data, kembali ke aktivitas edit_tanaman
-        Intent intent = new Intent(edit_tanaman.this, profile.class);
+        Intent intent = new Intent(edit_tanaman.this, postingan.class);
         intent.putExtra("dataDetail", detail);
         intent.putExtra("dataTitle", title);
         intent.putExtra("dataLocation", location);

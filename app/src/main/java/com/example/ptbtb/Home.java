@@ -49,7 +49,7 @@ public class Home extends AppCompatActivity {
         imageProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(Home.this, profile.class);
+                Intent intent = new Intent(Home.this, postingan.class);
 
                 startActivity(intent);
             }

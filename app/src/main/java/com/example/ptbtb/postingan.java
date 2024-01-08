@@ -7,17 +7,14 @@ import androidx.appcompat.widget.AppCompatImageView;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.graphics.Color;
@@ -35,13 +32,11 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class profile extends AppCompatActivity {
+public class postingan extends AppCompatActivity {
 
     ArrayList<list_profile> list_profiles;
     RecyclerView recyclerView;
@@ -97,7 +92,7 @@ public class profile extends AppCompatActivity {
             });
         } else {
             // Pengguna belum login
-            Toast.makeText(profile.this, "Pengguna belum login", Toast.LENGTH_SHORT).show();
+            Toast.makeText(postingan.this, "Pengguna belum login", Toast.LENGTH_SHORT).show();
         }
 
 
@@ -105,7 +100,7 @@ public class profile extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(profile.this, Home.class);
+                Intent intent = new Intent(postingan.this, Home.class);
                 startActivity(intent);
             }
         });
@@ -115,7 +110,7 @@ public class profile extends AppCompatActivity {
         button_profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(profile.this, edit_profile.class);
+                Intent intent = new Intent(postingan.this, edit_profile.class);
                 startActivity(intent);
             }
         });
@@ -125,7 +120,7 @@ public class profile extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                AlertDialog.Builder builder = new AlertDialog.Builder(profile.this);
+                AlertDialog.Builder builder = new AlertDialog.Builder(postingan.this);
                 View dialogView = getLayoutInflater().inflate(R.layout.dialog_password, null);
                 EditText pass1 = dialogView.findViewById(R.id.passwordIni);
                 EditText pass2 = dialogView.findViewById(R.id.passwordBaru);
@@ -145,17 +140,17 @@ public class profile extends AppCompatActivity {
                         String pass = pass1.getText().toString().trim();
 
                         if (TextUtils.isEmpty(pass)) {
-                            Toast.makeText(profile.this, "Enter your current password...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(postingan.this, "Enter your current password...", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         if (passbaru.length() < 6) {
-                            Toast.makeText(profile.this, "password harus minimal 6 karater", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(postingan.this, "password harus minimal 6 karater", Toast.LENGTH_SHORT).show();
                             return;
                         }
                         if (passbaru.equals(passconf)) {
                             ubahpassword(pass, passbaru, passconf);
                         } else {
-                            Toast.makeText(profile.this, "Konfirmasi password baru tidak cocok", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(postingan.this, "Konfirmasi password baru tidak cocok", Toast.LENGTH_SHORT).show();
                         }
 
                         ubahpassword(pass, passbaru, passconf);
@@ -198,7 +193,7 @@ public class profile extends AppCompatActivity {
                 }
 
                 // Setelah mendapatkan data, inisialisasi adapter dan set ke RecyclerView
-                adapterProfile adapterProfile = new adapterProfile(list_profiles, profile.this);
+                adapterProfile adapterProfile = new adapterProfile(list_profiles, postingan.this);
                 recyclerView.setAdapter(adapterProfile);
             }
 
@@ -225,23 +220,23 @@ public class profile extends AppCompatActivity {
                                                 @Override
                                                 public void onComplete(@NonNull Task<Void> task) {
                                                     if (task.isSuccessful()) {
-                                                        Toast.makeText(profile.this, "Password berhasil diubah", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(postingan.this, "Password berhasil diubah", Toast.LENGTH_SHORT).show();
                                                         dialog.dismiss();
                                                     } else {
-                                                        Toast.makeText(profile.this, "Gagal mengubah password", Toast.LENGTH_SHORT).show();
+                                                        Toast.makeText(postingan.this, "Gagal mengubah password", Toast.LENGTH_SHORT).show();
                                                     }
                                                 }
                                             });
                                 } else {
-                                    Toast.makeText(profile.this, "Konfirmasi password baru tidak cocok", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(postingan.this, "Konfirmasi password baru tidak cocok", Toast.LENGTH_SHORT).show();
                                 }
                             } else {
-                                Toast.makeText(profile.this, "Password saat ini salah", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(postingan.this, "Password saat ini salah", Toast.LENGTH_SHORT).show();
                             }
                         }
                     });
         } else {
-            Toast.makeText(profile.this, "Pengguna belum login", Toast.LENGTH_SHORT).show();
+            Toast.makeText(postingan.this, "Pengguna belum login", Toast.LENGTH_SHORT).show();
         }
     }
 

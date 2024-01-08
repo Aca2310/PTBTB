@@ -35,7 +35,7 @@ public class descpp extends AppCompatActivity {
         button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(descpp.this, profile.class);
+                Intent intent = new Intent(descpp.this, postingan.class);
 
                 intent.putExtra("email", email);
                 intent.putExtra("username", username);
