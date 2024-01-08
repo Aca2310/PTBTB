@@ -24,6 +24,8 @@
         android:layout_marginTop="600dp"
         android:backgroundTint="#9E326C"
         android:text="@string/get_started"
+        android:textColor="#FFFFFF"
+        android:textColorHint="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

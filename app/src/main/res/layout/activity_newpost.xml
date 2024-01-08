@@ -161,6 +161,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:backgroundTint="#9E326C"
-            android:text="@string/upload" />
+            android:text="@string/upload"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#FFFFFF" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
