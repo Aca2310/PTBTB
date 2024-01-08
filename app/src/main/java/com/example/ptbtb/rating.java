@@ -141,7 +141,7 @@ public class rating extends AppCompatActivity {
                                 saveToFirebase(user_id, username, String.valueOf(myRating), finalMessage, feedbackText);
 
                                 // Intent to navigate to Home activity
-                                Intent intent = new Intent(rating.this, Home.class);
+                                Intent intent = new Intent(rating.this, detail_rating.class);
                                 startActivity(intent);
                                 finish(); // Optional: finish the current activity if you don't want to come back to it with the back button
                             } else {

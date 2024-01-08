@@ -172,7 +172,7 @@ public class descHistory extends AppCompatActivity {
             }
 
             private void navigateToNotifPage() {
-                Intent intent = new Intent(descHistory.this, notif.class);
+                Intent intent = new Intent(descHistory.this, history.class);
                 startActivity(intent);
                 finish();
             }
