@@ -25,6 +25,7 @@
         android:layout_height="32dp"
         android:gravity="center"
         android:text="@string/new_post"
+        android:textColor="#014A59"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/linearLayout2"
@@ -63,6 +64,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
             android:text="@string/title"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
         <EditText
@@ -83,6 +85,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="@string/detail"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
         <EditText
@@ -109,6 +112,7 @@
                 android:layout_width="89dp"
                 android:layout_height="wrap_content"
                 android:text="Location"
+                android:textColor="#000000"
                 android:textSize="20sp" />
 
             <Button
@@ -137,6 +141,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
             android:text="Barter"
+            android:textColor="#000000"
             android:textSize="20sp" />
 
         <EditText

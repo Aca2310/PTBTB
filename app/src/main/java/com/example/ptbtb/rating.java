@@ -1,6 +1,7 @@
 package com.example.ptbtb;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatImageView;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -27,6 +28,7 @@ public class rating extends AppCompatActivity {
     float myRating = 0;
     DatabaseReference databaseReference;
     FirebaseAuth firebaseAuth;
+    AppCompatImageView button_back;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,6 +51,16 @@ public class rating extends AppCompatActivity {
         button_rating = findViewById(R.id.button_rating);
         ratingBar = findViewById(R.id.ratingBar);
         feedbackEditText = findViewById(R.id.feedbackEditText);
+
+        button_back = findViewById(R.id.button_back);
+        button_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(rating.this, detail_rating.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         ratingBar.setOnRatingBarChangeListener(new RatingBar.OnRatingBarChangeListener() {
             @Override

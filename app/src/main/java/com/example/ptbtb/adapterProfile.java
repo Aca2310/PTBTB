@@ -50,6 +50,7 @@ public class adapterProfile extends RecyclerView.Adapter<adapterProfile.ViewHold
             intent.putExtra("username", list_profiles.get(position).getUsername());
             intent.putExtra("dataTitle", list_profiles.get(position).getDataTitle());
             intent.putExtra("dataDetail", list_profiles.get(position).getDataDetail());
+            intent.putExtra("dataLocation", list_profiles.get(position).getDataLocation());
             intent.putExtra("dataBarter", list_profiles.get(position).getDataBarter());
             intent.putExtra("dataImage", list_profiles.get(position).getDataImage());
             intent.putExtra("Key",list_profiles.get(position).getKey());

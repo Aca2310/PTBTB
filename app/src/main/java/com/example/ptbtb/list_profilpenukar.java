@@ -10,6 +10,7 @@ public class list_profilpenukar {
     private String nama;
     private String dataTitle;
     private String dataDetail;
+    private String dataLocation;
     private String dataBarter;
     private String dataImage;
 
@@ -24,6 +25,7 @@ public class list_profilpenukar {
     public String getDataDetail() {
         return dataDetail;
     }
+    public String getDataLocation() { return dataLocation;}
 
     public String getDataBarter() {
         return dataBarter;

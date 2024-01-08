@@ -49,6 +49,7 @@ public class adapterProfilPenukar extends RecyclerView.Adapter<adapterProfilPenu
             intent.putExtra("username", list_profilpenukar.get(position).getUsername());
             intent.putExtra("dataTitle", list_profilpenukar.get(position).getDataTitle());
             intent.putExtra("dataDetail", list_profilpenukar.get(position).getDataDetail());
+            intent.putExtra("dataLocation", list_profilpenukar.get(position).getDataLocation());
             intent.putExtra("dataBarter", list_profilpenukar.get(position).getDataBarter());
             intent.putExtra("dataImage", list_profilpenukar.get(position).getDataImage());
             context.startActivity(intent);

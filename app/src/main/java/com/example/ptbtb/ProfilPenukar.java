@@ -35,6 +35,9 @@ public class ProfilPenukar extends AppCompatActivity {
         Intent intent = getIntent();
         String userIdToShow = intent.getStringExtra("user_id");
 
+        TextView nama = findViewById(R.id.nama_user);
+        TextView username = findViewById(R.id.usernamepp);
+
         recyclerView = findViewById(R.id.recyclerview);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -43,7 +46,7 @@ public class ProfilPenukar extends AppCompatActivity {
         list_postingan = new ArrayList<>();
 
         // Mengambil data dari Firebase berdasarkan user_id di "users"
-        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("users");
+        databaseReferenceUsers = FirebaseDatabase.getInstance().getReference("Postingan");
         eventListenerUsers = databaseReferenceUsers.orderByChild("user_id").equalTo(userIdToShow).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -56,13 +59,19 @@ public class ProfilPenukar extends AppCompatActivity {
 
                 if (!list_profilpenukar.isEmpty()) {
                     list_profilpenukar ProfilPenukar = list_profilpenukar.get(0);
-                    TextView namaUserTextView = findViewById(R.id.nama_user);
+
+                    String name = ProfilPenukar.getNama();
+                    String username = ProfilPenukar.getUsername();
+
+                    TextView nama = findViewById(R.id.nama_user);
                     TextView usernameTextView = findViewById(R.id.usernamepp);
 
-                    namaUserTextView.setText(ProfilPenukar.getNama());
-                    usernameTextView.setText(ProfilPenukar.getUsername());
+                    nama.setText(name);
+                    usernameTextView.setText(username);
                 }
             }
+
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -78,15 +87,14 @@ public class ProfilPenukar extends AppCompatActivity {
                 list_postingan.clear();
 
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    // Perubahan tipe data menjadi list_postingan
                     list_postingan data = snapshot.getValue(list_postingan.class);
                     list_postingan.add(data);
                 }
 
-                // Perubahan nama adapter sesuai dengan adapter yang baru dibuat
                 adapterProfilPenukar adapter = new adapterProfilPenukar(list_postingan, ProfilPenukar.this);
                 recyclerView.setAdapter(adapter);
             }
+
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {

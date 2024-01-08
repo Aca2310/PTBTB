@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutmap"
         android:orientation="horizontal"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/latitudemap"
@@ -42,8 +42,8 @@
         <EditText
             android:id="@+id/editTextLatitude"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Latitude"/>
+            android:layout_height="70dp"
+            android:hint="Enter Latitude" />
 
     </LinearLayout>
 
@@ -53,7 +53,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutLatitude"
         android:orientation="horizontal"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/longitudemap"
@@ -66,8 +66,8 @@
         <EditText
             android:id="@+id/editTextLongitude"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Enter Longitude"/>
+            android:layout_height="70dp"
+            android:hint="Enter Longitude" />
 
     </LinearLayout>
 
@@ -77,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/layoutLongitude"
         android:orientation="horizontal"
-        android:layout_marginTop="8dp">
+        android:layout_marginTop="10dp">
 
         <TextView
             android:id="@+id/locationmap"
@@ -90,7 +90,7 @@
         <EditText
             android:id="@+id/editTextLocation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="70dp"
             android:hint="Enter Location"/>
 
     </LinearLayout>
