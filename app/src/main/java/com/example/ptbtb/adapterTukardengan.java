@@ -105,6 +105,13 @@ public class adapterTukardengan extends RecyclerView.Adapter<adapterTukardengan.
                     intent.putExtra("dataTitle", dataTitle);
                     intent.putExtra("dataImage", dataImage);
                     context.startActivity(intent);
+                })
+                .setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        // Jika pengguna menekan tombol "Tidak", tutup dialog
+                        dialogInterface.dismiss();
+                    }
                 });
         AlertDialog alertDialog = builder.create();
         alertDialog.show();
